@@ -56,8 +56,16 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
     public bool m_isOnServer;
     public void OnEnable()
     {
-        m_isOnServer = isServer;
-        if (isServer) { 
+        m_isOnServer = false;
+             // Check if this instance is the host
+        if (NetworkManager.singleton.isNetworkActive)
+        {
+            if (NetworkServer.active && NetworkClient.active)
+            {
+                m_isOnServer = true;
+            }
+        }
+        if (m_isOnServer) { 
             NetworkServer.Spawn(this.gameObject);
             UpdateOnClientsCurrentTransform();
             RefreshModelOfPrefab();
@@ -66,7 +74,7 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
 
     public void OnDisable()
     {
-        if (isServer)
+        if (m_isOnServer)
         {
             NetworkServer.UnSpawn(this.gameObject);
         }

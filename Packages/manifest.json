@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "be.eloistree.droneracestepmesh": "https://github.com/EloiStree/2024_06_31_DroneRaceStep.git",
+    "be.eloistree.rootsofknowledgedronecar": "https://github.com/EloiStree/2023_02_19_RootsOfKnowedgeDrone.git",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.ide.rider": "3.0.28",
     "com.unity.ide.visualstudio": "2.0.22",

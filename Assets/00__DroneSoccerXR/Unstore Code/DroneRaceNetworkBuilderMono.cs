@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Events;
 
 public class DroneRaceNetworkBuilderMono : MonoBehaviour
 {
@@ -14,10 +15,11 @@ public class DroneRaceNetworkBuilderMono : MonoBehaviour
 
     public Transform m_whereToReplace;
 
-    public List<Transform> found;
+    public List<DFlagMono_RootTag> found;
 
+    public UnityEvent m_beforeLoading;
+    public UnityEvent m_whenLoaded;
 
-    
 
 
     [ContextMenu("Refresh list of prefab")]
@@ -30,31 +32,37 @@ public class DroneRaceNetworkBuilderMono : MonoBehaviour
     [ContextMenu("Parse Single player map to multiplayer map on server")]
     public void LoadSinglePlayerMapToMultiplayer()
     {
-        List<Transform>  o = GetAllGameObjectInLevel();
+        m_beforeLoading.Invoke();
+        List<DFlagMono_RootTag>  o = GetAllGameObjectInLevel();
         foreach (var item in m_replacablePrefab)
         {
-            string name = item.name;
+            DFlagMono_RootTag tag = item.GetComponent<DFlagMono_RootTag>();
+            if (tag == null)
+                continue;
+
+            string guid = tag.GetGuid();
             foreach (var objectInLevel in o)
             {
-                if (objectInLevel.name.IndexOf(name) ==0) {
+                if (objectInLevel.GetGuid()== guid) {
 
                     GameObject created = GameObject.Instantiate(m_prefabToSpawn);
                     created.SetActive(true);
                     MSoccerMono_SpawnStepPrefab script = created.GetComponent<MSoccerMono_SpawnStepPrefab>();
-                    script.SetModelFromName(name);
-                    created.transform.position = objectInLevel.position;
-                    created.transform.rotation = objectInLevel.rotation;
-                    created.transform.localScale = objectInLevel.localScale;
-                    script.UpdateOnClientsCurrentTransform();
+                    script.SetModelFromName(item.name);
+                    script .m_worldPosition= objectInLevel.transform.position;
+                    script.m_worldRotation = objectInLevel.transform.rotation;
+                    script .m_worldScale= objectInLevel.transform.localScale;
+                    //script.UpdateOnClientsCurrentTransform();
                 }
             }
         }
+        m_whenLoaded.Invoke();
     }
 
    
-    List<Transform>  GetAllGameObjectInLevel()
+    List<DFlagMono_RootTag>  GetAllGameObjectInLevel()
     {
-        found = new List<Transform>();
+        found = new List<DFlagMono_RootTag>();
         m_whereToReplace.gameObject.GetComponentsInChildren(found);
         return found;
     }

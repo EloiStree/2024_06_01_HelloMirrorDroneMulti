@@ -10,8 +10,6 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
     public Transform m_whereToCreate;
     public List<GameObject> m_prefabToSpawn;
 
-    public GameObject m_initialValuePrefabName;
-    private GameObject m_previousValueName;
 
     [SyncVar(hook = nameof(SomethingChange))]
     public Vector3 m_worldPosition;
@@ -21,31 +19,16 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
     public Vector3 m_worldScale;
 
 
-
-
-    private new void OnValidate()
-    {
-        
-        if (m_initialValuePrefabName != m_previousValueName) {
-
-            for (int i = 0; i < m_prefabToSpawn.Count; i++)
-            {
-                if (m_prefabToSpawn[i] == m_initialValuePrefabName) {
-                    ChangeModelOfPrefab(-1, i);
-
-                }
-            }
-            m_previousValueName = m_initialValuePrefabName;
-        }
-    }
-
+    public string m_lastGivenNameToLoad;
     public void SetModelFromName(string name)
     {
+        m_lastGivenNameToLoad = name;
         for (int i = 0; i < m_prefabToSpawn.Count; i++)
         {
-            if (m_prefabToSpawn[i].name == name)
+            if (m_prefabToSpawn[i].name.Length==(name).Length && m_prefabToSpawn[i].name.IndexOf(name)==0)
             {
-                ChangeModelOfPrefab(-1, i);
+                m_prefabIdToSpawn = -1;
+                m_prefabIdToSpawn = i;
                 return;
             }
         }
@@ -121,11 +104,11 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
 
     public void HookTransformChangedObserved() {
 
-        if (!isServer) { 
+        //if (!isServer) { 
             transform.position = m_worldPosition;
             transform.rotation = m_worldRotation;
             transform.localScale = m_worldScale;
-        }
+        //}
     }
 
     private void Reset()

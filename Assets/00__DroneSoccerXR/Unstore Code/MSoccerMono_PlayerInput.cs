@@ -6,6 +6,8 @@ using Mirror;
 public class MSoccerMono_PlayerInput : NetworkBehaviour
 {
 
+    public static MSoccerMono_PlayerInput PlayerInstanceInScene;
+
     [Header("Client Information")]
     public float m_rotateHorizontalPercent;
     public float m_moveDownUpPercent;
@@ -44,6 +46,14 @@ public class MSoccerMono_PlayerInput : NetworkBehaviour
         if (!isOwned)
             return;
         CmdPushInputPlayerToServer(rotateHorizontalPercent, moveDownUpPercent, moveLeftRightPercent, moveBackForwardPercent);
+    }
+
+
+    public override void OnStartLocalPlayer()
+    {
+        base.OnStartLocalPlayer();
+        PlayerInstanceInScene = this;
+        Debug.Log("Hello I am the local player", this.gameObject);
     }
 
     [Command]

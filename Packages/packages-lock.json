@@ -49,7 +49,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "188b72671225aded29ebddfaad9571302e474e30"
+      "hash": "4eed0ea1b1cc68667a7545f58731d1872e789339"
     },
     "be.eloistree.unitypackagefacilitator": {
       "version": "https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git",

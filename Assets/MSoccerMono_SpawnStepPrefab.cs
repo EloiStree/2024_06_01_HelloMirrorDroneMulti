@@ -53,8 +53,10 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
         }
     }
 
-    public void Awake()
+    public bool m_isOnServer;
+    public void OnEnable()
     {
+        m_isOnServer = isServer;
         if (isServer) { 
             NetworkServer.Spawn(this.gameObject);
             UpdateOnClientsCurrentTransform();
@@ -62,7 +64,7 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
         }
     }
 
-    public void OnDestroy()
+    public void OnDisable()
     {
         if (isServer)
         {

@@ -7,12 +7,72 @@
       "dependencies": {},
       "hash": "c02c011d22656a8e9e939188c446180011e9862c"
     },
+    "be.eloistree.etoolboxbasicfont": {
+      "version": "https://github.com/EloiStree/2024_03_11_eToolbox_BasicFont.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "833398a559868d2bc1ab0a96bead155542b82b41"
+    },
+    "be.eloistree.etoolboxcolordrop": {
+      "version": "https://github.com/EloiStree/2024_03_11_eToolbox_ColorDrop.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "316098139c3ac6670b7192e3a7d4823bf4f2f1eb"
+    },
+    "be.eloistree.generaltoolbox": {
+      "version": "https://github.com/EloiStree/2021_10_03_EloiGeneralToolbox.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "374d6c1f69432411361482f0ab5273ed20d53788"
+    },
+    "be.eloistree.license": {
+      "version": "https://github.com/EloiStree/GeneralLicense.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "47d94896f2c8a34ccbe67e816cb273f3ddfdeab6"
+    },
+    "be.eloistree.quickgitutility": {
+      "version": "https://github.com/EloiStree/2019_07_21_QuickGitUtility.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "be.eloistree.license": "0.0.1"
+      },
+      "hash": "16a95c003c6d6033c0f7bdf7a7085cafb4779fd4"
+    },
     "be.eloistree.rootsofknowledgedronecar": {
       "version": "https://github.com/EloiStree/2023_02_19_RootsOfKnowedgeDrone.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "28f934f4e0bcdf9a8033b8b888f6cbc1099fa8f0"
+    },
+    "be.eloistree.unitypackagefacilitator": {
+      "version": "https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "be.eloistree.license": "0.0.1"
+      },
+      "hash": "acc9b240aa04120935d900bdf4f3407d57a94b71"
+    },
+    "be.eloistree.watchexecutetime": {
+      "version": "https://github.com/EloiStree/2024_04_18_WatchExecuteTime.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3f646cafa4fa16774bffe1ed0614d9bb7b97ba08"
+    },
+    "be.eloistree.zhulistaticsingleton": {
+      "version": "https://github.com/EloiStree/2022_11_22_ZhuLiStaticSingleton.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "89564667f5e0a9611cc438548de002611a652460"
     },
     "com.unity.burst": {
       "version": "1.8.13",

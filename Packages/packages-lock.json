@@ -49,7 +49,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "28f934f4e0bcdf9a8033b8b888f6cbc1099fa8f0"
+      "hash": "188b72671225aded29ebddfaad9571302e474e30"
     },
     "be.eloistree.unitypackagefacilitator": {
       "version": "https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git",
@@ -121,6 +121,15 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.inputsystem": {
+      "version": "1.7.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.uielements": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {

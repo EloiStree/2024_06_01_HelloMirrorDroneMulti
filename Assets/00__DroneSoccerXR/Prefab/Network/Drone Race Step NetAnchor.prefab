@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1672200245712624880
 Transform:
   m_ObjectHideFlags: 0
@@ -76,6 +76,11 @@ MonoBehaviour:
   - {fileID: 2483332508170712217, guid: d3418bb62a0ade84c87e8b17ec2dd7e1, type: 3}
   - {fileID: 1893171091852458497, guid: cb9ab6dc1797bb942975737b428b067e, type: 3}
   - {fileID: 4020020553872112218, guid: 6fc4f5faf36627344a97ad1933bb6651, type: 3}
+  m_initialValuePrefabName: {fileID: 5057180932577619179, guid: 0ca71f1aadfa4514192b3c2c552086b3,
+    type: 3}
+  m_worldPosition: {x: 0, y: 0, z: 0}
+  m_worldRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_worldScale: {x: 0, y: 0, z: 0}
 --- !u!1 &4834726606279002608
 GameObject:
   m_ObjectHideFlags: 0

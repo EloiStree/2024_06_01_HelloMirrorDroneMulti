@@ -39,12 +39,23 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
         }
     }
 
+    public void SetModelFromName(string name)
+    {
+        for (int i = 0; i < m_prefabToSpawn.Count; i++)
+        {
+            if (m_prefabToSpawn[i].name == name)
+            {
+                ChangeModelOfPrefab(-1, i);
+                return;
+            }
+        }
+    }
 
     void ChangeModelOfPrefab(int _, int current)
     {
         DestroyAllChildren();
-        if (m_prefabIdToSpawn >= 0 && m_prefabIdToSpawn < m_prefabToSpawn.Count) {
-            GameObject o = GameObject.Instantiate(m_prefabToSpawn[m_prefabIdToSpawn]);
+        if (current >= 0 && current < m_prefabToSpawn.Count) {
+            GameObject o = GameObject.Instantiate(m_prefabToSpawn[current]);
             o.transform.parent = m_whereToCreate;
             o.transform.localPosition = Vector3.zero;
             o.transform.localRotation = Quaternion.identity;

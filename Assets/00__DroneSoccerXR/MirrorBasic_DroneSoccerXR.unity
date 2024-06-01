@@ -218,7 +218,8 @@ MonoBehaviour:
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 2851546800271652925, guid: 2ec96ae116fad804ea365835ec732c86, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -874,6 +875,79 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1001 &4127710474417499683
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03913269
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.019980453
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.288709
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1672200245712624880, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2851546800271652925, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: m_Name
+      value: Drone Race Step NetAnchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850808299141431613, guid: 2ec96ae116fad804ea365835ec732c86,
+        type: 3}
+      propertyPath: sceneId
+      value: 3941919071
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ec96ae116fad804ea365835ec732c86, type: 3}
 --- !u!1001 &4400912897142718999
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -956,3 +1030,4 @@ SceneRoots:
   - {fileID: 533055204}
   - {fileID: 1356257343}
   - {fileID: 4400912897142718999}
+  - {fileID: 4127710474417499683}

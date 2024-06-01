@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/00__DroneSoccerXR/MirrorBasic_DroneSoccerXR.unity
+    path: Assets/00__DroneSoccerXR/Scene/MirrorBasic_DroneSoccerXR.unity
     guid: 43a32191c52cc2740a7d2141848cbd79
+  - enabled: 1
+    path: Assets/00__DroneSoccerXR/Scene/XrPlayerScene.unity
+    guid: e6935a13c0ed9bd45859f81a1b6bdf3b
   m_configObjects: {}

@@ -10,6 +10,35 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
     public Transform m_whereToCreate;
     public List<GameObject> m_prefabToSpawn;
 
+    public GameObject m_initialValuePrefabName;
+    private GameObject m_previousValueName;
+
+    [SyncVar(hook = nameof(SomethingChange))]
+    public Vector3 m_worldPosition;
+    [SyncVar(hook = nameof(SomethingChange))]
+    public Quaternion m_worldRotation;
+    [SyncVar(hook = nameof(SomethingChange))]
+    public Vector3 m_worldScale;
+
+
+
+
+    private new void OnValidate()
+    {
+        
+        if (m_initialValuePrefabName != m_previousValueName) {
+
+            for (int i = 0; i < m_prefabToSpawn.Count; i++)
+            {
+                if (m_prefabToSpawn[i] == m_initialValuePrefabName) {
+                    ChangeModelOfPrefab(-1, i);
+
+                }
+            }
+            m_previousValueName = m_initialValuePrefabName;
+        }
+    }
+
 
     void ChangeModelOfPrefab(int _, int current)
     {
@@ -64,22 +93,28 @@ public class MSoccerMono_SpawnStepPrefab : NetworkBehaviour
     [ContextMenu("Update Transform from server")]
     public void UpdateOnClientsCurrentTransform() {
 
-        RpcUpdateTransform(m_whereToCreate.position, m_whereToCreate.rotation, m_whereToCreate.localScale);
-
-    }
+        m_worldPosition= transform.position;
+        m_worldRotation = transform.rotation;
+        m_worldScale= transform.localScale;
+    }   
 
     [ClientRpc]
     public void RefreshModelOfPrefab() {
         ChangeModelOfPrefab(-1, m_prefabIdToSpawn);
     }
 
-    [ClientRpc]
-    public void RpcUpdateTransform(Vector3 worldPosition, Quaternion worldRotation, Vector3 worldScale) {
 
 
-        m_whereToCreate.position = worldPosition;
-        m_whereToCreate.rotation = worldRotation;
-        SetWorldScale(m_whereToCreate, worldScale);
+    public void SomethingChange(Vector3 previous, Vector3 current) { HookTransformChangedObserved(); }
+    public void SomethingChange(Quaternion previous, Quaternion current) { HookTransformChangedObserved(); }
+
+    public void HookTransformChangedObserved() {
+
+        if (!isServer) { 
+            transform.position = m_worldPosition;
+            transform.rotation = m_worldRotation;
+            transform.localScale = m_worldScale;
+        }
     }
 
     private void Reset()

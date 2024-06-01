@@ -1,5 +1,19 @@
 {
   "dependencies": {
+    "be.eloistree.droneracestepmesh": {
+      "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStep.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c02c011d22656a8e9e939188c446180011e9862c"
+    },
+    "be.eloistree.rootsofknowledgedronecar": {
+      "version": "https://github.com/EloiStree/2023_02_19_RootsOfKnowedgeDrone.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "28f934f4e0bcdf9a8033b8b888f6cbc1099fa8f0"
+    },
     "com.unity.burst": {
       "version": "1.8.13",
       "depth": 1,

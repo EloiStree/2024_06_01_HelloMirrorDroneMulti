@@ -3055,6 +3055,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1576418753239159600, guid: 585dd628f36da6c40b82d07e8c4262a5,
+        type: 3}
+      propertyPath: interpolateScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576418753239159600, guid: 585dd628f36da6c40b82d07e8c4262a5,
+        type: 3}
+      propertyPath: interpolatePosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576418753239159600, guid: 585dd628f36da6c40b82d07e8c4262a5,
+        type: 3}
+      propertyPath: interpolateRotation
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1576418753239159600, guid: 585dd628f36da6c40b82d07e8c4262a5,
+        type: 3}
+      propertyPath: sendIntervalMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1648383266187385831, guid: 585dd628f36da6c40b82d07e8c4262a5,
         type: 3}
       propertyPath: sceneId
@@ -3699,6 +3719,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 963741910722708138, guid: 7e5a34145961ab446b41dce9dc95470d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1014853063029969646, guid: 7e5a34145961ab446b41dce9dc95470d,
         type: 3}
       propertyPath: m_IsActive
@@ -4028,6 +4053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5762132171436623340, guid: 7e5a34145961ab446b41dce9dc95470d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6061432785827937484, guid: 7e5a34145961ab446b41dce9dc95470d,
         type: 3}

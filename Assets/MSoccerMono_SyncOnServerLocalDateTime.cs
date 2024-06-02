@@ -105,7 +105,7 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
         long receivedLessDelay = received - halfDelta;
         long offsetToGoServer = sent - receivedLessDelay;
         m_clientEstimatedOffsetDateTime = offsetToGoServer;
-
+        RpcSetServerOffsetEstimation(offsetToGoServer);
     }
 
     [TargetRpc]

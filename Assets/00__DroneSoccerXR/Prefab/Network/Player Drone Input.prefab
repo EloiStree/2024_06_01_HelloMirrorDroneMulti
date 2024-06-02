@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3706390689582733410}
   - component: {fileID: 8625709558440784547}
   - component: {fileID: 3104659047279155217}
+  - component: {fileID: 3118577850267655941}
   m_Layer: 0
   m_Name: Player Drone Input
   m_TagString: Untagged
@@ -143,6 +144,18 @@ MonoBehaviour:
         m_CallState: 2
   m_timeBeforeStart: 1
   m_timeBetweenTick: 0.1
+--- !u!114 &3118577850267655941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897184729387425976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d18e682f4573dc449525d8c1ddcc15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2697802215668128996
 GameObject:
   m_ObjectHideFlags: 0

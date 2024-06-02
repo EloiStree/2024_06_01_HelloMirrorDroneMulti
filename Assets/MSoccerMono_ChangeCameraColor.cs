@@ -16,7 +16,7 @@ public class MSoccerMono_ChangeCameraColor : NetworkBehaviour
     public Color m_nextColorBlack= Color.black;
 
     public void ChangeMainCameraColor(Color color) {
-        if (isClient) { 
+        if (isOwned && isLocalPlayer) { 
             if (Camera.main)
                 Camera.main.backgroundColor = color;
         }
@@ -28,7 +28,7 @@ public class MSoccerMono_ChangeCameraColor : NetworkBehaviour
     public void Update()
     {
 
-        if (isClient) { 
+        if (isOwned && isLocalPlayer) { 
             m_serverTime.GetEstimatedServerDateTime(out DateTime serverTime);
         
             m_currentTime = serverTime.Ticks/TimeSpan.TicksPerSecond;

@@ -1,11 +1,39 @@
 {
   "dependencies": {
+    "be.eloistree.basiccoredronesoccer": {
+      "version": "https://github.com/EloiStree/2024_06_02_DroneSoccerFieldScoreAndCore.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d86a105f00d8770c056b49f1b361d755242d5597"
+    },
+    "be.eloistree.digitalscoreandclock": {
+      "version": "https://github.com/EloiStree/2023_02_17_DigitalScoreAndClock.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "89039a97c3dc3c6ddbbe3b766d9ffbdb46f61152"
+    },
     "be.eloistree.droneracestepmesh": {
       "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStep.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "60c697cedf1069885986f38aaed489a4b6cc0998"
+      "hash": "0c473fe05d2e6a58d874d4d3c9fca76538e43530"
+    },
+    "be.eloistree.dronesoccergoal": {
+      "version": "https://github.com/EloiStree/2023_02_16_DroneSoccerGoal.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "5d446cf9c11cb3094ccff471ad9a738767557b2c"
+    },
+    "be.eloistree.dronesoccerground": {
+      "version": "https://github.com/EloiStree/2023_02_16_DroneSoccerGround.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "58aa5e68add89c67085e491d7ebefa88dafe9105"
     },
     "be.eloistree.etoolboxbasicfont": {
       "version": "https://github.com/EloiStree/2024_03_11_eToolbox_BasicFont.git",

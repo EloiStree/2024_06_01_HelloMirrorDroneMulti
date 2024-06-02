@@ -8,7 +8,10 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
 {
 
 
-
+    [Header("Setup")]
+    [Tooltip("Time between send of time ping to check and compute offset between DateTime")]
+    public float m_delayBetweenTimePing = 5;
+    [Header("Debug Target RPC value")]
     public long m_estimatedServerLocalDateTime;
     public long m_predictionDifferenceValue;
     public double m_predictionDifferenceValueMs;
@@ -27,14 +30,36 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
     public double m_sentEstimateLagInMs;
 
 
-    public void GetEstimatedServerDateTime(out DateTime timeOfServer) {
+    public void GetEstimatedServerDateTime(out DateTime timeOfServer)
+    {
 
         if (m_isOnServer)
             timeOfServer = DateTime.UtcNow;
-        else { 
+        else
+        {
             timeOfServer = DateTime.UtcNow.AddTicks(m_clientEstimatedOffsetDateTime);
         }
     }
+    public void GetEstimatedClientDateTime(out DateTime timeOfServer)
+    {
+
+        if (m_isOnServer) { 
+            timeOfServer = DateTime.UtcNow.AddTicks(-m_clientEstimatedOffsetDateTime);
+        }
+        else
+        {
+            timeOfServer = DateTime.UtcNow;
+        }
+    }
+
+    public void GetPingFullTravelExact(out float pingInMilliseconds) {
+        pingInMilliseconds = m_delaySentReceivedFromServer;
+    }
+    public void GetPingOneServerToClientEstimation(out float pingInMilliseconds) {
+        pingInMilliseconds = m_delaySentReceivedFromServerHalf;
+    }
+
+    
 
 
 
@@ -45,13 +70,12 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
         GetEstimatedServerDateTime(out DateTime now);
         m_estimatedServerLocalDateTime = now.Ticks;
     }
-
     public bool m_isOnServer;
     public void OnEnable()
     {
         m_isOnServer = isServer;
       
-            InvokeRepeating("PushServerTimeToClient", 0, 1);
+            InvokeRepeating("PushServerTimeToClient", 0, m_delayBetweenTimePing);
         
     }
 
@@ -106,11 +130,19 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
         long offsetToGoServer = sent - receivedLessDelay;
         m_clientEstimatedOffsetDateTime = offsetToGoServer;
         RpcSetServerOffsetEstimation(offsetToGoServer);
+        RpcSetServerPingInfo((int)delta);
     }
 
     [TargetRpc]
-    public void RpcSetServerOffsetEstimation(long offsetToSyncOnServer) {
+    public void RpcSetServerOffsetEstimation(long offsetToSyncOnServer)
+    {
         m_clientEstimatedOffsetDateTime = offsetToSyncOnServer;
+    }
+    [TargetRpc]
+    public void RpcSetServerPingInfo(int fullPing)
+    {
+        m_delaySentReceivedFromServer = fullPing;
+        m_delaySentReceivedFromServerHalf = fullPing / 2;
     }
 
 

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8625709558440784547}
   - component: {fileID: 3104659047279155217}
   - component: {fileID: 3118577850267655941}
+  - component: {fileID: 4008483179694232450}
   m_Layer: 0
   m_Name: Player Drone Input
   m_TagString: Untagged
@@ -156,6 +157,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d18e682f4573dc449525d8c1ddcc15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_delayBetweenTimePing: 5
+  m_estimatedServerLocalDateTime: 0
+  m_predictionDifferenceValue: 0
+  m_predictionDifferenceValueMs: 0
+  m_predictionDifferenceValueSeconds: 0
+  m_serverLocalDateTimeSent: 0
+  m_serverLocalDateTimeReceived: 0
+  m_clientLocalDateTimeReceived: 0
+  m_delayBetweenServerToLocalClock: 0
+  m_delayBetweenServerToLocalClockMinimumFound: 0
+  m_delaySentReceivedFromServer: 0
+  m_delaySentReceivedFromServerHalf: 0
+  m_sentEstimateLagInMs: 0
+  m_isOnServer: 0
+  m_clientEstimatedOffsetDateTime: 0
+--- !u!114 &4008483179694232450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897184729387425976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eab36a612297f4b4f99bb3462b2b7ac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_serverTime: {fileID: 3118577850267655941}
+  m_nextColor: {r: 1, g: 1, b: 1, a: 1}
+  m_nextColorBlack: {r: 0, g: 0, b: 0, a: 1}
+  m_previousTime: 0
+  m_currentTime: 0
 --- !u!1 &2697802215668128996
 GameObject:
   m_ObjectHideFlags: 0

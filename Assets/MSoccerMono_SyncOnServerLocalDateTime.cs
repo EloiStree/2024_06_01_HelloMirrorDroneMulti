@@ -10,7 +10,12 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
 
 
     public long m_estimatedServerLocalDateTime;
-    public int m_predictionDifferenceValue;
+    public long m_predictionDifferenceValue;
+    public double m_predictionDifferenceValueMs;
+    public double m_predictionDifferenceValueSeconds;
+
+
+
     public long m_serverLocalDateTimeSent;
     public long m_serverLocalDateTimeReceived;
     public long m_clientLocalDateTimeReceived;
@@ -57,7 +62,11 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
 
     [TargetRpc]
     public void RpcPushServerTimeToClient(long serverTime) {
-        m_predictionDifferenceValue =(int) (m_estimatedServerLocalDateTime - serverTime);
+        m_predictionDifferenceValue = (m_estimatedServerLocalDateTime - serverTime);
+
+        m_predictionDifferenceValueMs = m_predictionDifferenceValue /(double) TimeSpan.TicksPerMillisecond;
+        m_predictionDifferenceValueSeconds = m_predictionDifferenceValue / (double)TimeSpan.TicksPerSecond;
+
         m_serverLocalDateTimeSent = serverTime;
         m_clientLocalDateTimeReceived = DateTime.UtcNow.Ticks;
         m_delayBetweenServerToLocalClock = m_serverLocalDateTimeSent - m_clientLocalDateTimeReceived;

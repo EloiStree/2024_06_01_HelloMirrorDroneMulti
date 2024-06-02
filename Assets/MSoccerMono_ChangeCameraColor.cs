@@ -16,9 +16,10 @@ public class MSoccerMono_ChangeCameraColor : NetworkBehaviour
     public Color m_nextColorBlack= Color.black;
 
     public void ChangeMainCameraColor(Color color) {
-
-        if(Camera.main)
-            Camera.main.backgroundColor = color;
+        if (isClient) { 
+            if (Camera.main)
+                Camera.main.backgroundColor = color;
+        }
     }
 
 
@@ -26,12 +27,15 @@ public class MSoccerMono_ChangeCameraColor : NetworkBehaviour
     public long m_currentTime;
     public void Update()
     {
-        m_serverTime.GetEstimatedServerDateTime(out DateTime serverTime);
+
+        if (isClient) { 
+            m_serverTime.GetEstimatedServerDateTime(out DateTime serverTime);
         
-        m_currentTime = serverTime.Ticks/TimeSpan.TicksPerSecond;
-        if (m_currentTime != m_previousTime) { 
-            m_previousTime = m_currentTime;
-            ChangeMainCameraColor(m_currentTime%2==0? m_nextColorBlack:m_nextColor);
+            m_currentTime = serverTime.Ticks/TimeSpan.TicksPerSecond;
+            if (m_currentTime != m_previousTime) { 
+                m_previousTime = m_currentTime;
+                ChangeMainCameraColor(m_currentTime%2==0? m_nextColorBlack:m_nextColor);
+            }
         }
         
     }

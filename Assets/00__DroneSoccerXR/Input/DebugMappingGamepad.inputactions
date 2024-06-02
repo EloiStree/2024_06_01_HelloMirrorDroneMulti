@@ -1,0 +1,76 @@
+{
+    "name": "DebugMappingGamepad",
+    "maps": [
+        {
+            "name": "DebugMappingGamepad",
+            "id": "eaf5f914-76fa-433b-bd45-4c3e8da2f31a",
+            "actions": [
+                {
+                    "name": "JoystickLeft",
+                    "type": "Value",
+                    "id": "a5cdc833-e75b-4592-a77c-0a32da2db2f7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "JoystickRight",
+                    "type": "Value",
+                    "id": "ac5aa9a7-c5f6-441b-b3d2-e460e92580f1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "fd2a22c3-be03-44c7-9b0b-83718d94d528",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e832a7c-6a5d-4e55-af97-f6fb1879d100",
+                    "path": "<XInputController>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92a8abc2-b407-47cc-877f-f50598e47345",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "069a0b3b-7deb-494d-8963-f079f61dcd8a",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

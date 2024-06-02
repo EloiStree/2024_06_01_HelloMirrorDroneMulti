@@ -1,0 +1,21 @@
+{
+    "name": "be.eloistree.rankedmsoccercore",
+    "rootNamespace": "",
+    "references": [
+        "Mirror",
+        "Unity.InputSystem",
+        "be.eloistree.digitalscoreandclock",
+        "be.eloistree.droneracestepmesh",
+        "Mirror.Examples",
+        "be.eloistree.rootsofknowledgedronecar"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -31,8 +31,10 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
 
         if (m_isOnServer)
             timeOfServer = DateTime.UtcNow;
-        else 
-            timeOfServer = DateTime.UtcNow.AddTicks( m_delayBetweenServerToLocalClockMinimumFound);
+        else { 
+            timeOfServer = DateTime.UtcNow.AddTicks(m_delayBetweenServerToLocalClock);
+           // timeOfServer = DateTime.UtcNow.AddTicks(m_delayBetweenServerToLocalClockMinimumFound);
+        }
     }
 
 

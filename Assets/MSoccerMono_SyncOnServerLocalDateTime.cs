@@ -27,12 +27,18 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
     public double m_sentEstimateLagInMs;
 
 
+    public long m_previousDelayOffsetUsed;
+    public long m_bestEstimationTick;
+    public long m_bestEstimationOffset;
+    public long m_predictionOffsetToUse;
+
     public void GetEstimatedServerDateTime(out DateTime timeOfServer) {
 
         if (m_isOnServer)
             timeOfServer = DateTime.UtcNow;
         else { 
-            timeOfServer = DateTime.UtcNow.AddTicks(m_delayBetweenServerToLocalClock);
+            timeOfServer = DateTime.UtcNow.AddTicks(m_predictionOffsetToUse);
+            m_previousDelayOffsetUsed = m_delayBetweenServerToLocalClock;
            // timeOfServer = DateTime.UtcNow.AddTicks(m_delayBetweenServerToLocalClockMinimumFound);
         }
     }
@@ -65,18 +71,26 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
     [TargetRpc]
     public void RpcPushServerTimeToClient(long serverTime) {
         m_predictionDifferenceValue = (m_estimatedServerLocalDateTime - serverTime);
-
         m_predictionDifferenceValueMs = m_predictionDifferenceValue /(double) TimeSpan.TicksPerMillisecond;
         m_predictionDifferenceValueSeconds = m_predictionDifferenceValue / (double)TimeSpan.TicksPerSecond;
+
+        if (Math.Abs(m_bestEstimationTick) > Math.Abs(m_predictionDifferenceValue)) {
+            m_bestEstimationTick = m_predictionDifferenceValue;
+            m_predictionOffsetToUse = m_previousDelayOffsetUsed;
+        }
+
 
         m_serverLocalDateTimeSent = serverTime;
         m_clientLocalDateTimeReceived = DateTime.UtcNow.Ticks;
         m_delayBetweenServerToLocalClock = m_serverLocalDateTimeSent - m_clientLocalDateTimeReceived;
         ComputeMinimumDelay();
-
+        if (m_previousDelayOffsetUsed == 0)
+            m_previousDelayOffsetUsed = m_delayBetweenServerToLocalClockMinimumFound;
 
 
         CmdKeepAwareOfLocalTime(m_serverLocalDateTimeSent, m_clientLocalDateTimeReceived);
+
+
     }
 
     [Command]

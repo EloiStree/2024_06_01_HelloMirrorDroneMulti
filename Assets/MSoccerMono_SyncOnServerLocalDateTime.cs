@@ -59,7 +59,9 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
         m_serverLocalDateTimeSent = serverTime;
         m_clientLocalDateTimeReceived = DateTime.UtcNow.Ticks;
         m_delayBetweenServerToLocalClock = m_serverLocalDateTimeSent - m_clientLocalDateTimeReceived;
-     
+        ComputeMinimumDelay();
+
+
 
         CmdKeepAwareOfLocalTime(m_serverLocalDateTimeSent, m_clientLocalDateTimeReceived);
     }
@@ -71,17 +73,20 @@ public class MSoccerMono_SyncOnServerLocalDateTime : NetworkBehaviour
         m_serverLocalDateTimeSent = serverLocalTime;
         m_clientLocalDateTimeReceived = clientLocalTime;
         m_delayBetweenServerToLocalClock = m_serverLocalDateTimeSent - m_clientLocalDateTimeReceived;
-        if (m_delayBetweenServerToLocalClockMinimumFound == 0)
-            m_delayBetweenServerToLocalClockMinimumFound = m_delayBetweenServerToLocalClock;
-        else if (Math.Abs(m_delayBetweenServerToLocalClock)< Math.Abs(m_delayBetweenServerToLocalClockMinimumFound)  && m_delayBetweenServerToLocalClock!=0)
-            m_delayBetweenServerToLocalClockMinimumFound = m_delayBetweenServerToLocalClock;
+        ComputeMinimumDelay();
 
-        m_delaySentReceivedFromServer = (int) (m_serverLocalDateTimeReceived - m_serverLocalDateTimeSent);
-        m_delaySentReceivedFromServerHalf =(int)( m_delaySentReceivedFromServer*0.5f);
+        m_delaySentReceivedFromServer = (int)(m_serverLocalDateTimeReceived - m_serverLocalDateTimeSent);
+        m_delaySentReceivedFromServerHalf = (int)(m_delaySentReceivedFromServer * 0.5f);
         m_sentEstimateLagInMs = m_delaySentReceivedFromServerHalf / TimeSpan.TicksPerMillisecond;
 
 
     }
 
-
+    private void ComputeMinimumDelay()
+    {
+        if (m_delayBetweenServerToLocalClockMinimumFound == 0)
+            m_delayBetweenServerToLocalClockMinimumFound = m_delayBetweenServerToLocalClock;
+        else if (Math.Abs(m_delayBetweenServerToLocalClock) < Math.Abs(m_delayBetweenServerToLocalClockMinimumFound) && m_delayBetweenServerToLocalClock != 0)
+            m_delayBetweenServerToLocalClockMinimumFound = m_delayBetweenServerToLocalClock;
+    }
 }

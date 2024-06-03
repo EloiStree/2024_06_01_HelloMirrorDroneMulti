@@ -8,7 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00__DroneSoccerXR/Scene/MirrorBasic_DroneSoccerXR.unity
     guid: 43a32191c52cc2740a7d2141848cbd79
-  - enabled: 1
+  - enabled: 0
     path: Assets/00__DroneSoccerXR/Scene/XrPlayerScene.unity
     guid: e6935a13c0ed9bd45859f81a1b6bdf3b
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/00__DroneSoccerXR/XR/OpenXR/XrPlayerScene.unity
+    guid: 49b57085ac9d2294b97008c8ec4c9618
+  m_configObjects:
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 9fc564cc8feb7bb4192bccaf08666701,
+      type: 3}
+    com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: b19642c196ea50241991aa2621d1b00b,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e7f23c643470a9a449c1da4e34caf539,
+      type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: d4dd8f4ecb7a5344da1f34a40fcf0e38,
+      type: 2}

@@ -2,12 +2,11 @@ using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MSoccerMono_SyncBoard : NetworkBehaviour
 {
     public FacadeMatchMono_GlobalSetter m_toAffectBoard;
-
-
     [SyncVar(hook =nameof(RefreshUI))]
     public int m_pointScoreBlue;
     [SyncVar(hook = nameof(RefreshUI))]

@@ -12,8 +12,10 @@ public class MSoccerMono_DestroyOnClient : MonoBehaviour
     public MonoBehaviour[] m_toDestroyOnClientScript;
     public GameObject[] m_toDestroyOnClientObject;
     public bool m_isHostOrPlayerDefined = false;
-    public bool m_iserver = false;
-    public bool m_autoDestroySelf = true;
+    public bool m_isServer = false;
+    public bool m_autoDestroySelfAsScript = true;
+    public bool m_autoDestroySelfAsObjectAnyCase = false;
+    public bool m_autoDestroySelfAsObjectOnClient = false;
     public IEnumerator Start()
     {
          m_isHostOrPlayerDefined = false;
@@ -25,10 +27,10 @@ public class MSoccerMono_DestroyOnClient : MonoBehaviour
                 m_isHostOrPlayerDefined = true;
             }
         }
-         m_iserver = IsOnServer();
+         m_isServer = IsOnServer();
       
-            m_onIsServer.Invoke(m_iserver);
-            if (m_iserver) { 
+            m_onIsServer.Invoke(m_isServer);
+            if (m_isServer) { 
                 m_onIsServerTrue.Invoke();
             }
             else { 
@@ -42,10 +44,17 @@ public class MSoccerMono_DestroyOnClient : MonoBehaviour
                 {
                     if(item!=null)
                         Destroy(item);
-                }
             }
+            if (m_autoDestroySelfAsObjectOnClient)
+            {
+                Destroy(gameObject);
+            }
+        }
 
-        if (m_autoDestroySelf) { 
+        if(m_autoDestroySelfAsObjectAnyCase) { 
+            Destroy(gameObject);
+        }
+        else if (m_autoDestroySelfAsScript) { 
             Destroy(this);
 
         }

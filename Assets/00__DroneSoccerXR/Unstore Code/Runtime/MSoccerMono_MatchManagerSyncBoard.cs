@@ -106,7 +106,7 @@ public class MSoccerMono_MatchManagerSyncBoard : MonoBehaviour
         m_syncBoardMulti.SetPointScoreBlue(m_pointScoreBlue);
         m_syncBoardMulti.SetPointScoreRed(m_pointScoreRed);
         m_syncBoardMulti.SetSetScoreBlue(m_setScoreBlue);
-        m_syncBoardMulti.SetSetScoreRed(m_setScoreRed);
+        m_syncBoardMulti.SetSetScoreRed(m_setScoreRed); 
         m_syncBoardMulti.SetDateTimeNowUTC();
         m_syncBoardMulti.SetTimeLeftInSeconds(m_timeLeftInSet);
         m_syncBoardMulti.SetTimeSinceSetStartInSeconds(m_timeSinceSetStarted);

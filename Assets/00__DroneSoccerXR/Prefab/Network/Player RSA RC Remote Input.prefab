@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 897184729387425978}
   - component: {fileID: 897184729387425977}
   - component: {fileID: 6897809650057489554}
+  - component: {fileID: 1123448691670403454}
   - component: {fileID: 3706390689582733410}
   - component: {fileID: 8625709558440784547}
   - component: {fileID: 3104659047279155217}
   - component: {fileID: 3118577850267655941}
   - component: {fileID: 4008483179694232450}
-  - component: {fileID: 1123448691670403454}
   m_Layer: 0
   m_Name: Player RSA RC Remote Input
   m_TagString: Untagged
@@ -97,6 +97,37 @@ MonoBehaviour:
     m_signedByte: 
     m_isOnHost: 0
     m_isClientAndOwned: 0
+--- !u!114 &1123448691670403454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897184729387425976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950f89e9c1817af41b8ad73d4b410188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_ethereumAddressToUse: 
+  m_onEthereum:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3475620899440876143}
+        m_TargetAssemblyTypeName: BlockyEthereumMono, be.eloistree.ethereumblockies
+        m_MethodName: SetAddress
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3706390689582733410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,37 +267,6 @@ MonoBehaviour:
   m_nextColorBlack: {r: 0, g: 0, b: 0, a: 1}
   m_previousTime: 0
   m_currentTime: 0
---- !u!114 &1123448691670403454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 897184729387425976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950f89e9c1817af41b8ad73d4b410188, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  m_ethereumAddressToUse: 
-  m_onEthereum:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3475620899440876143}
-        m_TargetAssemblyTypeName: BlockyEthereumMono, be.eloistree.ethereumblockies
-        m_MethodName: SetAddress
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &1191821747901532122
 GameObject:
   m_ObjectHideFlags: 0

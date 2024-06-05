@@ -113,7 +113,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ethereumAddressToUse: 
-  m_onEthereum:
+  m_tryiedToPush: 
+  m_onEthereumChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3475620899440876143}
@@ -128,6 +129,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  m_maxChanged: 2
 --- !u!114 &3706390689582733410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,7 +814,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1123448691670403454}
         m_TargetAssemblyTypeName: MSoccerMono_EthereumAddressToUse, Assembly-CSharp
-        m_MethodName: CmdPushEthereumAddressToUse
+        m_MethodName: PushEthereumAddressToUse
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

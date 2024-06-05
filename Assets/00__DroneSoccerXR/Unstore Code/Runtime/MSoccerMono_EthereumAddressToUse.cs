@@ -10,22 +10,23 @@ public class MSoccerMono_EthereumAddressToUse : NetworkBehaviour
     [SyncVar(hook = nameof(RefreshAddressUsed))]
 
     public string m_ethereumAddressToUse = "";
-    public UnityEvent<string> m_onEthereum;
+    public string m_pushAddressWhenConnected;
+    public UnityEvent<string> m_onEthereumChanged;
 
     public int m_maxChanged = 2;
 
     public override void OnStartClient()
     {
         base.OnStartClient();
-        if (m_ethereumAddressToUse.Length > 0)
-            PushEthereumAddressToUse(m_ethereumAddressToUse);
+        if (m_pushAddressWhenConnected.Length > 0)
+            PushEthereumAddressToUse(m_pushAddressWhenConnected);
     }
 
     public void PushEthereumAddressToUse(string ethereumAddress) {
-
+        m_pushAddressWhenConnected = ethereumAddress;
         if (isOwned && isClient) { 
         
-            CmdPushEthereumAddressToUse(ethereumAddress);
+            CmdPushEthereumAddressToUse(m_pushAddressWhenConnected);
         }
     }
 
@@ -37,9 +38,10 @@ public class MSoccerMono_EthereumAddressToUse : NetworkBehaviour
             Debug.Log("Are you trying to hack me ? Ethereum Address are only 64 char max");
         }
         else {
+            Debug.Log("Test");
             if (m_maxChanged > 0) {
                 m_ethereumAddressToUse = ethereumAddress;
-                m_onEthereum.Invoke(ethereumAddress);
+                m_onEthereumChanged.Invoke(ethereumAddress);
                 m_maxChanged--;
             }
         }
@@ -47,6 +49,6 @@ public class MSoccerMono_EthereumAddressToUse : NetworkBehaviour
 
     public void RefreshAddressUsed(string oldAddress, string newAddress) {
 
-        m_onEthereum.Invoke(newAddress);
+        m_onEthereumChanged.Invoke(newAddress);
     }
 }

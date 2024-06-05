@@ -35,6 +35,13 @@
       "dependencies": {},
       "hash": "847b11e57207dbf3482a2ccf5ec8e361ed8ee557"
     },
+    "be.eloistree.ethereumblockies": {
+      "version": "https://github.com/EloiStree/2021_05_29_BlockiesForUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8a81e9c693dd457a9a1b82c07ad2b6ff4354f5fd"
+    },
     "be.eloistree.etoolboxbasicfont": {
       "version": "https://github.com/EloiStree/2024_03_11_eToolbox_BasicFont.git",
       "depth": 0,
@@ -61,7 +68,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e5e9a5906d95a3ac8eb61273fd377c2463d832b0"
+      "hash": "81135f50977ea5be90efa952927510c23ba3a012"
     },
     "be.eloistree.iidwstunnelingrsa": {
       "version": "https://github.com/EloiStree/2024_04_04_UnityServerTunnelingRSAUnity.git",

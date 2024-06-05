@@ -18,6 +18,9 @@ public class MSoccerMono_PublicRSAToDrones : MonoBehaviour
     [Serializable]
     public class RsaToDrone {
 
+        public string m_droneStringName;
+        [Tooltip("2147483647 is max so 2DDCCBBAA1 21 is the drone alias name as integer value")]
+        public int m_droneIntegerAliasName;
         public string m_publicRsakey;
         public int m_integerUniqueID;
         public MSoccerMono_AbstractGamepad m_gamepadToAffect;

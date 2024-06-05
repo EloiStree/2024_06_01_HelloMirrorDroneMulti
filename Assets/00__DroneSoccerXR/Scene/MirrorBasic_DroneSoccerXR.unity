@@ -979,41 +979,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rsaToDronesBlueTeam:
-  - m_publicRsakey: 
+  - m_droneStringName: BD0
+    m_droneIntegerAliasName: 10
+    m_publicRsakey: 
     m_integerUniqueID: -1
     m_gamepadToAffect: {fileID: 506950743}
-  - m_publicRsakey: 
+  - m_droneStringName: BD1
+    m_droneIntegerAliasName: 11
+    m_publicRsakey: 
     m_integerUniqueID: -2
     m_gamepadToAffect: {fileID: 1712973453}
-  - m_publicRsakey: 
+  - m_droneStringName: BD2
+    m_droneIntegerAliasName: 12
+    m_publicRsakey: 
     m_integerUniqueID: -3
     m_gamepadToAffect: {fileID: 604765047}
-  - m_publicRsakey: 
+  - m_droneStringName: BD3
+    m_droneIntegerAliasName: 13
+    m_publicRsakey: 
     m_integerUniqueID: -4
     m_gamepadToAffect: {fileID: 930998927}
-  - m_publicRsakey: 
+  - m_droneStringName: BD4
+    m_droneIntegerAliasName: 14
+    m_publicRsakey: 
     m_integerUniqueID: -5
     m_gamepadToAffect: {fileID: 307080692}
-  - m_publicRsakey: 
+  - m_droneStringName: BD5
+    m_droneIntegerAliasName: 15
+    m_publicRsakey: 
     m_integerUniqueID: -6
     m_gamepadToAffect: {fileID: 994641073}
   m_rsaToDronesRedTeam:
-  - m_publicRsakey: 
+  - m_droneStringName: RD0
+    m_droneIntegerAliasName: 20
+    m_publicRsakey: 
     m_integerUniqueID: -7
     m_gamepadToAffect: {fileID: 7296832960847344510}
-  - m_publicRsakey: 
+  - m_droneStringName: RD1
+    m_droneIntegerAliasName: 21
+    m_publicRsakey: 
     m_integerUniqueID: -8
     m_gamepadToAffect: {fileID: 1084247092}
-  - m_publicRsakey: 
+  - m_droneStringName: RD2
+    m_droneIntegerAliasName: 22
+    m_publicRsakey: 
     m_integerUniqueID: -9
     m_gamepadToAffect: {fileID: 349295606}
-  - m_publicRsakey: 
+  - m_droneStringName: RD3
+    m_droneIntegerAliasName: 23
+    m_publicRsakey: 
     m_integerUniqueID: -10
     m_gamepadToAffect: {fileID: 1741567801}
-  - m_publicRsakey: 
+  - m_droneStringName: RD4
+    m_droneIntegerAliasName: 24
+    m_publicRsakey: 
     m_integerUniqueID: -11
     m_gamepadToAffect: {fileID: 412296173}
-  - m_publicRsakey: 
+  - m_droneStringName: RD5
+    m_droneIntegerAliasName: 25
+    m_publicRsakey: 
     m_integerUniqueID: -12
     m_gamepadToAffect: {fileID: 1088592101}
   m_allGamepads: []
@@ -3738,6 +3762,74 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 895680865}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &910213037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910213040}
+  - component: {fileID: 910213039}
+  - component: {fileID: 910213038}
+  m_Layer: 0
+  m_Name: Dico Player RSA In game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &910213038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910213037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd6387d0e8f6a64fa3e84cd0141d43f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onNewRsaPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onRemovedNetworkId:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onRemovedRsaKey:
+    m_PersistentCalls:
+      m_Calls: []
+  m_useDebug: 1
+--- !u!114 &910213039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910213037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e35445567338a1498efc3aff57c90e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_publicRsaKey: []
+--- !u!4 &910213040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910213037}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &930998926
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4726,7 +4818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1288773416
 Transform:
   m_ObjectHideFlags: 0
@@ -6610,6 +6702,16 @@ PrefabInstance:
       propertyPath: m_onPointChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1764145523485652593, guid: be194c8f4cf001d478b89325f2dce35c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1764145523485652593, guid: be194c8f4cf001d478b89325f2dce35c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.68
+      objectReference: {fileID: 0}
     - target: {fileID: 3444146945320631419, guid: be194c8f4cf001d478b89325f2dce35c,
         type: 3}
       propertyPath: m_IsActive
@@ -6688,6 +6790,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 655336588458599275, guid: 452ffc5dff5329c4c962cbc1ea09af9c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 655336588458599275, guid: 452ffc5dff5329c4c962cbc1ea09af9c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.49
+      objectReference: {fileID: 0}
     - target: {fileID: 2210970799932419777, guid: 452ffc5dff5329c4c962cbc1ea09af9c,
         type: 3}
       propertyPath: m_onValideGoal.m_PersistentCalls.m_Calls.Array.size
@@ -7390,7 +7502,7 @@ PrefabInstance:
     - target: {fileID: 77489962925686792, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 78541190720998479, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -7485,7 +7597,7 @@ PrefabInstance:
     - target: {fileID: 733668002484000441, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 757721737792374040, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -7515,7 +7627,7 @@ PrefabInstance:
     - target: {fileID: 963741910722708138, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1005027190768488715, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -7550,7 +7662,7 @@ PrefabInstance:
     - target: {fileID: 1119528576297774122, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1135755540391274346, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -7640,7 +7752,7 @@ PrefabInstance:
     - target: {fileID: 2418486405104320602, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2497003694898330403, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -7832,6 +7944,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5557881505025141612, guid: cef311ea192e0bb4eb583d66359e33df,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5588117245112449229, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
@@ -7995,7 +8112,7 @@ PrefabInstance:
     - target: {fileID: 7088113698559536759, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7130180161767308758, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -8055,7 +8172,7 @@ PrefabInstance:
     - target: {fileID: 8072359222185513865, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8114956006943828367, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -8070,7 +8187,7 @@ PrefabInstance:
     - target: {fileID: 8273249507225861385, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8279255310392284334, guid: cef311ea192e0bb4eb583d66359e33df,
         type: 3}
@@ -8388,6 +8505,7 @@ SceneRoots:
   - {fileID: 62966618}
   - {fileID: 2410038040331578255}
   - {fileID: 5579046212848872095}
+  - {fileID: 910213040}
   - {fileID: 1586608236089693064}
   - {fileID: 2146670456324694522}
   - {fileID: 33987408}

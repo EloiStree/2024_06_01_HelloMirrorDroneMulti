@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 3104659047279155217}
   - component: {fileID: 3118577850267655941}
   - component: {fileID: 4008483179694232450}
+  - component: {fileID: 1395756952914541900}
   m_Layer: 0
   m_Name: Player RSA RC Remote Input
   m_TagString: Untagged
@@ -113,7 +114,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ethereumAddressToUse: 
-  m_tryiedToPush: 
+  m_pushAddressWhenConnected: 
   m_onEthereumChanged:
     m_PersistentCalls:
       m_Calls:
@@ -269,6 +270,18 @@ MonoBehaviour:
   m_nextColorBlack: {r: 0, g: 0, b: 0, a: 1}
   m_previousTime: 0
   m_currentTime: 0
+--- !u!114 &1395756952914541900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897184729387425976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a435b0b083c14cf46885fe04d577b8d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1191821747901532122
 GameObject:
   m_ObjectHideFlags: 0

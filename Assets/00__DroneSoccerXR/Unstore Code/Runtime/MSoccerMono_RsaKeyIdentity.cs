@@ -3,8 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Mirror;
 using UnityEngine.Events;
+using System.Linq;
+
+
 
 public class MSoccerMono_RsaKeyIdentity : NetworkBehaviour
 {
@@ -15,14 +17,23 @@ public class MSoccerMono_RsaKeyIdentity : NetworkBehaviour
     [SyncVar(hook =nameof(NotifyPlayerProvedIdentityRight))]
     public bool m_isSignatureValid;
 
+    public MirrorRsaPlayerOnNetworkRef m_playerRef;
+
+
     public UnityEvent<string> m_onPlayerProvedIdentity;
 
     public AbstractKeyPairRsaHolderMono m_clientFetchKey;
 
 
-    public void NotifyPlayerProvedIdentityRight(bool _ ,bool newValue) { 
-        if(newValue)
+    public void NotifyPlayerProvedIdentityRight(bool _ ,bool newValue) {
+        if (newValue) {
+           // MirrorRsaPlayerOnNetworkRefDico.InstanceInScene.RemovePlayerNotValide();
+            m_playerRef = new MirrorRsaPlayerOnNetworkRef(this, m_publicXmlKey);
             m_onPlayerProvedIdentity.Invoke(m_publicXmlKey);
+        }
+        else {
+            m_playerRef = null;
+        }
     }
 
     public Debug m_debug= new Debug();

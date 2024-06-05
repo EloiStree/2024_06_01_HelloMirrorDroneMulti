@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3104659047279155217}
   - component: {fileID: 3118577850267655941}
   - component: {fileID: 4008483179694232450}
+  - component: {fileID: 6897809650057489554}
   m_Layer: 0
   m_Name: Player RSA RC Remote Input
   m_TagString: Untagged
@@ -194,6 +195,100 @@ MonoBehaviour:
   m_nextColorBlack: {r: 0, g: 0, b: 0, a: 1}
   m_previousTime: 0
   m_currentTime: 0
+--- !u!114 &6897809650057489554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897184729387425976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd9b19ed5d01f6a49af7f73c3a88db88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_publicXmlKey: 
+  m_isSignatureValid: 0
+  m_clientFetchKey: {fileID: 8334359876062503363}
+  m_messageToSign: 
+  m_messageToSignAsByte: 
+  m_signedByte: 
+  m_isOnHost: 0
+--- !u!1 &2111946135110614423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5971058696879916152}
+  - component: {fileID: 8334359876062503363}
+  - component: {fileID: 6441991247078459212}
+  m_Layer: 0
+  m_Name: RSA Key
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5971058696879916152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111946135110614423}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6091323503208638008}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8334359876062503363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111946135110614423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5553620baef476e47810164242558e0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_publicXmlKey: 
+  m_onPublicXmlLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onPrivateXmlLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onKeyPairLoaded:
+    m_PersistentCalls:
+      m_Calls: []
+  m_createNewOneEveryTime: 0
+  m_subFolderName: Default
+--- !u!114 &6441991247078459212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111946135110614423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07557754fd487c245a31790505c76231, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_toOverride: {fileID: 8334359876062503363}
+  m_removeWhenOverride: 0
+  m_privateKeyXmlToOverride: 
 --- !u!1 &2697802215668128996
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,6 +319,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6602028210413308720}
+  - {fileID: 5971058696879916152}
   m_Father: {fileID: 897184729387425978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8367976257529003652

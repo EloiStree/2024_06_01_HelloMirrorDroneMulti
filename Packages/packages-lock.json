@@ -56,12 +56,33 @@
       "dependencies": {},
       "hash": "374d6c1f69432411361482f0ab5273ed20d53788"
     },
+    "be.eloistree.generatestorersakey": {
+      "version": "https://github.com/EloiStree/2024_04_04_GenereteRsaKeyInUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e5e9a5906d95a3ac8eb61273fd377c2463d832b0"
+    },
+    "be.eloistree.iidwstunnelingrsa": {
+      "version": "https://github.com/EloiStree/2024_04_04_UnityServerTunnelingRSAUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9a7e1071bcf27c41e269b3d9b6e3ce5190c25ac8"
+    },
     "be.eloistree.license": {
       "version": "https://github.com/EloiStree/GeneralLicense.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "47d94896f2c8a34ccbe67e816cb273f3ddfdeab6"
+    },
+    "be.eloistree.pushgenericintegerdate": {
+      "version": "https://github.com/EloiStree/2024_04_07_PushGenericAsIntegerDate.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "009ae51d35b4ce8bf70f934b74ec87619506df13"
     },
     "be.eloistree.quickgitutility": {
       "version": "https://github.com/EloiStree/2019_07_21_QuickGitUtility.git",
@@ -103,7 +124,7 @@
       "hash": "89564667f5e0a9611cc438548de002611a652460"
     },
     "com.unity.burst": {
-      "version": "1.8.13",
+      "version": "1.8.15",
       "depth": 1,
       "source": "registry",
       "dependencies": {

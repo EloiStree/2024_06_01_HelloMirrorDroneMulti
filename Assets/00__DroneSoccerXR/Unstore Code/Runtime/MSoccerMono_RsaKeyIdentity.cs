@@ -100,4 +100,8 @@ public class MSoccerMono_RsaKeyIdentity : NetworkBehaviour
         }
     }
 
+    public MirrorRsaPlayerOnNetworkRef GetRsaRef()
+    {
+        return m_playerRef;
+    }
 }

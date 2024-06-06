@@ -107,6 +107,13 @@
       "dependencies": {},
       "hash": "e91b402092d62d3c92b70eabd0b09ea73738cf68"
     },
+    "be.eloistree.udpthreadsender": {
+      "version": "https://github.com/EloiStree/2020_11_29_UDPThreadSender.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "4f581cc76b06ddfeb4a7416f23e1353cd1ad7ebd"
+    },
     "be.eloistree.unitypackagefacilitator": {
       "version": "https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git",
       "depth": 0,

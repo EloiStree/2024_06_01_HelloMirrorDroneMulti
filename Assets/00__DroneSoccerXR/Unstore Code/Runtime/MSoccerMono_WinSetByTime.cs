@@ -8,10 +8,10 @@ public class MSoccerMono_WinSetByTime : MonoBehaviour
 {
     public MSoccerMono_SyncBoard m_syncBoard;
 
-
+        
     public UnityEvent m_onBlueWinSetDetected;
     public UnityEvent m_onRedWinSetDetected;
-
+    public float m_timeToWinSetInSeconds = 300;
 
     private void OnEnable()
     {

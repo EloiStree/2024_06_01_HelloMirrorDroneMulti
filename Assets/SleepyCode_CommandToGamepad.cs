@@ -42,6 +42,31 @@ public class SleepyCode_CommandToGamepad : MonoBehaviour
     }
     public void Push(DroneCommandWithIntAlias command)
     {
+        foreach (var alias in m_alias)
+        {
+            foreach (var t in alias.m_integerIdAlias)
+            {
+                if (t == command.m_aliasToAffect)
+                {
+                    var rsa = alias.GetComponent<MirrorMono_PublicRsaKeyOwner>();
+                    var gamepad = alias.GetComponent<MSoccerMono_AbstractGamepad>();
+                    if (gamepad != null)
+                    {
+                        m_lastAffected = gamepad;
+                        if (rsa.m_publicKeyOwner != command.m_playerRef.GetPublicKey())
+                        {
+                            return;
+                        }
+                        gamepad.SetHorizontalRotation(command.m_droneJoysticks.rotateHorizontal);
+                        gamepad.SetVerticalMove(command.m_droneJoysticks.downUp);
+                        gamepad.SetHorizontaMove(command.m_droneJoysticks.leftRight);
+                        gamepad.SetFrontalMove(command.m_droneJoysticks.backForward);
 
+                    }
+
+
+                }
+            }
+        }
     }
 }

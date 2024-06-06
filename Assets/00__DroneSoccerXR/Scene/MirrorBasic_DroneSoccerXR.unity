@@ -5588,7 +5588,7 @@ MonoBehaviour:
   m_pushMultiDroneCommands: {fileID: 0}
   m_targetAlias:
   - BD0
-  - BD1
+  - RD0
   m_targetIntAlias: 0b0000000c0000000d0000000e0000000f0000001500000016000000170000001800000019000000
   m_interval: 1
 --- !u!4 &1615275828

@@ -48,24 +48,27 @@ public class MirrorRsaPlayerOnNetworkRefDico
 
         List<int> toRemoveId = new List<int>();
         List<string> toRemoveKey = new List<string>();
-        foreach (var item in m_playerRefDicoId.Keys) {
+        List<int> ids = m_playerRefDicoId.Keys.ToList();
+        List<string> rsa = m_playerRefDicoKey.Keys.ToList();
+        foreach (var item in ids) {
             if (m_playerRefDicoId[item]==null ||
                 m_playerRefDicoId[item].IsPlayerStillValide()==false) {
                 m_playerRefDicoId.Remove(item);
                 toRemoveId.Insert(0, item);
             }
         }
-        foreach (var item in m_playerRefDicoKey.Keys) {
+        foreach (var item in rsa) {
             if (m_playerRefDicoKey[item] == null ) {
                 m_playerRefDicoKey.Remove(item);
                 toRemoveKey.Insert(0, item);
             }
             
-            if (m_playerRefDicoKey[item].Count > 1) {
-                for(int i = m_playerRefDicoKey.Count-1; i>=0; i--) {
-                    if(m_playerRefDicoKey[item][i]==null ||
-                        m_playerRefDicoKey[item][i].IsPlayerStillValide()==false) {
-                        m_playerRefDicoKey[item].RemoveAt(i);
+            if (m_playerRefDicoKey[item] != null &&
+                m_playerRefDicoKey[item].Count >= 1) {
+                List<MirrorRsaPlayerOnNetworkRef> rsas = m_playerRefDicoKey[item];
+                for(int i = rsas.Count-1; i>=0; i--) {
+                    if(rsas[i]==null || rsas[i].GetPlayer()==null || rsas[i].IsPlayerStillValide()==false) {
+                        rsas.RemoveAt(i);
                     }
                 }
             }

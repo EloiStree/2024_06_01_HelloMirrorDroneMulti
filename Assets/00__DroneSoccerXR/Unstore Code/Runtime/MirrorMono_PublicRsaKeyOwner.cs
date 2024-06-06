@@ -16,7 +16,7 @@ public class MirrorMono_PublicRsaKeyOwner : NetworkBehaviour
         if (newOwner != previousOwner) { 
         
             if(previousOwner != "" && previousOwner != null)
-                RemoveToOwner(this, previousOwner);
+                RemoveOwnerClaim(this, previousOwner);
             if(newOwner != "" && newOwner != null)
                 AddToOwner(this, newOwner);
         }
@@ -24,7 +24,7 @@ public class MirrorMono_PublicRsaKeyOwner : NetworkBehaviour
 
     public void OnDestroy()
     {
-        RemoveToOwner(this,m_publicKeyOwner);
+        RemoveOwnerClaim(this,m_publicKeyOwner);
     }
 
     private void AddToOwner(MirrorMono_PublicRsaKeyOwner script, string newOwner)
@@ -33,11 +33,11 @@ public class MirrorMono_PublicRsaKeyOwner : NetworkBehaviour
         {
             OwnerRegister[newOwner] = new List<MirrorMono_PublicRsaKeyOwner>();
         }
-        RemoveToOwner(script, newOwner);
+        RemoveOwnerClaim(script, newOwner);
         OwnerRegister[newOwner].Add(script);
     }
 
-    private void RemoveToOwner(MirrorMono_PublicRsaKeyOwner script, string previousOwner)
+    private void RemoveOwnerClaim(MirrorMono_PublicRsaKeyOwner script, string previousOwner)
     {
         if (!OwnerRegister.ContainsKey(previousOwner))
         {

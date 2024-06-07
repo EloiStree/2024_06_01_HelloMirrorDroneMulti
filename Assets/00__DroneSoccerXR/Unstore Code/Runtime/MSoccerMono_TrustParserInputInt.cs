@@ -41,10 +41,10 @@ public class MSoccerMono_TrustParserInputInt : MonoBehaviour
 
         ParserIntegerToDronePercentUtility.PushIntegerValue(integerCommand,
             out int targetDrone,
-            out float joystickRightYPercent,
-            out float joystickRightXPercent,
+            out float joystickLeftXPercent,
             out float joystickLeftYPercent,
-            out float joystickLeftXPercent
+            out float joystickRightXPercent,
+            out float joystickRightYPercent
             );
 
         foreach (var item in m_dronesToAffect)

@@ -8,7 +8,7 @@ using System.Linq;
 
 
 
-public class MSoccerMono_RsaKeyIdentity : NetworkBehaviour
+public class MirrorMono_RsaKeyIdentity : NetworkBehaviour
 {
 
     [SyncVar]
@@ -36,6 +36,7 @@ public class MSoccerMono_RsaKeyIdentity : NetworkBehaviour
         }
     }
 
+
     public Debug m_debug= new Debug();
     [System.Serializable]
     public class Debug {
@@ -45,8 +46,11 @@ public class MSoccerMono_RsaKeyIdentity : NetworkBehaviour
         public bool m_isOnHost;
         public bool m_isClientAndOwned;
     }
-  
 
+    public bool IsSignedValidatedByServer()
+    {
+        return m_isSignatureValid;
+    }
     public override void OnStartClient()
     {
         m_debug.m_isOnHost = isServer;

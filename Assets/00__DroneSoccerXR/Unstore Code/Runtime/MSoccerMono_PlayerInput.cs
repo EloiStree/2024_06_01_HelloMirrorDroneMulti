@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Events;
 
 public class MSoccerMono_PlayerInput : NetworkBehaviour
 {
 
     public static MSoccerMono_PlayerInput PlayerInstanceInScene;
-
     [Header("Client Information")]
     public float m_rotateHorizontalPercent;
     public float m_moveDownUpPercent;
     public float m_moveLeftRightPercent;
     public float m_moveBackForwardPercent;
 
-
     public float m_localRotateHorizontalPercent;
     public float m_localMoveDownUpPercent;
     public float m_localMoveLeftRightPercent;
     public float m_localMoveBackForwardPercent;
+
 
 
     //4 * 4 bytes 16
@@ -53,11 +53,12 @@ public class MSoccerMono_PlayerInput : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
         PlayerInstanceInScene = this;
-        Debug.Log("Hello I am the local player", this.gameObject);
     }
 
     [Command]
     void CmdPushInputPlayerToServer(
+
+        //Warning, I should have a limiter of how many time this methode can be called.
         float rotateHorizontalPercent,
         float moveDownUpPercent,
         float moveLeftRightPercent,
@@ -67,6 +68,5 @@ public class MSoccerMono_PlayerInput : NetworkBehaviour
         m_moveDownUpPercent= moveDownUpPercent;
         m_moveLeftRightPercent= moveLeftRightPercent;
         m_moveBackForwardPercent= moveBackForwardPercent;
-
     }
 }

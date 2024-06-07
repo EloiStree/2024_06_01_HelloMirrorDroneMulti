@@ -54,6 +54,15 @@ public class MirrorMono_IndexIntegerOwner : NetworkBehaviour
 
     }
 
+    public int GetOwner()
+    {
+        return m_indexOfUser;
+    }
+
+    public bool IsOwnedBy(int index) { 
+        return m_indexOfUser == index;
+    }
+
     [ServerCallback]
     [ContextMenu("Unclaim")]
     public void Unclaim()

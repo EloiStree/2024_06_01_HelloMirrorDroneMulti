@@ -96,4 +96,15 @@ public class MirrorRsaPlayerOnNetworkRefDico
     {
         return InstanceInScene.m_playerRefDicoKey.Keys.ToList();
     }
+
+    static MirrorRsaPlayerOnNetworkRef m_currentPlayerRsa;
+    public static void SetCurrentPlayer(MirrorRsaPlayerOnNetworkRef player)
+    {
+        m_currentPlayerRsa = player;
+    }
+
+    public static MirrorRsaPlayerOnNetworkRef GetCurrentPlayer()
+    {
+        return m_currentPlayerRsa;
+    }
 }

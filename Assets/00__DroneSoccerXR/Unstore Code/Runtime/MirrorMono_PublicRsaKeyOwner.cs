@@ -55,6 +55,14 @@ public class MirrorMono_PublicRsaKeyOwner : NetworkBehaviour
         
     }
 
+    public bool IsOwnedByExactly(string rsaKey) {
+       return m_publicKeyOwner == rsaKey;
+    }
+
+    public string GetOwner() { 
+        return m_publicKeyOwner; 
+    }
+
     [ServerCallback]
     [ContextMenu("Unclaim")]
     public void Unclaim()

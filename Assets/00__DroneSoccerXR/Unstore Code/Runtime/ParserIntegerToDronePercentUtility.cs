@@ -3,14 +3,20 @@
 public class ParserIntegerToDronePercentUtility
 {
 
+    public static void PushIntegerValueFromByte(byte[] byteCommand, out int targetDrone, out float joystickRightYPercent, out float joystickRightXPercent, out float joystickLeftYPercent, out float joystickLeftXPercent)
+    {
+        PushIntegerValue(BitConverter.ToInt32(byteCommand, 0), out targetDrone, out joystickRightYPercent, out joystickRightXPercent, out joystickLeftYPercent, out joystickLeftXPercent);
+    }
+
     public static void PushIntegerValue(int integerCommand,
         out int targetDrone20to20,
-        out float m_joystickRightYPercent,
-        out float m_joystickRightXPercent,
+        out float m_joystickLeftXPercent,
         out float m_joystickLeftYPercent,
-        out float m_joystickLeftXPercent
+        out float m_joystickRightXPercent,
+        out float m_joystickRightYPercent
         )
     {
+  
         //21 47 48 36 47
         targetDrone20to20 = (int)(integerCommand / 100000000);
         int joystickRightY = Math.Abs(integerCommand / 1 % 100);
@@ -25,6 +31,8 @@ public class ParserIntegerToDronePercentUtility
         Parser99ToPercent(joystickLeftX,    out m_joystickLeftXPercent  );
 
     }
+
+  
 
     private static void Parser99ToPercent(float value99, out float percent11)
     {

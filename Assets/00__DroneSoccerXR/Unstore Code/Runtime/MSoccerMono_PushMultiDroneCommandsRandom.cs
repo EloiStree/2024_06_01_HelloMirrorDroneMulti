@@ -20,7 +20,7 @@ public class MSoccerMono_PushMultiDroneCommandsRandom : MonoBehaviour{
 
             if(m_pushMultiDroneCommands==null)
             {
-                m_pushMultiDroneCommands = MSoccerMono_PushMultiDroneCommands.InstanceInScene;
+                m_pushMultiDroneCommands = MSoccerMono_PushMultiDroneCommands.OwnedPusherInScene;
             }
             if(m_pushMultiDroneCommands != null)
             {

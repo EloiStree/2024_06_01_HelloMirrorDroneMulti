@@ -33,29 +33,17 @@ public class MSoccerMono_TrustParserInputText : MonoBehaviour
         if (this.gameObject.activeInHierarchy == false)
             return;
 
-       //DRONEALIAS:ROTATEHORIZONTAL:MOVE VERTICAL:MOVE HORIZONTAL:MOVE FRONTAL
-
-        string[] tokens = textCommand.Split(new char[] { ':','|' } );
-        if(tokens.Length != 5)
-        {
-            return;
-        }
-
-
-        float joystickLeftXPercent = 0;
-        float joystickLeftYPercent = 0;
-        float joystickRightXPercent = 0;
-        float joystickRightYPercent = 0;
-
-        string droneAlias = tokens[0];
-        if(!float.TryParse(tokens[1], out joystickLeftXPercent))joystickLeftXPercent = 0;
-        if (!float.TryParse(tokens[2], out joystickLeftYPercent))joystickLeftYPercent = 0; 
-        if (!float.TryParse(tokens[3], out joystickRightXPercent))joystickRightXPercent = 0; 
-        if (!float.TryParse(tokens[4], out joystickRightYPercent))joystickRightYPercent = 0; 
-
+        ParserTextCmdToDronePercentUtility.PushTextAsCommand(textCommand,
+            out bool isValideCommand,
+            out string targetDroneAlias,
+            out float joystickLeftXPercent,
+            out float joystickLeftYPercent,
+            out float joystickRightXPercent,
+            out float joystickRightYPercent
+            );
         foreach (var item in m_dronesToAffect)
         {
-            if (item.m_uniqueAlias.IsAliasIn( droneAlias, true))
+            if (item.m_uniqueAlias.IsAliasIn( targetDroneAlias, true))
             {
                 item.m_gamepad.SetHorizontalRotation(joystickLeftXPercent);
                 item.m_gamepad.SetVerticalMove(joystickLeftYPercent);
@@ -63,5 +51,39 @@ public class MSoccerMono_TrustParserInputText : MonoBehaviour
                 item.m_gamepad.SetFrontalMove(joystickRightYPercent);
             }
         }
+    }
+}
+
+
+public class ParserTextCmdToDronePercentUtility {
+
+    public static void PushTextAsCommand(
+            string textCommand,
+            out bool isValideCommand,
+            out string targetDroneAlias,
+            out float joystickLeftXPercent,
+            out float joystickLeftYPercent,
+            out float joystickRightXPercent,
+            out float joystickRightYPercent
+        )
+    {
+
+        targetDroneAlias = "";
+        joystickRightYPercent = 0f;
+        joystickRightXPercent = 0f;
+        joystickLeftYPercent = 0f;
+        joystickLeftXPercent = 0f;
+        isValideCommand = false;
+        //DRONEALIAS:ROTATEHORIZONTAL:MOVE VERTICAL:MOVE HORIZONTAL:MOVE FRONTAL
+        string[] tokens = textCommand.Split(new char[] { ':', '|' });
+        if (tokens.Length != 5)
+        {
+            return;
+        }
+        string droneAlias = tokens[0];
+        if (!float.TryParse(tokens[1], out joystickLeftXPercent)) joystickLeftXPercent = 0;
+        if (!float.TryParse(tokens[2], out joystickLeftYPercent)) joystickLeftYPercent = 0;
+        if (!float.TryParse(tokens[3], out joystickRightXPercent)) joystickRightXPercent = 0;
+        if (!float.TryParse(tokens[4], out joystickRightYPercent)) joystickRightYPercent = 0;
     }
 }

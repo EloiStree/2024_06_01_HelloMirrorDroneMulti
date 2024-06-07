@@ -9,6 +9,7 @@ public class MSoccerMono_DestroyOnClient : MonoBehaviour
     public UnityEvent m_onIsServerTrue;
     public UnityEvent m_onIsServerFalse;
 
+
     public MonoBehaviour[] m_toDestroyOnClientScript;
     public GameObject[] m_toDestroyOnClientObject;
     public bool m_isHostOrPlayerDefined = false;

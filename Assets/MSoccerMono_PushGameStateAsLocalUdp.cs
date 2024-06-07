@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -58,6 +59,22 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
 
     public void SetPublicRsaKeyClaimAsText(DroneSoccerPublicRsaKeyClaim publicRsaKeyClaim)
     {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine("<xml>");
+        sb.AppendLine(publicRsaKeyClaim.m_blueDrone0Stricker);
+        sb.AppendLine(publicRsaKeyClaim.m_blueDrone1);
+        sb.AppendLine(publicRsaKeyClaim.m_blueDrone2);
+        sb.AppendLine(publicRsaKeyClaim.m_blueDrone3);
+        sb.AppendLine(publicRsaKeyClaim.m_blueDrone4);
+        sb.AppendLine(publicRsaKeyClaim.m_blueDrone5);
+        sb.AppendLine(publicRsaKeyClaim.m_redDrone0Stricker);
+        sb.AppendLine(publicRsaKeyClaim.m_redDrone1);
+        sb.AppendLine(publicRsaKeyClaim.m_redDrone2);
+        sb.AppendLine(publicRsaKeyClaim.m_redDrone3);
+        sb.AppendLine(publicRsaKeyClaim.m_redDrone4);
+        sb.AppendLine(publicRsaKeyClaim.m_redDrone5);
+        sb.AppendLine("</xml>");
+        m_textToPush.Invoke(sb.ToString());
     }
     public void SetIndexIntegerClaimAsByte(DroneSoccerIndexIntegerClaim indexIntegerClaim)
     {

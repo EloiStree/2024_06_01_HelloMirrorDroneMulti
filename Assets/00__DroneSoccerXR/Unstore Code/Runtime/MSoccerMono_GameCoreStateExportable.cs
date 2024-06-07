@@ -243,9 +243,9 @@ public struct DronePositionCompressed
 
     public void SetPosition(Vector3 localPosition)
     {
-        m_localPositionX = (short)(Mathf.Clamp(localPosition.x, short.MinValue, short.MaxValue));
-        m_localPositionY = (short)(Mathf.Clamp(localPosition.y, short.MinValue, short.MaxValue));
-        m_localPositionZ = (short)(Mathf.Clamp(localPosition.z, short.MinValue, short.MaxValue));
+        m_localPositionX = (short)(Mathf.Clamp(localPosition.x * 1000f, short.MinValue, short.MaxValue));
+        m_localPositionY = (short)(Mathf.Clamp(localPosition.y * 1000f, short.MinValue, short.MaxValue));
+        m_localPositionZ = (short)(Mathf.Clamp(localPosition.z * 1000f, short.MinValue, short.MaxValue));
     }
     public void SetRotation(Quaternion localRotation)
     {
@@ -265,7 +265,7 @@ public struct DronePositionCompressed
     }
     public Vector3 GetPosition()
     {
-        return new Vector3(m_localPositionX, m_localPositionY, m_localPositionZ);
+        return new Vector3(m_localPositionX/1000f, m_localPositionY / 1000f, m_localPositionZ / 1000f);
     }
     public Quaternion GetRotation()
     {

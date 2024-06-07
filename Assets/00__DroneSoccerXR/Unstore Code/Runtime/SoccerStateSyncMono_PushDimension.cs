@@ -9,8 +9,8 @@ public class SoccerStateSyncMono_PushDimension : MonoBehaviour
 {
 
 
-    public DroneSoccerArenaInformation m_arenaInformation;
-    public UnityEvent<DroneSoccerArenaInformation> m_onArenaInformationChanged;
+    public DroneSoccerMatchStaticInformation m_arenaInformation;
+    public UnityEvent<DroneSoccerMatchStaticInformation> m_onArenaInformationChanged;
 
     public Transform m_arenaCenter;
     public Transform m_areneTopRightFrontCorner;

@@ -3,29 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
+using UnityEngine.Events;
 public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 {
 
-    [SyncVar]
-    public DroneSoccerGameState m_gamePointsState;
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public DroneSoccerMatchState m_gamePointsState;
 
-    [SyncVar]
+    [SyncVar(hook = nameof(ChangedHappened))]
     public DroneSoccerTimeValue m_gameTimeValue;
 
-    [SyncVar]
-    public DroneSoccerArenaInformation m_gameArenaInformation;
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public DroneSoccerMatchStaticInformation m_gameArenaInformation;
 
-    [SyncVar]
+    [SyncVar(hook = nameof(ChangedHappened))]
     public DroneSoccerPositions m_gamePositions;
 
 
-    [SyncVar]
+    [SyncVar(hook = nameof(ChangedHappened))]
     public DroneSoccerPublicRsaKeyClaim m_publicRsaClaim;
 
 
-    [SyncVar]
+    [SyncVar(hook =nameof(ChangedHappened))]
     public DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
 
+    private void  ChangedHappened(DroneSoccerIndexIntegerClaim p, DroneSoccerIndexIntegerClaim n)
+    {
+        m_onChanged.m_onIndexIntegerClaim.Invoke(n);
+    }
+    private void ChangedHappened(DroneSoccerPublicRsaKeyClaim p, DroneSoccerPublicRsaKeyClaim n)
+    {
+        m_onChanged.m_onPublicRsaClaim.Invoke(n);
+    }
+    private void ChangedHappened(DroneSoccerPositions p, DroneSoccerPositions n)
+    {
+        m_onChanged.m_onGamePositions.Invoke(n);
+    }
+    private void ChangedHappened(DroneSoccerMatchStaticInformation p, DroneSoccerMatchStaticInformation n)
+    {
+        m_onChanged.m_onGameArenaInformation.Invoke(n);
+    }
+    private void ChangedHappened(DroneSoccerTimeValue p, DroneSoccerTimeValue n)
+    {
+        m_onChanged.m_onGameTimeValue.Invoke(n);
+    }
+    private void ChangedHappened(DroneSoccerMatchState p, DroneSoccerMatchState n)
+    {
+        m_onChanged.m_onGamePointsState.Invoke(n);
+    }
+
+
+    public Events m_onChanged;
+    [System.Serializable]
+    public class Events
+    {
+        public UnityEvent<DroneSoccerMatchState> m_onGamePointsState;
+        public UnityEvent<DroneSoccerTimeValue> m_onGameTimeValue;
+        public UnityEvent<DroneSoccerMatchStaticInformation> m_onGameArenaInformation;
+        public UnityEvent<DroneSoccerPositions> m_onGamePositions;
+        public UnityEvent<DroneSoccerPublicRsaKeyClaim> m_onPublicRsaClaim;
+        public UnityEvent<DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaim;
+    }
 
 
     [ServerCallback]
@@ -35,10 +73,12 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         m_gameTimeValue = m_gameTimeValue.GetCopy();
         m_gameArenaInformation = m_gameArenaInformation.GetCopy();
         m_gamePositions = m_gamePositions.GetCopy();
+        m_publicRsaClaim = m_publicRsaClaim.GetCopy();
+        m_indexIntegerClaim = m_indexIntegerClaim.GetCopy();
     }
 
     [ServerCallback]
-    public void SetArenaInformationAsCopy( DroneSoccerArenaInformation arenaInformation) {
+    public void SetArenaInformationAsCopy( DroneSoccerMatchStaticInformation arenaInformation) {
         m_gameArenaInformation = arenaInformation.GetCopy();
     }
     [ServerCallback]
@@ -46,7 +86,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         m_gameTimeValue = timeValue.GetCopy();
     }
     [ServerCallback]
-    public void SetPointsStateAsCopy( DroneSoccerGameState pointsState) {
+    public void SetPointsStateAsCopy( DroneSoccerMatchState pointsState) {
         m_gamePointsState = pointsState.GetCopy();
     }
     [ServerCallback]
@@ -69,7 +109,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 
 //Refresh with event
 [System.Serializable]
-public struct DroneSoccerGameState
+public struct DroneSoccerMatchState
 {   
     public int m_bluePoints;
     public int m_redPoints;
@@ -78,8 +118,8 @@ public struct DroneSoccerGameState
     public long m_utcTickInSecondsWhenMatchStarted;
     public long m_utcTickInSecondsWhenMatchFinished;
 
-    public DroneSoccerGameState GetCopy() { 
-    return new DroneSoccerGameState() {
+    public DroneSoccerMatchState GetCopy() { 
+    return new DroneSoccerMatchState() {
         m_bluePoints = m_bluePoints,
         m_redPoints = m_redPoints,
         m_blueSets = m_blueSets,
@@ -111,7 +151,7 @@ public struct DroneSoccerTimeValue {
 
 //Set Once at start of the match
 [System.Serializable]
-public struct DroneSoccerArenaInformation {
+public struct DroneSoccerMatchStaticInformation {
     [Header("Match Info")]
     public float m_maxTimingOfSet;//300 seconds
     public float m_maxTimingOfMatch;//15 minutes
@@ -131,8 +171,8 @@ public struct DroneSoccerArenaInformation {
     public float m_droneSphereRadiusMeter;//40cm 0.4 meter
 
 
-    public DroneSoccerArenaInformation GetCopy() {
-        return new DroneSoccerArenaInformation() {
+    public DroneSoccerMatchStaticInformation GetCopy() {
+        return new DroneSoccerMatchStaticInformation() {
             m_maxTimingOfSet = m_maxTimingOfSet,
             m_maxTimingOfMatch = m_maxTimingOfMatch,
             m_numberOfSetsToWinMatch = m_numberOfSetsToWinMatch,

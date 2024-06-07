@@ -84,6 +84,13 @@
       "dependencies": {},
       "hash": "47d94896f2c8a34ccbe67e816cb273f3ddfdeab6"
     },
+    "be.eloistree.networksenders": {
+      "version": "https://github.com/EloiStree/2023_11_28_NetworkSenders.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3b0b2f69907487c1b50c135f0aedffb258c8bd2a"
+    },
     "be.eloistree.pushgenericintegerdate": {
       "version": "https://github.com/EloiStree/2024_04_07_PushGenericAsIntegerDate.git",
       "depth": 0,
@@ -136,6 +143,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "89564667f5e0a9611cc438548de002611a652460"
+    },
+    "com.endel.nativewebsocket": {
+      "version": "https://github.com/endel/NativeWebSocket.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c5101c07762251edc82caad9e8a39d51b1229c31"
     },
     "com.unity.burst": {
       "version": "1.8.15",

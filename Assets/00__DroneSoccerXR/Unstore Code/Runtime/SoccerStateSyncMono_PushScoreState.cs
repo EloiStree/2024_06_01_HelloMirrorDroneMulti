@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class SoccerStateSyncMono_PushScoreState : MonoBehaviour
 {
-    public DroneSoccerGameState m_timeInGame;
-    public UnityEvent<DroneSoccerGameState> m_onTimeChanged;
+    public DroneSoccerMatchState m_timeInGame;
+    public UnityEvent<DroneSoccerMatchState> m_onTimeChanged;
     public MSoccerMono_SyncBoard m_matchManager;
 
 

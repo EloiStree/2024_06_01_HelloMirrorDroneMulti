@@ -8403,38 +8403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487da2cc49d5ab04ebe35491484fdaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_lastCommandIntAlias:
-    m_playerRef: {m_linkedPlayer: {fileID: 0}, m_playerNetworkId: 0, m_publicXmlKey: ,
-      m_isOwnedByLocalComputer: 0}
-    m_aliasToAffect: 0
-    m_droneJoysticks:
-      rotateHorizontal: 0
-      downUp: 0
-      leftRight: 0
-      backForward: 0
-  m_lastCommandTextAlias:
-    m_playerRef: {m_linkedPlayer: {fileID: 0}, m_playerNetworkId: 0, m_publicXmlKey: ,
-      m_isOwnedByLocalComputer: 0}
-    m_aliasToAffect: 
-    m_droneJoysticks:
-      rotateHorizontal: 0
-      downUp: 0
-      leftRight: 0
-      backForward: 0
-  m_onCcommandToDroneIntAlias:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1615275830}, m_TargetAssemblyTypeName: SleepyCode_CommandToGamepad, Assembly-CSharp, m_MethodName: Push, m_Mode: 0, m_Arguments: {m_ObjectArgument: {fileID: 0},
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
-          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
-  m_onCommandToDroneTextAlias:
-    m_PersistentCalls:
-      m_Calls:
-      - {m_Target: {fileID: 1615275830}, m_TargetAssemblyTypeName: SleepyCode_CommandToGamepad, Assembly-CSharp, m_MethodName: Push, m_Mode: 0, m_Arguments: {m_ObjectArgument: {fileID: 0},
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0,
-          m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
 --- !u!114 &1615275830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10449,7 +10417,7 @@ PrefabInstance:
     - target: {fileID: 3444146945320631419, guid: be194c8f4cf001d478b89325f2dce35c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4465291779337339273, guid: be194c8f4cf001d478b89325f2dce35c,
         type: 3}
@@ -10572,7 +10540,7 @@ PrefabInstance:
     - target: {fileID: 4517015043988269409, guid: 452ffc5dff5329c4c962cbc1ea09af9c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7423933327194970764, guid: 452ffc5dff5329c4c962cbc1ea09af9c,
         type: 3}

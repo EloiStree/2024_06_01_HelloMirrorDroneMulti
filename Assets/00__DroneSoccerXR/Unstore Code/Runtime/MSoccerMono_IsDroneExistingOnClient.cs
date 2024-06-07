@@ -33,11 +33,13 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
         m_droneByIndex = GameObject.FindObjectsOfType<MirrorMono_IndexIntegerOwner>(false);
         m_droneByRsaPublic = GameObject.FindObjectsOfType<MirrorMono_PublicRsaKeyOwner>(false);
         m_trustParserInputIID = GameObject.FindObjectOfType<MSoccerMono_TrustParserInputInt>(false);
+        m_trustParserInputIID = GameObject.FindObjectOfType<MSoccerMono_TrustParserInputInt>(false);
     }
 
     public MirrorMono_CallableUniqueAlias[] m_droneByAlias;
     public MirrorMono_IndexIntegerOwner[] m_droneByIndex;
     public MirrorMono_PublicRsaKeyOwner[] m_droneByRsaPublic;
+    public MSoccerMono_FixedSoccerIdTag[] m_droneBySoccerid;
     public MSoccerMono_TrustParserInputInt m_trustParserInputIID;
 
 
@@ -98,17 +100,18 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
         return false;
     }
 
-    internal static void GetOwnedSoccerDrone(string rsaKey, out List<FixedSoccerId> ownedDrone)
+    public static void GetOwnedSoccerDrone(string rsaKey, out List<FixedSoccerId> ownedDrone)
+    {
+        throw new NotImplementedException();
+
+    }
+
+    public static bool IsOwnerOfFixedSoccerDrone(string rsaKey, FixedSoccerId fixedSoccerId)
     {
         throw new NotImplementedException();
     }
 
-    internal static bool IsOwnerOfFixedSoccerDrone(string rsaKey, FixedSoccerId fixedSoccerId)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal static bool IsExistingAsAliasAndOwned(string targetDrone, string rsaKey)
+    public static bool IsExistingAsAliasAndOwned(string targetDrone, string rsaKey)
     {
         throw new NotImplementedException();
     }

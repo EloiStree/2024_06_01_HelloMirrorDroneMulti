@@ -14,7 +14,6 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
                 m_inScene = new GameObject("MSoccerMono_IsDroneExistingOnClient").AddComponent<MSoccerMono_IsDroneExistingOnClient>();      
             return m_inScene; 
         }
-
         private set { m_inScene = value; }
     }
    

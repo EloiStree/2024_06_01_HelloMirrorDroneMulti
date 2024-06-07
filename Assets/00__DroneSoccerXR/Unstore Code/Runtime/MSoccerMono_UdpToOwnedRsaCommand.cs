@@ -7,7 +7,6 @@ using UnityEngine;
 public class MSoccerMono_UdpToOwnedRsaCommand : MonoBehaviour
 {
 
-
     public MirrorRsaPlayerOnNetworkRef m_rsaKeyIdentityFound;
     public GameObject m_gameObjectFound;
     public MSoccerMono_ConvertByteAndTextCommandRsaClient m_clientToServerFound;

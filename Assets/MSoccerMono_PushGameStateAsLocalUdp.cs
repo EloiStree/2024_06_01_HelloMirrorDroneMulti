@@ -26,7 +26,6 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
     {
         //if(bytesofPositionToSend==null||  bytesofPositionToSend.Length != dronePositionByteLength)
         bytesofPositionToSend = new byte[dronePositionByteLength];
-
         bytesofPositionToSend[0] = 1;
         BitConverter.GetBytes(positions.m_dateTimeUtcTick).CopyTo(bytesofPositionToSend, 1);
         BitConverter.GetBytes(positions.m_framePushed).CopyTo(bytesofPositionToSend, 9);
@@ -48,7 +47,7 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
 
     private void GetByteAt(byte[] b, int index, ref DronePositionCompressed drone)
     {
-        Debug.Log(index + 8);
+       
         BitConverter.GetBytes(drone.m_localPositionX).CopyTo(b, index);
         BitConverter.GetBytes(drone.m_localPositionY).CopyTo(b, index+2);
         BitConverter.GetBytes(drone.m_localPositionZ).CopyTo(b, index+4);

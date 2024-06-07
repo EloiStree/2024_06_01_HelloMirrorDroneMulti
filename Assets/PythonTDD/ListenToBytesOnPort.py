@@ -12,17 +12,16 @@ while True:
     data, addr = sock.recvfrom(1024)
 
     # Define the format string for the initial part
-    header_format_str = 'BQQ'  # 1 byte, 2 unsigned long longs (8 bytes each)
-
-    # Calculate the size needed for the unpacking of the byte and 2 long longs
-    header_size = struct.calcsize(header_format_str)
-
-    # Unpack the byte and the two long longs
-    byte, long1, long2 = struct.unpack(header_format_str, data[:header_size])
-
+    header_format_str = 'Bqq'  # 1 byte, 2 unsigned long longs (8 bytes each)
+    byte = data[0]
+    long1 = struct.unpack("Q",data[1:9])
+    long2 =  struct.unpack("Q",data[9:17])
+    header_size = 1+8+8
+    print((header_size))
+  
     # Remaining data after the initial part
     remaining_data = data[header_size:]
-
+    print(len(remaining_data))
     # Define the format string for one set of 3 shorts and 3 bytes
     set_format_str = '3h3B'  # 3 shorts (2 bytes each) and 3 bytes
 

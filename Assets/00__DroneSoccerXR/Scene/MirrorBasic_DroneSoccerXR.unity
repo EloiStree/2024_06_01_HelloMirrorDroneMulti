@@ -7573,7 +7573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1615275827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9526,7 +9526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2110329000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9541,9 +9541,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_inputRefAsGamepad: {fileID: 2110329002}
   m_rsaToDrones: {fileID: 164726416}
-  m_integerUniqueIDTarget: -12
-  m_affectAllDrones: 0
-  m_gamepadToAffect: {fileID: 1088592101}
+  m_integerUniqueIDTarget: -1
+  m_affectAllDrones: 1
+  m_gamepadToAffect: {fileID: 506950743}
 --- !u!4 &2110329001
 Transform:
   m_ObjectHideFlags: 0

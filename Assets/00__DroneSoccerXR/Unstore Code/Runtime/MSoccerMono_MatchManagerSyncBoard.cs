@@ -11,6 +11,7 @@ public class MSoccerMono_MatchManagerSyncBoard : MonoBehaviour
 {
     public MSoccerMono_SyncBoard m_syncBoardMulti;
 
+    public bool m_autoRestartDirectly;
     [Header("Config")]
     public float m_timeOfSetInSeconds = 180;
     public float m_resetAllDronePosionTimeInSeconds = 2;
@@ -92,6 +93,9 @@ public class MSoccerMono_MatchManagerSyncBoard : MonoBehaviour
     public void SetMatchAsFinished(bool isMatchFinished) {
         m_isMatchFinished = isMatchFinished;
         m_syncBoardMulti.m_isMatchFinished = isMatchFinished;
+
+        if (m_autoRestartDirectly && isMatchFinished)
+            StartNewMatch();
     }
 
     public bool IsMatchFinished() {

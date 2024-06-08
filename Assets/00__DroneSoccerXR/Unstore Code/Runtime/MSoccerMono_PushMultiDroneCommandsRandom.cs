@@ -28,10 +28,10 @@ public class MSoccerMono_PushMultiDroneCommandsRandom : MonoBehaviour{
                 {
                     m_pushMultiDroneCommands.PushDroneCommandsToDroneAlias(item, UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
                 }
-                foreach(var item in m_targetIntAlias)
-                {
-                    m_pushMultiDroneCommands.PushDroneCommandsToIntAlias(item, UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
-                }
+                //foreach(var item in m_targetIntAlias)
+                //{
+                //    m_pushMultiDroneCommands.PushDroneCommandsToIntAlias(item, UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));
+                //}
             }
             yield return new WaitForSeconds(m_interval);
             yield return new WaitForEndOfFrame();

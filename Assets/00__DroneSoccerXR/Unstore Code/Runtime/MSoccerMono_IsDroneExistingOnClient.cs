@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
@@ -32,15 +33,89 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
         m_droneByAlias = GameObject.FindObjectsOfType<MirrorMono_CallableUniqueAlias>(false);
         m_droneByIndex = GameObject.FindObjectsOfType<MirrorMono_IndexIntegerOwner>(false);
         m_droneByRsaPublic = GameObject.FindObjectsOfType<MirrorMono_PublicRsaKeyOwner>(false);
+        m_droneBySoccerId = GameObject.FindObjectsOfType<MSoccerMono_FixedSoccerIdTag>(false);
         m_trustParserInputIID = GameObject.FindObjectOfType<MSoccerMono_TrustParserInputInt>(false);
-        m_trustParserInputIID = GameObject.FindObjectOfType<MSoccerMono_TrustParserInputInt>(false);
+        
+        m_soccerDronesToAlias = new SoccerIdtoRsaAlias[m_droneBySoccerId.Length];
+        for(int i = 0; i < m_droneBySoccerId.Length; i++)
+        {
+            m_soccerDronesToAlias[i] = new SoccerIdtoRsaAlias();
+            m_soccerDronesToAlias[i].m_fixedSoccerId = m_droneBySoccerId[i].m_fixedSoccerId;
+            m_soccerDronesToAlias[i].m_rsaOwner = m_droneBySoccerId[i].GetComponent<MirrorMono_PublicRsaKeyOwner>();
+            m_soccerDronesToAlias[i].m_aliasOwner = m_droneBySoccerId[i].GetComponent<MirrorMono_CallableUniqueAlias>();
+            m_soccerDronesToAlias[i].m_integerOwner = m_droneBySoccerId[i].GetComponent<MirrorMono_IndexIntegerOwner>();
+            m_soccerDronesToAlias[i].m_gamepad = m_droneBySoccerId[i].GetComponent<MSoccerMono_AbstractGamepad>();
+        }
+        m_soccerDronesToAlias= m_soccerDronesToAlias.OrderBy(x => x.GetFixedSoccerId()).ToArray();
     }
 
     public MirrorMono_CallableUniqueAlias[] m_droneByAlias;
     public MirrorMono_IndexIntegerOwner[] m_droneByIndex;
     public MirrorMono_PublicRsaKeyOwner[] m_droneByRsaPublic;
-    public MSoccerMono_FixedSoccerIdTag[] m_droneBySoccerid;
+    public MSoccerMono_FixedSoccerIdTag[] m_droneBySoccerId;
     public MSoccerMono_TrustParserInputInt m_trustParserInputIID;
+
+
+    public SoccerIdtoRsaAlias[] m_soccerDronesToAlias; 
+
+    [System.Serializable]
+    public class SoccerIdtoRsaAlias { 
+        public FixedSoccerId m_fixedSoccerId;
+        public MirrorMono_PublicRsaKeyOwner m_rsaOwner;
+        public MirrorMono_CallableUniqueAlias m_aliasOwner;
+        public MirrorMono_IndexIntegerOwner m_integerOwner;
+        public MSoccerMono_AbstractGamepad m_gamepad;
+
+        public FixedSoccerId GetFixedSoccerId() { return m_fixedSoccerId; }
+        public string GetRsa() { return m_rsaOwner.m_publicKeyOwner; }
+        public int GetIndexIID() { return m_integerOwner.m_indexOfUser; }
+        public string[] GetTextAlias() { return m_aliasOwner.m_textAlias; }
+        public int[] GetIntegerAlias() { return m_aliasOwner.m_integerIdAlias; }
+
+
+        public bool IsOwnedBy(int index)
+        {
+            if (m_integerOwner == null)
+                return false;
+            return m_integerOwner.m_indexOfUser == index;
+        }
+        public bool IsOwnedByExactly(string rsa)
+        {
+            if (m_rsaOwner == null)
+                return false;
+            return m_rsaOwner.m_publicKeyOwner == rsa;
+        }
+
+
+        public void IsInAlias(string alias, out bool isFound)
+        {
+            isFound = false;
+            if (m_aliasOwner == null)
+                return;
+            for (int i = 0; i < m_aliasOwner.m_textAlias.Length; i++)
+            {
+                if (m_aliasOwner.m_textAlias[i] == alias)
+                {
+                    isFound = true;
+                    return;
+                }
+            } 
+            if(int.TryParse(alias, out int aliasAsInteger))
+            {
+                for (int j = 0; j < m_aliasOwner.m_integerIdAlias.Length; j++)
+                {
+                    if (m_aliasOwner.m_integerIdAlias[j] == aliasAsInteger)
+                    {
+                        isFound = true;
+                        return;
+                    }
+                }
+            }
+          
+        }
+
+
+    }
 
 
     public static bool IsExistingAsAlias (string alias)
@@ -102,17 +177,85 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
 
     public static void GetOwnedSoccerDrone(string rsaKey, out List<FixedSoccerId> ownedDrone)
     {
-        throw new NotImplementedException();
-
+        ownedDrone = new List<FixedSoccerId>();
+        foreach (var item in InstanceInScene.m_soccerDronesToAlias)
+        {
+            if (item.IsOwnedByExactly(rsaKey))
+            {
+                ownedDrone.Add(item.GetFixedSoccerId());
+            }
+        }
+       
     }
 
     public static bool IsOwnerOfFixedSoccerDrone(string rsaKey, FixedSoccerId fixedSoccerId)
     {
-        throw new NotImplementedException();
+        foreach (var item in InstanceInScene.m_soccerDronesToAlias)
+        {
+            if (item.GetFixedSoccerId() == fixedSoccerId)
+            {
+                return item.IsOwnedByExactly(rsaKey);
+            }
+        }
+        return false;
     }
 
     public static bool IsExistingAsAliasAndOwned(string targetDrone, string rsaKey)
     {
-        throw new NotImplementedException();
+        foreach (var item in InstanceInScene.m_soccerDronesToAlias)
+        {
+            item.IsInAlias(targetDrone, out bool isFound);
+            if (isFound)
+            {
+                return item.IsOwnedByExactly(rsaKey);
+            }
+        }
+        return false;
+    }
+
+    public static void TryGetDroneSoccerIdFromAlias(string droneAlias, out bool found, out FixedSoccerId droneSoccer)
+    {
+        found = false;
+        droneSoccer = FixedSoccerId.D1_Red0Stricker;
+        foreach (var item in InstanceInScene.m_soccerDronesToAlias)
+        {
+            item.IsInAlias(droneAlias, out bool isFound);
+            if (isFound)
+            {
+                droneSoccer = item.GetFixedSoccerId();
+                found = true;
+                return;
+            }
+        }
+    }
+
+    public static void GetDroneSoccerIdGamepad(FixedSoccerId id, out MSoccerMono_AbstractGamepad gamepad)
+    {
+        foreach (var item in InstanceInScene.m_soccerDronesToAlias)
+        {
+            if (item.GetFixedSoccerId() == id)
+            {
+                gamepad = item.m_gamepad;
+                return;
+            }
+        }
+        gamepad = null;
+    }
+
+   
+
+    public static void GetFirstOwnedSoccerId(string rsa, out bool found, out FixedSoccerId id)
+    {
+        found = false;
+        id = FixedSoccerId.D1_Red0Stricker;
+        foreach (var item in InstanceInScene.m_soccerDronesToAlias)
+        {
+            if (item.IsOwnedByExactly(rsa))
+            {
+                id = item.GetFixedSoccerId();
+                found = true;
+                return;
+            }
+        }
     }
 }

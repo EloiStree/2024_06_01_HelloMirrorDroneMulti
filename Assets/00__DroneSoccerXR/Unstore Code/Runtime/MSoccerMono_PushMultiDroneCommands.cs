@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 using System;
 using UnityEngine.Events;
+using Org.BouncyCastle.Bcpg;
 
 public class MSoccerMono_PushMultiDroneCommands : NetworkBehaviour
 {
@@ -24,22 +25,26 @@ public class MSoccerMono_PushMultiDroneCommands : NetworkBehaviour
     {
         if (CanSendInfoToServer())
         {
-            CmdPushDroneCommandsToDroneAlias(droneAlias, rotateHorizontal, downUp, leftRight, backForward);
+            MSoccerMono_IsDroneExistingOnClient.TryGetDroneSoccerIdFromAlias(droneAlias,out bool found,  out FixedSoccerId droneSoccer);
+            if (!found)
+            {
+                ParserIntegerToDronePercentUtility.Pack(out int cmd, 0, rotateHorizontal, downUp, leftRight, backForward);
+                CmdPushDroneCommandsToDroneAlias(droneAlias, cmd);
+            }
+            else
+            {
+                ParserIntegerToDronePercentUtility.Pack(out int cmd, (int)droneSoccer, rotateHorizontal, downUp, leftRight, backForward);
+                CmdPushDroneCommandsToFixedSoccerIntId( cmd);
+            }
         }
     }
-    public void PushDroneCommandsToIntAlias(int droneAlias, float rotateHorizontal, float downUp, float leftRight, float backForward)
-    {
-        if (CanSendInfoToServer())
-        {
-            CmdPushDroneCommandsToIntAlias(droneAlias, rotateHorizontal, downUp, leftRight, backForward);
-        }
-    }
-
+    
     public void PushDroneCommandsToFixedSoccerIntIds(FixedSoccerId fixedDroneId1To12, float rotateHorizontal, float downUp, float leftRight, float backForward)
     {
         if (CanSendInfoToServer())
         {
-            CmdPushDroneCommandsToFixedSoccerIntId((int)fixedDroneId1To12, rotateHorizontal, downUp, leftRight, backForward);
+            ParserIntegerToDronePercentUtility.Pack(out int cmd ,(int)fixedDroneId1To12, rotateHorizontal,  downUp, leftRight, backForward);
+            CmdPushDroneCommandsToFixedSoccerIntId(cmd);
         }
     }
     private bool CanSendInfoToServer()
@@ -47,32 +52,67 @@ public class MSoccerMono_PushMultiDroneCommands : NetworkBehaviour
         return this.isOwned && this.isClient && m_rsaKeyIdentity != null && m_rsaKeyIdentity.IsSignedValidatedByServer();
     }
     [Command]
-    void CmdPushDroneCommandsToDroneAlias(string droneAlias, float rotateHorizontal, float downUp, float leftRight, float backForward)
+    void CmdPushDroneCommandsToDroneAlias(string droneAlias,int cmdInteger)
     {
-        if(m_rsaKeyIdentity!=null && m_rsaKeyIdentity.IsSignedValidatedByServer())
+        ParserIntegerToDronePercentUtility.Unpack(cmdInteger,
+            out int targetDrone,
+            out float rotateHorizontal,
+            out float downUp,
+            out float leftRight,
+            out float backForward
+            );
+        if (m_rsaKeyIdentity!=null && m_rsaKeyIdentity.IsSignedValidatedByServer())
             SMSoccerMono_PlayerDroneCommandsCallManager.Push(m_rsaKeyIdentity.GetRsaRef(), droneAlias, rotateHorizontal, downUp, leftRight, backForward);
     }
+   
     [Command]
-    void CmdPushDroneCommandsToIntAlias(int droneIntAlias, float rotateHorizontal, float downUp, float leftRight, float backForward)
+    void CmdPushDroneCommandsToFixedSoccerIntId(int cmdInteger)
+    {
+        ParserIntegerToDronePercentUtility.Unpack(cmdInteger,
+           out int targetDrone,
+           out float rotateHorizontal,
+           out float downUp,
+           out float leftRight,
+           out float backForward
+           );
+        if (m_rsaKeyIdentity != null && m_rsaKeyIdentity.IsSignedValidatedByServer())
+            SMSoccerMono_PlayerDroneCommandsCallManager.Push(m_rsaKeyIdentity.GetRsaRef(), (FixedSoccerId)targetDrone, rotateHorizontal, downUp, leftRight, backForward);
+    }
+
+
+
+    [ServerCallback]
+    public void OnServerPushPlayerInputIntegerToManager(int integerCommand)
     {
 
+        ParserIntegerToDronePercentUtility.Unpack(integerCommand,
+            out int targetDrone,
+            out float rotateHorizontal,
+            out float downUp,
+            out float leftRight,
+            out float backForward
+            );
         if (m_rsaKeyIdentity != null && m_rsaKeyIdentity.IsSignedValidatedByServer())
-            SMSoccerMono_PlayerDroneCommandsCallManager.Push(m_rsaKeyIdentity.GetRsaRef(), droneIntAlias, rotateHorizontal, downUp, leftRight, backForward);
+            SMSoccerMono_PlayerDroneCommandsCallManager.PushPlayerSelection(m_rsaKeyIdentity.GetRsaRef(), rotateHorizontal, downUp, leftRight, backForward);
+
     }
+
+    public void PushDroneCommandsToFocusDrone(float joystickLeftXPercent, float joystickLeftYPercent, float joystickRightXPercent, float joystickRightYPercent)
+    {
+        ParserIntegerToDronePercentUtility.Pack(out int cmd, 0, joystickLeftXPercent, joystickLeftYPercent, joystickRightXPercent, joystickRightYPercent);
+        CmdPushDroneCommandsToFocusDrone(cmd);
+    }
+    public void PushDroneCommandsToFocusDrone(int commandInteger)
+    {
+        CmdPushDroneCommandsToFocusDrone(commandInteger);
+    }
+
     [Command]
-    void CmdPushDroneCommandsToFixedSoccerIntId(int droneFixedSoccerId, float rotateHorizontal, float downUp, float leftRight, float backForward)
+    void CmdPushDroneCommandsToFocusDrone(int cmdInteger)
     {
+        OnServerPushPlayerInputIntegerToManager(cmdInteger);
 
-        if (m_rsaKeyIdentity != null && m_rsaKeyIdentity.IsSignedValidatedByServer())
-            SMSoccerMono_PlayerDroneCommandsCallManager.Push(m_rsaKeyIdentity.GetRsaRef(), (FixedSoccerId)droneFixedSoccerId, rotateHorizontal, downUp, leftRight, backForward);
-    }
 
-    public void PushDroneCommandsToFocusDrone( float rotateHorizontal, float downUp, float leftRight, float backForward)
-    {
-        m_playerInputDefault.SetLocalRotateHorizontalPercent(rotateHorizontal);
-        m_playerInputDefault.SetLocalMoveLeftRightPercent(leftRight);
-        m_playerInputDefault.SetLocalMoveDownUpPercent(downUp);
-        m_playerInputDefault.SetLocalMoveBackForwardPercent(backForward);
     }
 }
 

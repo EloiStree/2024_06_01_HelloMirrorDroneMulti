@@ -39,7 +39,7 @@ public class MSoccerMono_TrustParserInputInt : MonoBehaviour
         if (this.gameObject.activeInHierarchy == false)
             return;
 
-        ParserIntegerToDronePercentUtility.PushIntegerValue(integerCommand,
+        ParserIntegerToDronePercentUtility.Unpack(integerCommand,
             out int targetDrone,
             out float joystickLeftXPercent,
             out float joystickLeftYPercent,

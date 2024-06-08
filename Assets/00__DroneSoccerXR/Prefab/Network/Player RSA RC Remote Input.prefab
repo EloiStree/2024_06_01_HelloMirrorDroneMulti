@@ -156,10 +156,27 @@ MonoBehaviour:
   m_moveDownUpPercent: 0
   m_moveLeftRightPercent: 0
   m_moveBackForwardPercent: 0
+  m_intCmdServer: 0
   m_localRotateHorizontalPercent: 0
   m_localMoveDownUpPercent: 0
   m_localMoveLeftRightPercent: 0
   m_localMoveBackForwardPercent: 0
+  m_intCmdLocal: 0
+  m_onServerPlayerInputChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1395756952914541900}
+        m_TargetAssemblyTypeName: MSoccerMono_PushMultiDroneCommands, be.eloistree.rankedmsoccercore
+        m_MethodName: OnServerPushPlayerInputIntegerToManager
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8625709558440784547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +327,12 @@ MonoBehaviour:
   syncInterval: 0
   m_playerCommandPusherRSA: {fileID: 1395756952914541900}
   m_rsaKeyIdentity: {fileID: 6461551090254577935}
+  m_lastByteReceived: 
+  m_lastCommandReceived: 0
+  m_lastTargetDroneReceived: 0
+  m_lastTargetDrone: 0
+  m_lastLeftXSent: 0
+  m_ownedDrone: 
 --- !u!1 &1191821747901532122
 GameObject:
   m_ObjectHideFlags: 0

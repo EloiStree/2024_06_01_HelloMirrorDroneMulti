@@ -9,6 +9,12 @@ public class MSoccerMono_ConvertByteAndTextCommandRsaClient : NetworkBehaviour {
 
     public MSoccerMono_PushMultiDroneCommands m_playerCommandPusherRSA;
     public MirrorMono_RsaKeyIdentity m_rsaKeyIdentity;
+    public byte[] m_lastByteReceived;
+    public int m_lastCommandReceived;
+    public int m_lastTargetDroneReceived;
+    public int m_lastTargetDrone;
+    public float m_lastLeftXSent;
+    public List<FixedSoccerId> m_ownedDrone;
 
     public void PushActionAsByteOnClient(byte[] byteCommand) {
 
@@ -28,13 +34,17 @@ public class MSoccerMono_ConvertByteAndTextCommandRsaClient : NetworkBehaviour {
             command = BitConverter.ToInt32(byteCommand, 4);
         else return;
         
-        ParserIntegerToDronePercentUtility.PushIntegerValue(command,
+        //-20 to 20 99887766
+        ParserIntegerToDronePercentUtility.Unpack(command,
              out int targetDrone,
              out float joystickLeftXPercent,
              out float joystickLeftYPercent,
              out float joystickRightXPercent,
              out float joystickRightYPercent
              );
+        m_lastTargetDroneReceived = targetDrone;
+        m_lastByteReceived = byteCommand;
+        m_lastCommandReceived = command;
 
         ///ADD PRE FILTER HERE
         ///
@@ -51,14 +61,16 @@ public class MSoccerMono_ConvertByteAndTextCommandRsaClient : NetworkBehaviour {
             int ownedIndex = Math.Abs(targetDrone)-1;
 
             //Fetch drone owned in order of fixed soccer id that the player owned.
-            MSoccerMono_IsDroneExistingOnClient.GetOwnedSoccerDrone(rsaKey,out List<FixedSoccerId> ownedDrone);
-            if (ownedIndex < ownedDrone.Count) {
-                targetDrone = (int)ownedDrone[ownedIndex];
+            MSoccerMono_IsDroneExistingOnClient.GetOwnedSoccerDrone(rsaKey,out m_ownedDrone);
+            if (ownedIndex < m_ownedDrone.Count) {
+                targetDrone = (int)m_ownedDrone[ownedIndex];
             }
         }
+        m_lastTargetDrone = targetDrone;
         if (targetDrone >= 1 && targetDrone <= 12) {
             FixedSoccerId fixedSoccerId = (FixedSoccerId)targetDrone;
-            if (MSoccerMono_IsDroneExistingOnClient.IsOwnerOfFixedSoccerDrone(rsaKey, fixedSoccerId)) { 
+            if (MSoccerMono_IsDroneExistingOnClient.IsOwnerOfFixedSoccerDrone(rsaKey, fixedSoccerId)) {
+                m_lastLeftXSent = joystickLeftXPercent;
                 //ONLY IF YOU ARE SURE YOU OWN THE DRONE !!! TO AVOID NETWORK COST.
                 m_playerCommandPusherRSA.PushDroneCommandsToFixedSoccerIntIds(fixedSoccerId, joystickLeftXPercent, joystickLeftYPercent, joystickRightXPercent, joystickRightYPercent);
             }

@@ -35,6 +35,13 @@
       "dependencies": {},
       "hash": "847b11e57207dbf3482a2ccf5ec8e361ed8ee557"
     },
+    "be.eloistree.ethereumblockies": {
+      "version": "https://github.com/EloiStree/2021_05_29_BlockiesForUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "8a81e9c693dd457a9a1b82c07ad2b6ff4354f5fd"
+    },
     "be.eloistree.etoolboxbasicfont": {
       "version": "https://github.com/EloiStree/2024_03_11_eToolbox_BasicFont.git",
       "depth": 0,
@@ -56,12 +63,40 @@
       "dependencies": {},
       "hash": "374d6c1f69432411361482f0ab5273ed20d53788"
     },
+    "be.eloistree.generatestorersakey": {
+      "version": "https://github.com/EloiStree/2024_04_04_GenereteRsaKeyInUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "81135f50977ea5be90efa952927510c23ba3a012"
+    },
+    "be.eloistree.iidwstunnelingrsa": {
+      "version": "https://github.com/EloiStree/2024_04_04_UnityServerTunnelingRSAUnity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "9a7e1071bcf27c41e269b3d9b6e3ce5190c25ac8"
+    },
     "be.eloistree.license": {
       "version": "https://github.com/EloiStree/GeneralLicense.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
       "hash": "47d94896f2c8a34ccbe67e816cb273f3ddfdeab6"
+    },
+    "be.eloistree.networksenders": {
+      "version": "https://github.com/EloiStree/2023_11_28_NetworkSenders.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "3b0b2f69907487c1b50c135f0aedffb258c8bd2a"
+    },
+    "be.eloistree.pushgenericintegerdate": {
+      "version": "https://github.com/EloiStree/2024_04_07_PushGenericAsIntegerDate.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "009ae51d35b4ce8bf70f934b74ec87619506df13"
     },
     "be.eloistree.quickgitutility": {
       "version": "https://github.com/EloiStree/2019_07_21_QuickGitUtility.git",
@@ -78,6 +113,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "e91b402092d62d3c92b70eabd0b09ea73738cf68"
+    },
+    "be.eloistree.udpthreadsender": {
+      "version": "https://github.com/EloiStree/2020_11_29_UDPThreadSender.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "4f581cc76b06ddfeb4a7416f23e1353cd1ad7ebd"
     },
     "be.eloistree.unitypackagefacilitator": {
       "version": "https://github.com/EloiStree/2019_07_21_UnityPackageFacilitator.git",
@@ -102,8 +144,58 @@
       "dependencies": {},
       "hash": "89564667f5e0a9611cc438548de002611a652460"
     },
+    "com.endel.nativewebsocket": {
+      "version": "https://github.com/endel/NativeWebSocket.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "c5101c07762251edc82caad9e8a39d51b1229c31"
+    },
+    "com.unity.2d.sprite": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.2d.tilemap": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.modules.tilemap": "1.0.0",
+        "com.unity.modules.uielements": "1.0.0"
+      }
+    },
+    "com.unity.ads": {
+      "version": "4.4.2",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.ai.navigation": {
+      "version": "1.1.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.ai": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.analytics": {
+      "version": "3.8.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.services.analytics": "1.0.4",
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.burst": {
-      "version": "1.8.13",
+      "version": "1.8.15",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -181,6 +273,19 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.purchasing": {
+      "version": "4.11.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.modules.androidjni": "1.0.0",
+        "com.unity.services.core": "1.8.2"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "14.0.11",
       "depth": 1,
@@ -217,6 +322,28 @@
       "depth": 2,
       "source": "registry",
       "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.services.analytics": {
+      "version": "5.0.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0",
+        "com.unity.modules.jsonserialize": "1.0.0",
+        "com.unity.services.core": "1.10.1"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.services.core": {
+      "version": "1.12.5",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.modules.unitywebrequest": "1.0.0",
+        "com.unity.nuget.newtonsoft-json": "3.2.1",
+        "com.unity.modules.androidjni": "1.0.0"
+      },
       "url": "https://packages.unity.com"
     },
     "com.unity.shadergraph": {
@@ -306,7 +433,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.arfoundation": {
-      "version": "5.1.3",
+      "version": "5.1.4",
       "depth": 1,
       "source": "registry",
       "dependencies": {
@@ -363,7 +490,7 @@
     },
     "com.unity.xr.legacyinputhelpers": {
       "version": "2.1.10",
-      "depth": 1,
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.vr": "1.0.0",

@@ -10,7 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4286345213660763466}
   - component: {fileID: 1648383266187385831}
+  - component: {fileID: 735326588511611001}
+  - component: {fileID: 82350963265325474}
+  - component: {fileID: 4556073887098858665}
   - component: {fileID: 7905319655296357633}
+  - component: {fileID: 7034530671852804830}
   m_Layer: 0
   m_Name: Playable Drone Network
   m_TagString: Untagged
@@ -51,6 +55,51 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &735326588511611001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013458825280080417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b62d0c8b47a6347ad4e17721b489b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fixedSoccerId: 1
+--- !u!114 &82350963265325474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013458825280080417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5012d0547b7134eac467428978b92d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_publicKeyOwner: 
+--- !u!114 &4556073887098858665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013458825280080417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77344dd03a7394a458a5380fdb0c25ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_indexOfUser: 0
 --- !u!114 &7905319655296357633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,6 +176,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7034530671852804830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013458825280080417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9c21257a0a048e44b43aaf9a2a9ad06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_textAlias: []
+  m_integerIdAlias: 
 --- !u!1 &8242930042657317326
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,177 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4563085994669907791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598207660430607001}
+  - component: {fileID: 8157547925046451097}
+  - component: {fileID: 6918852453897989774}
+  m_Layer: 0
+  m_Name: Soccer Game Core State Sync
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598207660430607001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563085994669907791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8157547925046451097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563085994669907791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2080107947
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &6918852453897989774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4563085994669907791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39bf6caca27beb34ca793dd5e95cf7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_gamePointsState:
+    m_bluePoints: 0
+    m_redPoints: 0
+    m_blueSets: 0
+    m_redSets: 0
+    m_utcTickInSecondsWhenMatchStarted: 0
+    m_utcTickInSecondsWhenMatchFinished: 0
+  m_gameTimeValue:
+    m_secondsSinceMatchStarted: 0
+    m_secondsSinceSetStarted: 0
+    m_timeOfServerDateTimeUtcNowTicks: 0
+  m_gameArenaInformation:
+    m_maxTimingOfSet: 0
+    m_maxTimingOfMatch: 0
+    m_numberOfSetsToWinMatch: 0
+    m_numberOfPointsToForceWinSet: 0
+    m_arenaWidthMeter: 0
+    m_arenaHeightMeter: 0
+    m_arenaDepthMeter: 0
+    m_goalDistanceOfCenterMeter: 0
+    m_goalCenterHeightMeter: 0
+    m_goalInnerRadiusMeter: 0
+    m_goalSizeRadiusMeter: 0
+    m_goalDepthMeter: 0
+    m_droneSphereRadiusMeter: 0
+  m_gamePositions:
+    m_redDrone0Stricker:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_redDrone1:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_redDrone2:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_redDrone3:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_redDrone4:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_redDrone5:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_blueDrone0Stricker:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_blueDrone1:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_blueDrone2:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_blueDrone3:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_blueDrone4:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0
+    m_blueDrone5:
+      m_localPositionX: 0
+      m_localPositionY: 0
+      m_localPositionZ: 0
+      m_eulerAngleX: 0
+      m_eulerAngleY: 0
+      m_eulerAngleZ: 0

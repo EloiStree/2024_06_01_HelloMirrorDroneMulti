@@ -2,23 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using UnityEngine.Events;
+using Org.BouncyCastle.Bcpg;
 
 public class MSoccerMono_PlayerInput : NetworkBehaviour
 {
 
     public static MSoccerMono_PlayerInput PlayerInstanceInScene;
-
     [Header("Client Information")]
     public float m_rotateHorizontalPercent;
     public float m_moveDownUpPercent;
     public float m_moveLeftRightPercent;
     public float m_moveBackForwardPercent;
-
+    public int m_intCmdServer;
 
     public float m_localRotateHorizontalPercent;
     public float m_localMoveDownUpPercent;
     public float m_localMoveLeftRightPercent;
     public float m_localMoveBackForwardPercent;
+    public int m_intCmdLocal;
 
 
     //4 * 4 bytes 16
@@ -45,7 +47,14 @@ public class MSoccerMono_PlayerInput : NetworkBehaviour
         float moveBackForwardPercent) {
         if (!isOwned)
             return;
-        CmdPushInputPlayerToServer(rotateHorizontalPercent, moveDownUpPercent, moveLeftRightPercent, moveBackForwardPercent);
+        ParserIntegerToDronePercentUtility.Pack(out int cmd, 0, rotateHorizontalPercent, moveDownUpPercent, moveLeftRightPercent, moveBackForwardPercent);
+      
+        if (cmd == m_intCmdLocal)
+        {
+            return;
+        }
+        m_intCmdLocal = cmd;
+        CmdPushInputPlayerToServer(cmd);
     }
 
 
@@ -53,20 +62,33 @@ public class MSoccerMono_PlayerInput : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
         PlayerInstanceInScene = this;
-        Debug.Log("Hello I am the local player", this.gameObject);
     }
 
     [Command]
     void CmdPushInputPlayerToServer(
-        float rotateHorizontalPercent,
-        float moveDownUpPercent,
-        float moveLeftRightPercent,
-        float moveBackForwardPercent
+
+        int cmdInteger
         ) {
-        m_rotateHorizontalPercent= rotateHorizontalPercent;
-        m_moveDownUpPercent= moveDownUpPercent;
-        m_moveLeftRightPercent= moveLeftRightPercent;
-        m_moveBackForwardPercent= moveBackForwardPercent;
+
+        if(cmdInteger== m_intCmdServer){
+            return;
+        }
+        m_intCmdServer = cmdInteger;
+        ParserIntegerToDronePercentUtility.Unpack(cmdInteger,
+            out int targetDrone,
+            out float rotateHorizontal,
+            out float downUp,
+            out float leftRight,
+            out float backForward
+            );
+        m_rotateHorizontalPercent= rotateHorizontal;
+        m_moveDownUpPercent= downUp;
+        m_moveLeftRightPercent= leftRight;
+        m_moveBackForwardPercent= backForward;
+        m_onServerPlayerInputChanged.Invoke(cmdInteger);
 
     }
+
+    public UnityEvent<int> m_onServerPlayerInputChanged;
+
 }

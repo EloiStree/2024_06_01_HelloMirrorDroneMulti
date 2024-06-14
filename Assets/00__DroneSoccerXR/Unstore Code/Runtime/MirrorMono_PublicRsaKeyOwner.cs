@@ -63,25 +63,29 @@ public class MirrorMono_PublicRsaKeyOwner : NetworkBehaviour
         return m_publicKeyOwner; 
     }
 
-    [ServerCallback]
     [ContextMenu("Unclaim")]
     public void Unclaim()
     {
+        if (MSoccerMono_IsOnServerSingleton.IsOnServer() || !Application.isPlaying)
+        {
+            m_publicKeyOwner = "";
+        }
 
-        m_publicKeyOwner = "";
     }
 
-    [ServerCallback]
     public void Claim(string publicKeyOwner)
     {
-        m_publicKeyOwner = publicKeyOwner;
+        if (MSoccerMono_IsOnServerSingleton.IsOnServer() || !Application.isPlaying) { 
+            m_publicKeyOwner = publicKeyOwner;
+        }
     }
-    [ServerCallback]
     [ContextMenu("Reclaim")]
     public void Reclaim()
     {
-        string s = m_publicKeyOwner;
-        m_publicKeyOwner = "";
-        m_publicKeyOwner = s;
+        if (MSoccerMono_IsOnServerSingleton.IsOnServer() || !Application.isPlaying) { 
+            string s = m_publicKeyOwner;
+            m_publicKeyOwner = "";
+            m_publicKeyOwner = s;
+        }
     }
 }

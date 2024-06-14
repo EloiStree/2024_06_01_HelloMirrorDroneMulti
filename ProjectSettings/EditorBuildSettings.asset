@@ -11,4 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00__DroneSoccerXR/Scene/XrPlayerScene.unity
     guid: e6935a13c0ed9bd45859f81a1b6bdf3b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 7338c4b6667d9f647ab5ea9b6f66ab0b,
+      type: 2}

@@ -9,6 +9,8 @@ public class AutoLoadIfPlayerPrefAsServerMono : MonoBehaviour
 
     public UnityEvent m_onIsServer;
     public UnityEvent m_onIsClient;
+
+    public UnityEvent m_onReconnect;
     void Start()
     {
         if (PlayerPrefs.GetInt("IsAlwaysServer") == 1)
@@ -38,6 +40,10 @@ public class AutoLoadIfPlayerPrefAsServerMono : MonoBehaviour
         PlayerPrefs.SetInt("IsAlwaysServer", 0);
         PlayerPrefs.SetInt("IsAlwaysClient", 0);
     }
-   
 
+
+    [ContextMenu("Try to reconnect")]
+    public void TryToReconnect() {
+        m_onReconnect.Invoke();
+    }
 }

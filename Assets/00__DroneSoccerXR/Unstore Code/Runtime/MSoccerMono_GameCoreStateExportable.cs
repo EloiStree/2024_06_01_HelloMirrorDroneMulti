@@ -4,6 +4,7 @@ using UnityEngine;
 using Mirror;
 using System;
 using UnityEngine.Events;
+using System.Security.Cryptography;
 public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 {
 
@@ -67,15 +68,125 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 
 
     [ServerCallback]
-    [ContextMenu("Full Fresh call")]
-    public void FullRefresh() {
-        m_gamePointsState = m_gamePointsState.GetCopy();
-        m_gameTimeValue = m_gameTimeValue.GetCopy();
-        m_gameArenaInformation = m_gameArenaInformation.GetCopy();
-        m_gamePositions = m_gamePositions.GetCopy();
-        m_publicRsaClaim = m_publicRsaClaim.GetCopy();
-        m_indexIntegerClaim = m_indexIntegerClaim.GetCopy();
+    [ContextMenu("Full Fresh call no Rsa")]
+    public void FullRefreshNotRsa() {
+        m_gamePointsState       = m_gamePointsState.GetCopy();
+        m_gameTimeValue         = m_gameTimeValue.GetCopy();
+        m_gameArenaInformation  = m_gameArenaInformation.GetCopy();
+        m_gamePositions         = m_gamePositions.GetCopy();
+        m_indexIntegerClaim     = m_indexIntegerClaim.GetCopy();
     }
+
+
+    [ServerCallback]
+    [ContextMenu("Randomize Info")]
+
+    public void RandomizedAndRefresh()
+    {
+
+
+        R.Randomized(ref m_gamePointsState);
+        R.Randomized(ref m_gameTimeValue);
+        R.Randomized(ref m_gameArenaInformation);
+        R.Randomized(ref m_gamePositions);
+        R.Randomized(ref m_indexIntegerClaim);
+
+        FullRefreshNotRsa();
+    }
+
+    [ServerCallback]
+    [ContextMenu("Randomize RSA")]
+
+    public void RandomizedRsaRefresh()
+    {
+
+        R.Randomized(ref m_publicRsaClaim);
+        m_publicRsaClaim= m_publicRsaClaim.GetCopy();
+        FullRefreshNotRsa();
+
+    }
+
+
+
+    public class R
+    {
+        internal static void Randomized(ref DroneSoccerTimeValue value)
+        {
+            value.m_secondsSinceSetStarted= UnityEngine.Random.Range(0, 300);
+            value.m_secondsSinceMatchStarted= UnityEngine.Random.Range(0, 900);
+            value.m_timeOfServerDateTimeUtcNowTicks= DateTime.UtcNow.Ticks;
+        }
+
+        internal static void Randomized(ref DroneSoccerMatchStaticInformation value)
+        {
+            value.m_maxTimingOfSet= UnityEngine.Random.Range(0, 300);
+            value.m_maxTimingOfMatch= UnityEngine.Random.Range(0, 900);
+            value.m_numberOfSetsToWinMatch= UnityEngine.Random.Range(0, 2);
+            value.m_numberOfPointsToForceWinSet= UnityEngine.Random.Range(0, 99);
+            value.m_arenaWidthMeter= UnityEngine.Random.Range(0, 7);
+            value.m_arenaHeightMeter= UnityEngine.Random.Range(0, 6);
+            value.m_arenaDepthMeter= UnityEngine.Random.Range(0, 14);
+            value.m_goalDistanceOfCenterMeter= UnityEngine.Random.Range(0, 4);
+            value.m_goalCenterHeightMeter= UnityEngine.Random.Range(0, 3);
+            value.m_goalInnerRadiusMeter= UnityEngine.Random.Range(0, 0.6f);
+            value.m_goalSizeRadiusMeter= UnityEngine.Random.Range(0, 0.7f);
+            value.m_goalDepthMeter= UnityEngine.Random.Range(0, 0.2f);
+            value.m_droneSphereRadiusMeter= UnityEngine.Random.Range(0, 0.4f);
+        }
+
+        internal static void Randomized(ref DroneSoccerMatchState value)
+        {
+            value.m_bluePoints= UnityEngine.Random.Range(0, 100);
+            value.m_redPoints= UnityEngine.Random.Range(0, 100);
+            value.m_blueSets= UnityEngine.Random.Range(0, 100);
+            value.m_redSets= UnityEngine.Random.Range(0, 100);
+            value.m_utcTickInSecondsWhenMatchStarted= DateTime.UtcNow.Ticks;
+            value.m_utcTickInSecondsWhenMatchFinished= DateTime.UtcNow.Ticks;
+        }
+
+        internal static void Randomized(ref DroneSoccerPositions value)
+        {
+            
+        }
+
+        internal static void Randomized(ref DroneSoccerPublicRsaKeyClaim value)
+        {
+            value.m_redDrone0Stricker= GetRSA();
+            value.m_redDrone1= GetRSA();
+            value.m_redDrone2= GetRSA();
+            value.m_redDrone3= GetRSA();
+            value.m_redDrone4= GetRSA();
+            value.m_redDrone5= GetRSA();
+            value.m_blueDrone0Stricker= GetRSA();
+            value.m_blueDrone1= GetRSA();
+            value.m_blueDrone2= GetRSA();
+            value.m_blueDrone3= GetRSA();
+            value.m_blueDrone4= GetRSA();
+            value.m_blueDrone5= GetRSA();
+
+        }
+        public static string GetRSA() { 
+            return RSA.Create().ToXmlString(false);
+        }
+
+        internal static void Randomized(ref DroneSoccerIndexIntegerClaim value)
+        {
+            value.m_redDrone0Stricker= UnityEngine.Random.Range(0, 100);
+            value.m_redDrone1= UnityEngine.Random.Range(0, 100);
+            value.m_redDrone2= UnityEngine.Random.Range(0, 100);
+            value.m_redDrone3= UnityEngine.Random.Range(0, 100);
+            value.m_redDrone4= UnityEngine.Random.Range(0, 100);
+            value.m_redDrone5= UnityEngine.Random.Range(0, 100);
+            value.m_blueDrone0Stricker= UnityEngine.Random.Range(0, 100);
+            value.m_blueDrone1= UnityEngine.Random.Range(0, 100);
+            value.m_blueDrone2= UnityEngine.Random.Range(0, 100);
+            value.m_blueDrone3= UnityEngine.Random.Range(0, 100);
+            value.m_blueDrone4= UnityEngine.Random.Range(0, 100);
+            value.m_blueDrone5= UnityEngine.Random.Range(0, 100);
+        }
+    }
+
+
 
     [ServerCallback]
     public void SetArenaInformationAsCopy( DroneSoccerMatchStaticInformation arenaInformation) {
@@ -312,18 +423,18 @@ public struct DroneSoccerPublicRsaKeyClaim
 
         return new DroneSoccerPublicRsaKeyClaim()
         {
-            m_redDrone0Stricker = m_redDrone0Stricker,
-            m_redDrone1 = m_redDrone1,
-            m_redDrone2 = m_redDrone2,
-            m_redDrone3 = m_redDrone3,
-            m_redDrone4 = m_redDrone4,
-            m_redDrone5 = m_redDrone5,
-            m_blueDrone0Stricker = m_blueDrone0Stricker,
-            m_blueDrone1 = m_blueDrone1,
-            m_blueDrone2 = m_blueDrone2,
-            m_blueDrone3 = m_blueDrone3,
-            m_blueDrone4 = m_blueDrone4,
-            m_blueDrone5 = m_blueDrone5
+            m_redDrone0Stricker = m_redDrone0Stricker.ToString(),
+            m_redDrone1 = m_redDrone1.ToString(),
+            m_redDrone2 = m_redDrone2.ToString(),
+            m_redDrone3 = m_redDrone3.ToString(),
+            m_redDrone4 = m_redDrone4.ToString(),
+            m_redDrone5 = m_redDrone5.ToString(),
+            m_blueDrone0Stricker = m_blueDrone0Stricker.ToString(),
+            m_blueDrone1 = m_blueDrone1.ToString(),
+            m_blueDrone2 = m_blueDrone2.ToString(),
+            m_blueDrone3 = m_blueDrone3.ToString(),
+            m_blueDrone4 = m_blueDrone4.ToString(),
+            m_blueDrone5 = m_blueDrone5.ToString()
         };
     }
 }
@@ -347,18 +458,18 @@ public struct DroneSoccerIndexIntegerClaim
     {
         return new DroneSoccerIndexIntegerClaim()
         {
-            m_redDrone0Stricker = m_redDrone0Stricker,
-            m_redDrone1 = m_redDrone1,
-            m_redDrone2 = m_redDrone2,
-            m_redDrone3 = m_redDrone3,
-            m_redDrone4 = m_redDrone4,
-            m_redDrone5 = m_redDrone5,
-            m_blueDrone0Stricker = m_blueDrone0Stricker,
-            m_blueDrone1 = m_blueDrone1,
-            m_blueDrone2 = m_blueDrone2,
-            m_blueDrone3 = m_blueDrone3,
-            m_blueDrone4 = m_blueDrone4,
-            m_blueDrone5 = m_blueDrone5
+            m_redDrone0Stricker =(int) m_redDrone0Stricker,
+            m_redDrone1 =(int) m_redDrone1,
+            m_redDrone2 =(int) m_redDrone2,
+            m_redDrone3 =(int) m_redDrone3,
+            m_redDrone4 =(int) m_redDrone4,
+            m_redDrone5 = (int)m_redDrone5,
+            m_blueDrone0Stricker = (int)m_blueDrone0Stricker,
+            m_blueDrone1 =(int) m_blueDrone1,
+            m_blueDrone2 =(int) m_blueDrone2,
+            m_blueDrone3 =(int) m_blueDrone3,
+            m_blueDrone4 =(int) m_blueDrone4,
+            m_blueDrone5 = (int)m_blueDrone5
         };
 
     }

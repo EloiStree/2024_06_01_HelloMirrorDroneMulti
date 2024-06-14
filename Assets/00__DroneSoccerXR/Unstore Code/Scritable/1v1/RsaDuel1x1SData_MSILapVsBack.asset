@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf22cf926b4d2e4383b1ddf25778b93, type: 3}
+  m_Name: RsaDuel1x1SData_MSILapVsBack
+  m_EditorClassIdentifier: 
+  m_data:
+    m_red:
+      m_rsaPublicKey: <RSAKeyValue><Modulus>t72OmGDvo1lRih2BKrp31pWk+OKnB41QzlFBd8AvozUYdwnN/gCABiXwTr3JRuF1sfjLPhsqZEK42VvnpeRmA6v9AVn5Drlg+pCwU3zvxz0GCy8pNsHDyZgvB2o3lbhZ5EROOv5kZ3UlX35UGgNW9r5J4KmOCuCiFsgpGdhm5aU=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>
+      m_etherAddress: 0x000000633b68f5D8D3a86593ebB815b4663BCBe0
+    m_blue:
+      m_rsaPublicKey: <RSAKeyValue><Modulus>gXNmNXpQW7WfCkru/qTn4Deq939uBZH14E0G0XSVr//O35zUYIDRxV+ZItOn69WVamH2QLZ9ra2krA9QQVW9x0EJi3L4lc7NXkh+9qWWmGl77gyjQ9/xzM9Jb57lbz4DdJ26AQZyRwJ7gIxgXmJvhbCtIT7A83y4wzd+cTlN8tc=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>
+      m_etherAddress: 0xdC25FcBf3eB1A46957b87d2215C4bad2eA1f1D69

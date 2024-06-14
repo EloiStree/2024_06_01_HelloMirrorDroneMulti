@@ -23,17 +23,20 @@ public class ConvertPublicRsaToBytesUtility {
     }
     public static void ParsePublicRsaKeyToBytesWithoutModule(string publicRsaKey, out byte[] publicKeyBytes)
     {
+        if(string.IsNullOrWhiteSpace(publicRsaKey)
+        ){
+            publicKeyBytes = new byte[128];
+            return;
+        }
         RSAParameters rsaParams;
         using (var rsa = RSA.Create())
         {
             rsa.FromXmlString(publicRsaKey);
             rsaParams = rsa.ExportParameters(false);
         }
-
-        
-        byte[] exponent = rsaParams.Exponent;
-        publicKeyBytes = new byte[ exponent.Length];
-        Buffer.BlockCopy(exponent, 0, publicKeyBytes, 0, exponent.Length);
+        byte[] module = rsaParams.Modulus;
+        publicKeyBytes = new byte[ module.Length];
+        Buffer.BlockCopy(module, 0, publicKeyBytes, 0, module.Length);
 
     }
 

@@ -15,6 +15,8 @@ EditorBuildSettings:
     path: Assets/00__DroneSoccerXR/XR/OpenXR/XrPlayerScene.unity
     guid: 49b57085ac9d2294b97008c8ec4c9618
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 58b839ec0994d754abb81fff6ef65370,
+      type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 9fc564cc8feb7bb4192bccaf08666701,
       type: 3}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: b19642c196ea50241991aa2621d1b00b,

@@ -113,6 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06db8e869bc37e24db1b3acc30bd47c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_ethereumAddress0x: 
 --- !u!114 &7905319655296357633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,9 +501,9 @@ MonoBehaviour:
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   bufferResetMultiplier: 1
   changedDetection: 1
-  positionSensitivity: 0.01
-  rotationSensitivity: 0.01
-  scaleSensitivity: 0.01
+  positionSensitivity: 0.001
+  rotationSensitivity: 0.001
+  scaleSensitivity: 0.001
 --- !u!114 &5231505072440716196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6104087691197125818, guid: be5c3b33d7c53cc49ae19aa75d5d4daa,

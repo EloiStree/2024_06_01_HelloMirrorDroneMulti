@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class MSoccerMono_InputRefAsGamepad: MonoBehaviour
 {
+
+    public UnityEvent<Vector2> m_joystickLeft;
+    public UnityEvent<Vector2> m_joystickRight;
+
     [SerializeField]
     private InputActionReference m_joystickLeftReference;
     [SerializeField]
@@ -48,20 +53,24 @@ public class MSoccerMono_InputRefAsGamepad: MonoBehaviour
     private void OnMoveLeft(InputAction.CallbackContext context)
     {
         m_joystickLeftValue = context.ReadValue<Vector2>();
+        m_joystickLeft.Invoke(m_joystickLeftValue);
     }
 
     private void OnMoveCanceledLeft(InputAction.CallbackContext context)
     {
         m_joystickLeftValue = Vector2.zero;
+        m_joystickLeft.Invoke(m_joystickLeftValue);
     }
     private void OnMoveRight(InputAction.CallbackContext context)
     {
         m_joystickRightValue = context.ReadValue<Vector2>();
+        m_joystickRight.Invoke(m_joystickRightValue);
     }
 
     private void OnMoveCanceledRight(InputAction.CallbackContext context)
     {
         m_joystickRightValue = Vector2.zero;
+        m_joystickRight.Invoke(m_joystickRightValue);
     }
 
    

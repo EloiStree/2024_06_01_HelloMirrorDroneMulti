@@ -34,6 +34,10 @@ public class MSoccerMono_ManualXrChecker : MonoBehaviour
     {
         m_deviceModel=deviceModel;
     }
+
+    public static bool IsXrProject() { 
+    return m_isInXrProject; 
+    }
 }
 
 

@@ -10,6 +10,8 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
 {
     public UnityEvent<byte[]> m_taggedBytesToPush;
     public UnityEvent<string> m_textToPush;
+
+
     public void SetArenaInformationAsByte(DroneSoccerMatchStaticInformation arenaInformation)
     {
        

@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2631324716427182624}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8157547925046451097
@@ -91,6 +92,8 @@ MonoBehaviour:
     m_goalDepthMeter: 0
     m_droneSphereRadiusMeter: 0
   m_gamePositions:
+    m_dateTimeUtcTick: 0
+    m_framePushed: 0
     m_redDrone0Stricker:
       m_localPositionX: 0
       m_localPositionY: 0
@@ -175,3 +178,181 @@ MonoBehaviour:
       m_eulerAngleX: 0
       m_eulerAngleY: 0
       m_eulerAngleZ: 0
+  m_publicRsaClaim:
+    m_redDrone0Stricker: 
+    m_redDrone1: 
+    m_redDrone2: 
+    m_redDrone3: 
+    m_redDrone4: 
+    m_redDrone5: 
+    m_blueDrone0Stricker: 
+    m_blueDrone1: 
+    m_blueDrone2: 
+    m_blueDrone3: 
+    m_blueDrone4: 
+    m_blueDrone5: 
+  m_indexIntegerClaim:
+    m_redDrone0Stricker: 0
+    m_redDrone1: 0
+    m_redDrone2: 0
+    m_redDrone3: 0
+    m_redDrone4: 0
+    m_redDrone5: 0
+    m_blueDrone0Stricker: 0
+    m_blueDrone1: 0
+    m_blueDrone2: 0
+    m_blueDrone3: 0
+    m_blueDrone4: 0
+    m_blueDrone5: 0
+  m_onChanged:
+    m_onGamePointsState:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: MSoccerMono_PushGameStateAsLocalUdp, Assembly-CSharp
+          m_MethodName: SetPointsStateAsByte
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_onGameTimeValue:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: MSoccerMono_PushGameStateAsLocalUdp, Assembly-CSharp
+          m_MethodName: SetTimeValueAsByte
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_onGameArenaInformation:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: MSoccerMono_PushGameStateAsLocalUdp, Assembly-CSharp
+          m_MethodName: SetArenaInformationAsByte
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_onGamePositions:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: MSoccerMono_PushGameStateAsLocalUdp, Assembly-CSharp
+          m_MethodName: SetPositionsAsByte
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_onPublicRsaClaim:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: MSoccerMono_PushGameStateAsLocalUdp, Assembly-CSharp
+          m_MethodName: SetPublicRsaKeyClaimAsText
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    m_onIndexIntegerClaim:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: MSoccerMono_PushGameStateAsLocalUdp, Assembly-CSharp
+          m_MethodName: SetIndexIntegerClaimAsByte
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &7508193911637229411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2631324716427182624}
+  - component: {fileID: 1775638711606340176}
+  m_Layer: 0
+  m_Name: Invoke Loop Debug
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2631324716427182624
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508193911637229411}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1598207660430607001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1775638711606340176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7508193911637229411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd1ac4b5e4ed3a488c99b22748643d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6918852453897989774}
+        m_TargetAssemblyTypeName: MSoccerMono_GameCoreStateExportable, be.eloistree.rankedmsoccercore
+        m_MethodName: RandomizedAndRefresh
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_timeBeforeStart: 5
+  m_timeBetweenTick: 0.1

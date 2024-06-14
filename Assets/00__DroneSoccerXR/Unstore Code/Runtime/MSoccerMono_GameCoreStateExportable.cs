@@ -67,7 +67,6 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     }
 
 
-    [ServerCallback]
     [ContextMenu("Full Fresh call no Rsa")]
     public void FullRefreshNotRsa() {
         m_gamePointsState       = m_gamePointsState.GetCopy();
@@ -78,7 +77,6 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     }
 
 
-    [ServerCallback]
     [ContextMenu("Randomize Info")]
 
     public void RandomizedAndRefresh()
@@ -94,7 +92,6 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         FullRefreshNotRsa();
     }
 
-    [ServerCallback]
     [ContextMenu("Randomize RSA")]
 
     public void RandomizedRsaRefresh()

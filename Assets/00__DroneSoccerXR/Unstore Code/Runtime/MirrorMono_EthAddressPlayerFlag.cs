@@ -24,4 +24,15 @@ public class MirrorMono_EthAddressPlayerFlag : NetworkBehaviour
             m_ethereumAddress0x = etherAddress0x;
         }
     }
+
+
+    public bool IsClaimed()
+    {
+        return m_ethereumAddress0x.Length > 0;
+    }
+
+    public void Unclaim()
+    {
+        m_ethereumAddress0x = "";
+    }
 }

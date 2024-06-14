@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,14 @@ public class MSoccerMono_Set12DronesRsaEth : MonoBehaviour
     }
     public RsaEthDroneSoccerInSceneGroupSetter GetSetter() { return m_setter; }
 
+    public void ResetAllToUnclaimed()
+    {
+        foreach (RsaEthDroneSoccerInSceneItem item in m_setter.m_allItems)
+        {
+            item.m_rsaKeyOwner.Unclaim();
+            item.m_ethFlag.Unclaim();
+        }
+    }
 }
 
 
@@ -31,6 +40,20 @@ public class RsaEthDroneSoccerInSceneGroupSetter {
     public List<RsaEthDroneSoccerInSceneItem> m_allItems;
     public List<RsaEthDroneSoccerInSceneItem> m_allItemsRed;
     public List<RsaEthDroneSoccerInSceneItem> m_allItemsBlue;
+
+
+    public void TryToSet(string playerRsa, string playerEth) { 
+    
+        for (int i = 0; i < m_allItems.Count; i++) {
+            if (i < playerRsa.Length)
+            {
+                m_allItems[i].m_rsaKeyOwner.IsOwnedByExactly(playerRsa);
+                m_allItems[i].m_ethFlag.SetEtheumAddress(playerEth);
+
+            }
+            
+        }
+    }
 
     public void SetGroup(RsaEthDroneSoccerInSceneGroup group) {
         m_group = group;
@@ -157,6 +180,36 @@ public class RsaEthDroneSoccerInSceneGroupSetter {
     {
         SetPlayerOneByOneEthRed(playersRed);
         SetPlayerOneByOneEthBlue(playersBlue);
+    }
+
+    public void SetPlayerAsRedIndexRsa(int i, string playerRsa)
+    {
+        switch (i)
+        {
+            case 0: m_group.m_droneRed0.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 1: m_group.m_droneRed1.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 2: m_group.m_droneRed2.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 3: m_group.m_droneRed3.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 4: m_group.m_droneRed4.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 5: m_group.m_droneRed5.m_rsaKeyOwner.Claim(playerRsa); break;
+            default:
+                break;
+        }
+    }
+
+    public void SetPlayerAsBlueIndexRsa(int i, string playerRsa)
+    {
+        switch (i)
+        {
+            case 0: m_group.m_droneBlue0.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 1: m_group.m_droneBlue1.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 2: m_group.m_droneBlue2.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 3: m_group.m_droneBlue3.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 4: m_group.m_droneBlue4.m_rsaKeyOwner.Claim(playerRsa); break;
+            case 5: m_group.m_droneBlue5.m_rsaKeyOwner.Claim(playerRsa); break;
+            default:
+                break;
+        }
     }
     #endregion
 }

@@ -10,6 +10,9 @@ public class MirrorRsaPlayerOnNetworkRefDico
     public  Dictionary<string, List<MirrorRsaPlayerOnNetworkRef>> m_playerRefDicoKey = new Dictionary<string, List<MirrorRsaPlayerOnNetworkRef>>();
 
 
+    public  void GetCurrentPlayerConnected(out List<MirrorRsaPlayerOnNetworkRef> players) {
+        players = m_playerRefDicoId.Values.ToList();
+    }
     public  void AddPlayerRef(MirrorRsaPlayerOnNetworkRef playerRef) {
         if(playerRef==null) {
             return;

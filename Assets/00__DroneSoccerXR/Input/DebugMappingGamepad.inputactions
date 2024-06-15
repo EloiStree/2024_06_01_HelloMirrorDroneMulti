@@ -170,6 +170,28 @@
                 },
                 {
                     "name": "",
+                    "id": "fbf5cf15-04a5-4d09-a322-020d1d0406d6",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8525dc97-6c05-4e13-9e91-86296e67d68e",
+                    "path": "<HID::MY-POWER CO.,LTD. USB Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1ec81f08-7097-44e2-bcb1-ab9e5b59b5b6",
                     "path": "<XboxOneGamepadAndroid>/rightStick",
                     "interactions": "",

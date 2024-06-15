@@ -6,6 +6,7 @@ using UnityEngine;
 public class LocalUnity3DToMultiDroneCommandsMono : MonoBehaviour
 {
 
+    public int m_targetDrone20to20 = -1;
     public Vector2 m_joystickLeft;
     public Vector2 m_joystickRight;
    
@@ -41,7 +42,7 @@ public void SetJoystickRightX(float x) {        if (m_joystickRight.x != x ) { m
 
         if(MSoccerMono_PushMultiDroneCommands.OwnedPusherInScene)
        MSoccerMono_PushMultiDroneCommands.OwnedPusherInScene.
-            PushDroneCommandsToFocusDrone(m_joystickLeft.x,m_joystickLeft.y,m_joystickRight.x,m_joystickRight.y);
+            PushDroneCommandsToFocusDrone(m_targetDrone20to20, m_joystickLeft.x,m_joystickLeft.y,m_joystickRight.x,m_joystickRight.y);
     }
 
     private bool NewValue(Vector2 newValue, Vector2 previousValue)

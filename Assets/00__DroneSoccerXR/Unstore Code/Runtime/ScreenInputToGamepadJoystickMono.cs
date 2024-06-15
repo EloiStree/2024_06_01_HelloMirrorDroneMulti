@@ -63,13 +63,11 @@ public class ScreenInputToGamepadJoystickMono : MonoBehaviour
             if(m_currentScreenPointFirstFinger==Vector2.zero|| m_newContactPointsCount==0)
             {
                 m_startScreenPointFirstContact = Vector2.zero;
-            isTouchingOrChanged = true;
             }
             if(m_currentScreenPointSecondFinger==Vector2.zero || m_newContactPointsCount == 0)
             {
                 m_startScreenPointSecondsContact = Vector2.zero;
-            isTouchingOrChanged = true;
-        }
+            }
 
             m_deltaContactPointOne = m_currentScreenPointFirstFinger - m_startScreenPointFirstContact;
             m_deltaContactPointTwo = m_currentScreenPointSecondFinger - m_startScreenPointSecondsContact;

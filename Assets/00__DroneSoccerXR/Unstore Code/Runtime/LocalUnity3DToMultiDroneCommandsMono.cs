@@ -38,8 +38,10 @@ public void SetJoystickRightX(float x) {        if (m_joystickRight.x != x ) { m
     public void SetMoveLeftRight(float x) {     if (m_joystickRight.x != x ) { m_joystickRight.x = x ; Refresh(); }}
     public void SetMoveBackForward(float y) {   if (m_joystickRight.y != y) { m_joystickRight.y = y ; Refresh(); }}
 
+    public string m_lastSentCommand = "";
     public void Refresh() {
 
+        m_lastSentCommand= DateTime.Now.ToString();
         if(MSoccerMono_PushMultiDroneCommands.OwnedPusherInScene)
        MSoccerMono_PushMultiDroneCommands.OwnedPusherInScene.
             PushDroneCommandsToFocusDrone(m_targetDrone20to20, m_joystickLeft.x,m_joystickLeft.y,m_joystickRight.x,m_joystickRight.y);

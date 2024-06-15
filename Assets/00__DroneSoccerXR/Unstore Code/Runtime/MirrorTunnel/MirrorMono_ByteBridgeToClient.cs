@@ -8,7 +8,7 @@ public class MirrorMono_ByteBridgeToClient : NetworkBehaviour
 {
 
     public static MirrorMono_ByteBridgeToClient PlayerSingleton;
-    public NetworkIdentity m_singletonIdentity;
+    public static List<MirrorMono_ByteBridgeToClient> m_singletonIdentities= new List<MirrorMono_ByteBridgeToClient>();
 
     public static Action<byte[]> m_receivedOnClientFromServer;
     private void OverrideSingletonIfOwned()
@@ -16,8 +16,14 @@ public class MirrorMono_ByteBridgeToClient : NetworkBehaviour
         if (isOwned)
         {
             PlayerSingleton = this;
-            PlayerSingleton.m_singletonIdentity = GetComponent<NetworkIdentity>();
         }
+            m_singletonIdentities.Add(this);
+    }
+
+    public override void OnStopClient()
+    {
+        base.OnStopClient();
+        m_singletonIdentities.Remove(this);
     }
 
     public override void OnStartClient()
@@ -31,11 +37,14 @@ public class MirrorMono_ByteBridgeToClient : NetworkBehaviour
 
     public void PushByteEventToClient(byte[] bytes)
     {
-        if (m_singletonIdentity!=null)
-        {
-            if(isServer)
-               RpcPushByteEventToClient(bytes);
+        if (isServer) {
+                foreach (var item in m_singletonIdentities) {
+                if (item != null) { 
+                    item.RpcPushByteEventToClient(bytes);
+                }        
+            }
         }
+        
     }
     public void PushByteFromStaticToClient(byte[] bytes)
     {

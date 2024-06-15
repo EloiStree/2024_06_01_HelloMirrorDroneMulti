@@ -102,6 +102,11 @@ public class MSoccerMono_PushMultiDroneCommands : NetworkBehaviour
         ParserIntegerToDronePercentUtility.Pack(out int cmd, 0, joystickLeftXPercent, joystickLeftYPercent, joystickRightXPercent, joystickRightYPercent);
         CmdPushDroneCommandsToFocusDrone(cmd);
     }
+    public void PushDroneCommandsToFocusDrone(int drone, float joystickLeftXPercent, float joystickLeftYPercent, float joystickRightXPercent, float joystickRightYPercent)
+    {
+        ParserIntegerToDronePercentUtility.Pack(out int cmd, drone , joystickLeftXPercent, joystickLeftYPercent, joystickRightXPercent, joystickRightYPercent);
+        CmdPushDroneCommandsToFocusDrone(cmd);
+    }
     public void PushDroneCommandsToFocusDrone(int commandInteger)
     {
         CmdPushDroneCommandsToFocusDrone(commandInteger);

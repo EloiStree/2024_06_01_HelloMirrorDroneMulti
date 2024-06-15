@@ -54,6 +54,8 @@ public class AsteroideJobManagerMono : MonoBehaviour
         {
             AsteroidCreationEvent a = m_asteroidInGame[i];
             AsteroidMoveConstant m= m_asteroidMoveUpdateInfo[i];
+            a.m_poolId = m_poolId;
+            a.m_poolItemIndex = i;
             SetRandomStartPointTo(ref a,ref m);
             m_asteroidInGame[i] = a;
             m_asteroidMoveUpdateInfo[i] = m;

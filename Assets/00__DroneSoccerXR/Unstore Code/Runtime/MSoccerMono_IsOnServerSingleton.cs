@@ -29,4 +29,15 @@ public class MSoccerMono_IsOnServerSingleton: MonoBehaviour
             return false;
         }
     }
+    public static bool IsHostOrClientDefined() { 
+    
+        if (NetworkManager.singleton != null && NetworkManager.singleton.isNetworkActive)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

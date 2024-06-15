@@ -14,6 +14,13 @@
       "dependencies": {},
       "hash": "89039a97c3dc3c6ddbbe3b766d9ffbdb46f61152"
     },
+    "be.eloistree.downloadserveripfrompage": {
+      "version": "https://github.com/EloiStree/2024_06_15_DownloadServerIpFromPage.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "7ae433bf23f7b3ce1d18c5e1e3ebe7ed72a7578e"
+    },
     "be.eloistree.droneracestepmesh": {
       "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStep.git",
       "depth": 0,

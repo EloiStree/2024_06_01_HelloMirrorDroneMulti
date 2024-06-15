@@ -2,6 +2,7 @@
   "dependencies": {
     "be.eloistree.basiccoredronesoccer": "https://github.com/EloiStree/2024_06_02_DroneSoccerFieldScoreAndCore.git",
     "be.eloistree.digitalscoreandclock": "https://github.com/EloiStree/2023_02_17_DigitalScoreAndClock.git",
+    "be.eloistree.downloadserveripfrompage": "https://github.com/EloiStree/2024_06_15_DownloadServerIpFromPage.git",
     "be.eloistree.droneracestepmesh": "https://github.com/EloiStree/2024_06_31_DroneRaceStep.git",
     "be.eloistree.dronesoccergoal": "https://github.com/EloiStree/2023_02_16_DroneSoccerGoal.git",
     "be.eloistree.dronesoccerground": "https://github.com/EloiStree/2023_02_16_DroneSoccerGround.git",

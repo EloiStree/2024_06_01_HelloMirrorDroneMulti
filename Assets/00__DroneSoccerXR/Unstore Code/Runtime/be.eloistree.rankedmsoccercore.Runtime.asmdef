@@ -8,7 +8,8 @@
         "be.eloistree.droneracestepmesh",
         "Mirror.Examples",
         "be.eloistree.rootsofknowledgedronecar",
-        "be.eloistree.generatestorersakey"
+        "be.eloistree.generatestorersakey",
+        "Mirror.Transports"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

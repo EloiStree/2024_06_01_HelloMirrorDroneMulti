@@ -21,12 +21,19 @@
       "dependencies": {},
       "hash": "e3c22390b3846b4b72ef5ac6e9be29dc678f4157"
     },
+    "be.eloistree.droneracesample": {
+      "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStepSample.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "ca6857825bda0501a98f821d673b41a483b00940"
+    },
     "be.eloistree.droneracestepmesh": {
       "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStep.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "0c473fe05d2e6a58d874d4d3c9fca76538e43530"
+      "hash": "94dde8046836dec30ddc2dadbfb83ad04acb8b50"
     },
     "be.eloistree.dronesoccergoal": {
       "version": "https://github.com/EloiStree/2023_02_16_DroneSoccerGoal.git",
@@ -62,6 +69,13 @@
       "source": "git",
       "dependencies": {},
       "hash": "316098139c3ac6670b7192e3a7d4823bf4f2f1eb"
+    },
+    "be.eloistree.exportprefabfromguid": {
+      "version": "https://github.com/EloiStree/2024_06_18_ExportPrefabFromJsonGUID.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0957c5d0692f9f7649c36e61f87e2aaaa4a3a68b"
     },
     "be.eloistree.generaltoolbox": {
       "version": "https://github.com/EloiStree/2021_10_03_EloiGeneralToolbox.git",
@@ -119,7 +133,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "e91b402092d62d3c92b70eabd0b09ea73738cf68"
+      "hash": "c17c4f72750167a53b82a42d76ee33a95f19784c"
     },
     "be.eloistree.udpthreadsender": {
       "version": "https://github.com/EloiStree/2020_11_29_UDPThreadSender.git",

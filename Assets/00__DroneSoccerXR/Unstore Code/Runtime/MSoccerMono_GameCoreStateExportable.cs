@@ -5,8 +5,12 @@ using Mirror;
 using System;
 using UnityEngine.Events;
 using System.Security.Cryptography;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 {
+
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public DroneSoccerBallState m_droneSoccerBall;
 
     [SyncVar(hook = nameof(ChangedHappened))]
     public DroneSoccerMatchState m_gamePointsState;
@@ -52,6 +56,10 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     {
         m_onChanged.m_onGamePointsState.Invoke(n);
     }
+    private void ChangedHappened(DroneSoccerBallState p, DroneSoccerBallState n)
+    {
+        m_onChanged.m_onSoccerBallState.Invoke(n);
+    }
 
 
     public Events m_onChanged;
@@ -64,6 +72,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         public UnityEvent<DroneSoccerPositions> m_onGamePositions;
         public UnityEvent<DroneSoccerPublicRsaKeyClaim> m_onPublicRsaClaim;
         public UnityEvent<DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaim;
+        public UnityEvent<DroneSoccerBallState> m_onSoccerBallState;
     }
 
 
@@ -213,6 +222,25 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 
 
 
+[System.Serializable]
+public struct DroneSoccerBallState
+{
+    public bool m_useBall;
+    public long m_dateTimeUtcTick;
+    public Vector3 m_position;
+    public Quaternion m_rotation;
+    public float m_radius ;
+
+    public DroneSoccerBallState GetCopy() {
+        return new DroneSoccerBallState() {
+            m_dateTimeUtcTick = m_dateTimeUtcTick,
+            m_useBall = m_useBall,
+            m_position = m_position,
+            m_rotation = m_rotation,
+            m_radius = m_radius
+        };
+    }
+}
 
 
 //Refresh with event

@@ -40,7 +40,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "5d446cf9c11cb3094ccff471ad9a738767557b2c"
+      "hash": "ce3a1a885b796c926e65c9222dbf6240fe07ce1e"
     },
     "be.eloistree.dronesoccerground": {
       "version": "https://github.com/EloiStree/2023_02_16_DroneSoccerGround.git",

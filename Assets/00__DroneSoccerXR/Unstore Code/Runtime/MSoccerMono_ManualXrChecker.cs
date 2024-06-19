@@ -13,10 +13,12 @@ public class MSoccerMono_ManualXrChecker : MonoBehaviour
     public UnityEvent<string> m_onDeviceModel;
     public UnityEvent<bool> m_onIsXR;
     public UnityEvent<bool> m_onIsNotXR;
+    public bool m_isXrProjectDebug = false;
 
 
     private void Start()
     {
+        m_isXrProjectDebug = m_isInXrProject;
         m_onXrProject.Invoke(m_isInXrProject);
         m_onDeviceModel.Invoke(m_deviceModel);
         if (m_isInXrProject)

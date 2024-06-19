@@ -177,7 +177,36 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
         BitConverter.GetBytes(indexIntegerClaim.m_blueDrone5).CopyTo(bytes, 45);
         m_taggedBytesToPush.Invoke(bytes);
     }
+
+    public void SetSoccerBallAsByte(DroneSoccerBallState state)
+    {
+
+        long serverTickTime = state.m_dateTimeUtcTick;
+        Vector3 e = state.m_rotation.eulerAngles;
+        byte eulerX = (byte)((e.x % 360f / 360f) * 255f);
+        byte eulerY = (byte)((e.y % 360f / 360f) * 255f);
+        byte eulerZ = (byte)((e.z % 360f / 360f) * 255f);
+
+
+        byte[] bytes = new byte[1 + 4 * 3 + 2 * 3];
+        bytes[0] = 8;
+        BitConverter.GetBytes(serverTickTime).CopyTo(bytes, 1);
+        BitConverter.GetBytes(ClampShort(state.m_position.x)).CopyTo(bytes, 9);
+        BitConverter.GetBytes(ClampShort(state.m_position.y)).CopyTo(bytes, 11);
+        BitConverter.GetBytes(ClampShort(state.m_position.z)).CopyTo(bytes, 13);
+        bytes[15] = eulerX;
+        bytes[16] = eulerY;
+        bytes[17] = eulerZ;
+        m_taggedBytesToPush.Invoke(bytes);
+    }
+
+    private static ushort ClampShort(float value)
+    {
+        return (ushort)Mathf.Clamp(value, short.MinValue, short.MaxValue);
+    }
 }
+
+
 
 
 

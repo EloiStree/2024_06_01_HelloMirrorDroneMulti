@@ -8,6 +8,8 @@ public class MSoccerMono_V0GoalRedBlueAxisX : MonoBehaviour
 
     public Transform m_ballStartPointPosition;
     public Transform m_ballToOverwatchPosition;
+    public Rigidbody m_rigitbodyToReset;
+    public UnityEvent m_onGoalNotification;
     public Transform m_arenaCenter;
     public float m_axisDistanceX = 4f;
     public bool m_leftIsRedAndRightBlue = true;
@@ -39,12 +41,17 @@ public class MSoccerMono_V0GoalRedBlueAxisX : MonoBehaviour
         
         if (isInRedGoal) { 
             m_ballToOverwatchPosition.position = m_ballStartPointPosition.position;
+            m_rigitbodyToReset.velocity= Vector3.zero;
+            m_rigitbodyToReset.angularVelocity = Vector3.zero;
             m_goalForRed.Invoke();
         }
 
         if (isInBlueGoal)
         {
             m_ballToOverwatchPosition.position = m_ballStartPointPosition.position;
+            m_rigitbodyToReset.velocity = Vector3.zero;
+            m_rigitbodyToReset.angularVelocity = Vector3.zero;
+
             m_goalForBlue.Invoke();
         
         }

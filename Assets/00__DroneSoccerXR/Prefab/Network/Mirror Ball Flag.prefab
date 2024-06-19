@@ -118,6 +118,9 @@ GameObject:
   - component: {fileID: 1879967126061330457}
   - component: {fileID: 5748164440790780825}
   - component: {fileID: 4469807352390406459}
+  - component: {fileID: 5081573012616736178}
+  - component: {fileID: 5778833555193482917}
+  - component: {fileID: 6160562227783800660}
   m_Layer: 0
   m_Name: Mirror Ball Flag
   m_TagString: Untagged
@@ -167,9 +170,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3591877564457173653}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 8
+  m_Drag: 0.1
+  m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -242,6 +245,50 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5081573012616736178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591877564457173653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d491a6e9e026c2945bcd1b08683da9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_root: {fileID: 2071292130818589416}
+--- !u!114 &5778833555193482917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591877564457173653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d472c1252e9b5843ad1ea42c5390dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_root: {fileID: 2071292130818589416}
+--- !u!114 &6160562227783800660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591877564457173653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e88ec8997cc8a4baa4a6299b93f3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_centerAnchor: {fileID: 2071292130818589416}
+  m_rigibodyToAffect: {fileID: 1879967126061330457}
+  m_continusRepulsionForce: 10
+  m_continusForce: 0
+  m_enterRepulsionForce: 10
+  m_enterForce: 0
 --- !u!1 &8494799369441992135
 GameObject:
   m_ObjectHideFlags: 0

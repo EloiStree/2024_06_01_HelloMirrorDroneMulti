@@ -133,7 +133,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "c17c4f72750167a53b82a42d76ee33a95f19784c"
+      "hash": "1956be64f7c5a3d5d5ea43f8ca12394b6081a4a9"
     },
     "be.eloistree.udpthreadsender": {
       "version": "https://github.com/EloiStree/2020_11_29_UDPThreadSender.git",

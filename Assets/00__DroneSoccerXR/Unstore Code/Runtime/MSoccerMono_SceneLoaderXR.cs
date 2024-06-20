@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,11 @@ public class MSoccerMono_SceneLoaderXR : MonoBehaviour
         else
         {
             Debug.Log("Unloading scene with XR player", this.gameObject);
-            SceneManager.UnloadSceneAsync(m_sceneToLoadWithXrPlayer);
+            try
+            {
+                SceneManager.UnloadSceneAsync(m_sceneToLoadWithXrPlayer);
+            }
+            catch (Exception e) { }
         }
     }
  

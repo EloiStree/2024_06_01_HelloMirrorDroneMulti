@@ -243,6 +243,16 @@ public struct DroneSoccerBallState
 }
 
 
+[System.Serializable]
+public struct DroneSoccerBallGoals { 
+
+    public float m_goalDistanceOfCenterMeter;
+    public float m_goalCenterHeightMeter;
+    public float m_goalWidthRadiusMeter;
+    public float m_goalDepthMeter;
+}
+
+
 //Refresh with event
 [System.Serializable]
 public struct DroneSoccerMatchState

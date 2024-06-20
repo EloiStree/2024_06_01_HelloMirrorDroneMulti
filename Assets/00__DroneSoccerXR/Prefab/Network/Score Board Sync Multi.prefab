@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 677374069
+  _assetId: 3695282888
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -73,4 +73,16 @@ MonoBehaviour:
   m_setTimeLeftInSet: 0
   m_setTimeSinceSetStarted: 0
   m_setTimeSinceMatchStarted: 0
-  m_timeNowUTC: 0
+  m_dateTime: 0
+  m_dateTimeOfMatchStart: 0
+  m_isMatchInPause: 0
+  m_isMatchStarted: 0
+  m_isMatchFinished: 0
+  m_redTeamIsWinner: 0
+  m_blueTeamIsWinner: 0
+  m_onChangeDetected:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onScoreChangeDetected:
+    m_PersistentCalls:
+      m_Calls: []

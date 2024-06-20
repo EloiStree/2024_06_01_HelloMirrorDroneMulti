@@ -48,8 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_whatToMove: {fileID: 7513039029296529269}
   m_whatToFollow: {fileID: 0}
-  m_lerpPower: 1
-  m_lerpPowerRotation: 0.8
+  m_lerpPower: 0.1
+  m_lerpPowerRotation: 0.2
   m_useLateUpdate: 1
 --- !u!1 &1428189260152842056
 GameObject:

@@ -1291,7 +1291,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  target: {fileID: 6861891808046413749}
+  target: {fileID: 244698541779645869}
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
@@ -1332,12 +1332,6 @@ GameObject:
 --- !u!4 &6861891806909706018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4834138598168858684, guid: be5c3b33d7c53cc49ae19aa75d5d4daa,
-    type: 3}
-  m_PrefabInstance: {fileID: 2030025360285384478}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &6861891808046413749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4834138597267130539, guid: be5c3b33d7c53cc49ae19aa75d5d4daa,
     type: 3}
   m_PrefabInstance: {fileID: 2030025360285384478}
   m_PrefabAsset: {fileID: 0}

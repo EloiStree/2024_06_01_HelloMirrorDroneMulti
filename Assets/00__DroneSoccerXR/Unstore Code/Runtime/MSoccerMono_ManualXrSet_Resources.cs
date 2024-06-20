@@ -4,9 +4,11 @@ public class MSoccerMono_ManualXrSet_Resources : MonoBehaviour
 {
     public string m_resourcePath = "IsXrProject";
 
+    public bool m_debugFoundXrResources = false;
     public void Awake()
     {
-        if (Resources.Load(m_resourcePath))
+        bool found = Resources.Load(m_resourcePath);
+        if (found)
         {
 
             MSoccerMono_ManualXrChecker.SetAsXR(true);

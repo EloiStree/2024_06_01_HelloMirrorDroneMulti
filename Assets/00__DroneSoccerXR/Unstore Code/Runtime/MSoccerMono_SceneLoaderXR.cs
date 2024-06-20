@@ -8,13 +8,19 @@ public class MSoccerMono_SceneLoaderXR : MonoBehaviour
 
     public string m_sceneToLoadWithXrPlayer="XrPlayerScene";
 
-    void Awake()
-    {
-        SceneManager.LoadScene(m_sceneToLoadWithXrPlayer, LoadSceneMode.Additive);
-    }
-    public void OnDestroy()
-    {
 
-        SceneManager.UnloadSceneAsync(m_sceneToLoadWithXrPlayer);
+    public void SetAsXrProject(bool isXrProject)
+    {
+        if (isXrProject)
+        {
+            Debug.Log("Loading scene with XR player", this.gameObject);
+            SceneManager.LoadScene(m_sceneToLoadWithXrPlayer, LoadSceneMode.Additive);
+        }
+        else
+        {
+            Debug.Log("Unloading scene with XR player", this.gameObject);
+            SceneManager.UnloadSceneAsync(m_sceneToLoadWithXrPlayer);
+        }
     }
+ 
 }

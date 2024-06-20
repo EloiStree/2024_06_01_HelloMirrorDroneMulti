@@ -174,12 +174,7 @@ public class MSoccerMono_MatchManagerSyncBoard : MonoBehaviour
         m_syncBoardMulti.SetPointScoreBlue(m_pointScoreBlue);
         LockGoalAndTeleportPlayerAfterDelay();
     }
-    public bool m_isOnServer;
-    private bool QuitIfNotOnServer()
-    {
-        m_isOnServer = MSoccerMono_IsOnServerSingleton.IsOnServer();
-        return !m_isOnServer;
-    }
+
 
     public void AddPointToRed()
     {
@@ -194,7 +189,12 @@ public class MSoccerMono_MatchManagerSyncBoard : MonoBehaviour
         m_syncBoardMulti.SetPointScoreRed(m_pointScoreRed);
         LockGoalAndTeleportPlayerAfterDelay();
     }
-   
+    public bool m_isOnServer;
+    private bool QuitIfNotOnServer()
+    {
+        m_isOnServer = MSoccerMono_IsOnServerSingleton.IsOnServer();
+        return !m_isOnServer;
+    }
     public void SetBlueAsWinnerOfSet()
     {
         if (IsMatchFinished())

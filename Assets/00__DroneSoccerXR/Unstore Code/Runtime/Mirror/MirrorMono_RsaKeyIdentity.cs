@@ -5,12 +5,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 
 
 public class MirrorMono_RsaKeyIdentity : NetworkBehaviour
 {
 
+     static MirrorMono_RsaKeyIdentity m_ownedIdentity;
+    public static void GetOwnedRsaIdentity(out MirrorMono_RsaKeyIdentity owned) {
+        owned = m_ownedIdentity;
+    }
+    public static void  GetOwnedMirrorIdentity(out NetworkIdentity owned) {
+        owned = m_ownedIdentity?.GetComponent<NetworkIdentity>();
+    }
+   
     [SyncVar]
     public string m_publicXmlKey;
 
@@ -57,6 +66,7 @@ public class MirrorMono_RsaKeyIdentity : NetworkBehaviour
         m_debug.m_isClientAndOwned = isClient && isOwned;
         if (m_debug.m_isClientAndOwned)
         {
+            m_ownedIdentity= this;
             ReloadThePublicKeyAndStartToSignIt();
         }
     }
@@ -107,5 +117,24 @@ public class MirrorMono_RsaKeyIdentity : NetworkBehaviour
     public MirrorRsaPlayerOnNetworkRef GetRsaRef()
     {
         return m_playerRef;
+    }
+
+    public static bool IsInstanciated()
+    {
+        return m_ownedIdentity != null;
+    }
+    public static bool IsInstanciatedAndConnected()
+    {
+        if (m_ownedIdentity == null) return false;
+        GetOwnedRsaIdentity(out  m_ownedIdentity);
+        return m_ownedIdentity.netId != 0;
+
+    }
+
+    public static bool IsInstanciatedConnectedAndSigned()
+    {
+        if (m_ownedIdentity == null) return false;
+        GetOwnedRsaIdentity(out  m_ownedIdentity);
+        return m_ownedIdentity.netId != 0 && m_ownedIdentity.m_isSignatureValid;
     }
 }

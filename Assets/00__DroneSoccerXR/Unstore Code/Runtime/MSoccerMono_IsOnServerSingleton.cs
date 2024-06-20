@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using Codice.CM.Common.Tree.Partial;
+using Mirror;
 using UnityEngine;
 
 public class MSoccerMono_IsOnServerSingleton: MonoBehaviour
@@ -28,6 +29,15 @@ public class MSoccerMono_IsOnServerSingleton: MonoBehaviour
         {
             return false;
         }
+    }
+    public static bool IsHostOfGame() {
+
+        if (NetworkManager.singleton != null && NetworkManager.singleton.isNetworkActive
+           ) {
+            MirrorMono_RsaKeyIdentity.GetOwnedMirrorIdentity(out NetworkIdentity id );
+            return id != null && id.isClient && id.isServer;
+        }
+        return false;
     }
     public static bool IsHostOrClientDefined() { 
     

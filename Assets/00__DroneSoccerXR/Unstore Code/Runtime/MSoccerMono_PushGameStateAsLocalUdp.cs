@@ -204,6 +204,18 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
     {
         return (ushort)Mathf.Clamp(value, short.MinValue, short.MaxValue);
     }
+
+    public void SetSoccerBallGoalsAsBytes(DroneSoccerBallGoals ballGoals)
+    {
+        byte[] bytes = new byte[1 + 4 * 5];
+        bytes[0] = 14;
+        BitConverter.GetBytes(ballGoals.m_goalDepthMeter).CopyTo(bytes, 1);
+        BitConverter.GetBytes(ballGoals.m_goalDistanceOfCenterMeter).CopyTo(bytes, 5);
+        BitConverter.GetBytes(ballGoals.m_goalCenterHeightMeter).CopyTo(bytes, 9);
+        BitConverter.GetBytes(ballGoals.m_goalWidthRadiusMeter).CopyTo(bytes, 13);
+        BitConverter.GetBytes(ballGoals.m_ballRadius).CopyTo(bytes, 17);
+        m_taggedBytesToPush.Invoke(bytes);
+    }
 }
 
 

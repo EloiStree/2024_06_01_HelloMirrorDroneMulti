@@ -10,6 +10,11 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 {
 
     [SyncVar(hook = nameof(ChangedHappened))]
+
+    public DroneSoccerBallGoals m_droneSoccerBallGoals;
+
+
+    [SyncVar(hook = nameof(ChangedHappened))]
     public DroneSoccerBallState m_droneSoccerBall;
 
     [SyncVar(hook = nameof(ChangedHappened))]
@@ -61,6 +66,10 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         m_onChanged.m_onSoccerBallState.Invoke(n);
     }
 
+    private void ChangedHappened(DroneSoccerBallGoals p, DroneSoccerBallGoals n)
+    {
+        m_onChanged.m_onSoccerBallGoals.Invoke(n);
+    }
 
     public Events m_onChanged;
     [System.Serializable]
@@ -73,6 +82,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         public UnityEvent<DroneSoccerPublicRsaKeyClaim> m_onPublicRsaClaim;
         public UnityEvent<DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaim;
         public UnityEvent<DroneSoccerBallState> m_onSoccerBallState;
+        public UnityEvent<DroneSoccerBallGoals> m_onSoccerBallGoals;
     }
 
 
@@ -83,6 +93,9 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         m_gameArenaInformation  = m_gameArenaInformation.GetCopy();
         m_gamePositions         = m_gamePositions.GetCopy();
         m_indexIntegerClaim     = m_indexIntegerClaim.GetCopy();
+        m_droneSoccerBall       = m_droneSoccerBall.GetCopy();
+        m_droneSoccerBallGoals  = m_droneSoccerBallGoals.GetCopy();
+
     }
 
 
@@ -225,31 +238,40 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 [System.Serializable]
 public struct DroneSoccerBallState
 {
-    public bool m_useBall;
     public long m_dateTimeUtcTick;
     public Vector3 m_position;
     public Quaternion m_rotation;
-    public float m_radius ;
 
     public DroneSoccerBallState GetCopy() {
         return new DroneSoccerBallState() {
             m_dateTimeUtcTick = m_dateTimeUtcTick,
-            m_useBall = m_useBall,
             m_position = m_position,
-            m_rotation = m_rotation,
-            m_radius = m_radius
+            m_rotation = m_rotation
         };
     }
 }
 
 
 [System.Serializable]
-public struct DroneSoccerBallGoals { 
+public struct DroneSoccerBallGoals {
 
     public float m_goalDistanceOfCenterMeter;
     public float m_goalCenterHeightMeter;
     public float m_goalWidthRadiusMeter;
     public float m_goalDepthMeter;
+    public float m_ballRadius;
+
+    public DroneSoccerBallGoals GetCopy() { 
+    
+        return new DroneSoccerBallGoals() {
+        m_goalDistanceOfCenterMeter = m_goalDistanceOfCenterMeter,
+        m_goalCenterHeightMeter = m_goalCenterHeightMeter,
+        m_goalWidthRadiusMeter = m_goalWidthRadiusMeter,
+        m_goalDepthMeter = m_goalDepthMeter,
+        m_ballRadius = m_ballRadius
+    };
+    
+    }
 }
 
 

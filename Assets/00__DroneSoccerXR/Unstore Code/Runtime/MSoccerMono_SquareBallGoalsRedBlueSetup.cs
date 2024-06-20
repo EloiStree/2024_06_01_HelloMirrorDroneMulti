@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,15 @@ public class MSoccerMono_SquareBallGoalsRedBlueSetup : MonoBehaviour
     public float m_goalWidthRadiusMeter=12;
     public float m_goalDepthMeter=10;
 
-    private void OnValidate()
+    public bool m_useAwake = true;
+
+    private void Awake()
+    {
+        RefreshSetup();
+    }
+
+    [ContextMenu("Refresh Setup")]
+    public void RefreshSetup()
     {
         if (m_rootCenterField == null)
             return;
@@ -23,14 +32,19 @@ public class MSoccerMono_SquareBallGoalsRedBlueSetup : MonoBehaviour
 
         m_goalRed.position = m_rootCenterField.position + m_rootCenterField.right * m_goalDistanceOfCenterMeter;
         m_goalBlue.position = m_rootCenterField.position + m_rootCenterField.right * -m_goalDistanceOfCenterMeter;
-        m_goalRed.position+= m_rootCenterField.up * m_goalCenterHeightMeter/2f;
-        m_goalBlue.position+= m_rootCenterField.up * m_goalCenterHeightMeter / 2f;
+        m_goalRed.position += m_rootCenterField.up * m_goalCenterHeightMeter / 2f;
+        m_goalBlue.position += m_rootCenterField.up * m_goalCenterHeightMeter / 2f;
 
-        m_goalRed.rotation = m_rootCenterField.rotation * Quaternion.Euler(0,-90,0);
+        m_goalRed.rotation = m_rootCenterField.rotation * Quaternion.Euler(0, -90, 0);
         m_goalBlue.rotation = m_rootCenterField.rotation * Quaternion.Euler(0, 90, 0);
 
         m_goalRed.localScale = new Vector3(m_goalWidthRadiusMeter, m_goalCenterHeightMeter, m_goalDepthMeter);
         m_goalBlue.localScale = new Vector3(m_goalWidthRadiusMeter, m_goalCenterHeightMeter, m_goalDepthMeter);
+    }
+
+    private void OnValidate()
+    {
+      RefreshSetup();
     }
     void Update()
     {

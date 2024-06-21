@@ -14,8 +14,10 @@ public class AutoLoadIfPlayerPrefAsServerMono : MonoBehaviour
     public UnityEvent m_onReconnect;
     private string m_isServer="IsServer";
     private string m_isClient="IsClient";
-    void Start()
+    public float m_timeBeforeAutoConnecting;
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(m_timeBeforeAutoConnecting);
         if (PlayerPrefs.GetInt(m_isServer) == 1)
         {
             m_onIsServer.Invoke();

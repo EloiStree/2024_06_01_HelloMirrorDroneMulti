@@ -1,5 +1,6 @@
 ﻿using Codice.CM.Common.Tree.Partial;
 using Mirror;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class MSoccerMono_IsOnServerSingleton: MonoBehaviour
@@ -19,16 +20,20 @@ public class MSoccerMono_IsOnServerSingleton: MonoBehaviour
 
         m_areWeOnServer = IsOnServer();
     }
+
+    public static bool IsNetworkActive() {
+        return NetworkManager.singleton != null && NetworkManager.singleton.isNetworkActive;
+    }
+    public static bool HasPlayerInNetwork() {
+        return NetworkManager.singleton != null && NetworkManager.singleton.isNetworkActive && NetworkManager.singleton.numPlayers > 0;
+    }
+    public static int GetPlayerActiveCount() {
+        if(HasPlayerInNetwork()) return NetworkManager.singleton.numPlayers;
+        else return 0;
+    }
     public static bool IsOnServer()
     {
-        if (NetworkManager.singleton != null && NetworkManager.singleton.isNetworkActive && NetworkServer.active)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return NetworkManager.singleton != null && NetworkManager.singleton.isNetworkActive && NetworkServer.active;
     }
     public static bool IsHostOfGame() {
 

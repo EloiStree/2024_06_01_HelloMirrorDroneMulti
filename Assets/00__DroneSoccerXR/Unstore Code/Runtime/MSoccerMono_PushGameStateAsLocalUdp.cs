@@ -65,43 +65,7 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
     }
 
 
-    public void SetPublicRsaWithBytesArray(DroneSoccerPublicRsaKeyClaim rsaKey)
-    {
-
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_redDrone0Stricker, out byte[] redDrone0Stricker);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_redDrone1, out byte[] redDrone1);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_redDrone2, out byte[] redDrone2);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_redDrone3, out byte[] redDrone3);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_redDrone4, out byte[] redDrone4);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_redDrone5, out byte[] redDrone5);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_blueDrone0Stricker, out byte[] blueDrone0Stricker);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_blueDrone1, out byte[] blueDrone1);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_blueDrone2, out byte[] blueDrone2);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_blueDrone3, out byte[] blueDrone3);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_blueDrone4, out byte[] blueDrone4);
-        ConvertPublicRsaToBytesUtility.ParsePublicRsaKeyToBytesWithoutModule(rsaKey.m_blueDrone5, out byte[] blueDrone5);
-        byte[] drones = new byte[1+(128* 12)];
-        drones[0] = 11;
-        Buffer.BlockCopy(redDrone0Stricker, 0,       drones, 1, 128);
-        Buffer.BlockCopy(redDrone1, 0,               drones, 1 + 128, 128);
-        Buffer.BlockCopy(redDrone2, 0,               drones, 1 + 256, 128);
-        Buffer.BlockCopy(redDrone3, 0,               drones, 1 + 384, 128);
-        Buffer.BlockCopy(redDrone4, 0,               drones, 1 + 512, 128);
-        Buffer.BlockCopy(redDrone5, 0,               drones, 1 + 640, 128);
-        Buffer.BlockCopy(blueDrone0Stricker, 0,      drones, 1 + 768, 128);
-        Buffer.BlockCopy(blueDrone1, 0,              drones, 1 + 896, 128);
-        Buffer.BlockCopy(blueDrone2, 0,              drones, 1 + 1024, 128);
-        Buffer.BlockCopy(blueDrone3, 0,              drones, 1 + 1152, 128);
-        Buffer.BlockCopy(blueDrone4, 0,              drones, 1 + 1280, 128);
-        Buffer.BlockCopy(blueDrone5, 0,              drones, 1 + 1408, 128);
-        m_taggedBytesToPush.Invoke(drones);
-
-
-
-
-    }
-
-
+   
 
     int dronePositionByteLength = 1 + 16 + (9 * 12);
     byte[] bytesofPositionToSend;
@@ -142,20 +106,20 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
     public void SetPublicRsaKeyClaimAsText(DroneSoccerPublicRsaKeyClaim publicRsaKeyClaim)
     {
         StringBuilder sb = new StringBuilder();
-        sb.AppendLine("<xml>");
-        sb.AppendLine(publicRsaKeyClaim.m_blueDrone0Stricker);
-        sb.AppendLine(publicRsaKeyClaim.m_blueDrone1);
-        sb.AppendLine(publicRsaKeyClaim.m_blueDrone2);
-        sb.AppendLine(publicRsaKeyClaim.m_blueDrone3);
-        sb.AppendLine(publicRsaKeyClaim.m_blueDrone4);
-        sb.AppendLine(publicRsaKeyClaim.m_blueDrone5);
-        sb.AppendLine(publicRsaKeyClaim.m_redDrone0Stricker);
-        sb.AppendLine(publicRsaKeyClaim.m_redDrone1);
-        sb.AppendLine(publicRsaKeyClaim.m_redDrone2);
-        sb.AppendLine(publicRsaKeyClaim.m_redDrone3);
-        sb.AppendLine(publicRsaKeyClaim.m_redDrone4);
-        sb.AppendLine(publicRsaKeyClaim.m_redDrone5);
-        sb.AppendLine("</xml>");
+        sb.AppendLine("<DroneSoccerPublicKeyRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone0Stricker+"</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone1 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone2 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone3 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone4 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone5 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone0Stricker + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone1 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone2 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone3 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone4 + "</ClaimRSA>");
+        sb.AppendLine("    <ClaimRSA>" + publicRsaKeyClaim.m_redDrone5 + "</ClaimRSA>");
+        sb.AppendLine("</DroneSoccerPublicKeyRSA>");
         m_textToPush.Invoke(sb.ToString());
     }
     public void SetIndexIntegerClaimAsByte(DroneSoccerIndexIntegerClaim indexIntegerClaim)

@@ -33,9 +33,10 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     [SyncVar(hook = nameof(ChangedHappened))]
     public DroneSoccerPublicRsaKeyClaim m_publicRsaClaim;
 
-
     [SyncVar(hook =nameof(ChangedHappened))]
     public DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
+
+
 
     private void  ChangedHappened(DroneSoccerIndexIntegerClaim p, DroneSoccerIndexIntegerClaim n)
     {
@@ -71,23 +72,53 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         m_onChanged.m_onSoccerBallGoals.Invoke(n);
     }
 
+
+    public void InvokeRefreshOnServerAndClients() {
+
+        InvokeAllUnityEventForRefreshWithCurrentValue();
+        if(MSoccerMono_IsOnServerSingleton.IsOnServer())
+            RpcPushAllToRefresh();
+    }
+
+    [Mirror.ClientRpc]
+    public void RpcPushAllToRefresh()
+    {
+        InvokeAllUnityEventForRefreshWithCurrentValue();
+
+    }
+
+    [ContextMenu("Invoke All Unity Event For Refresh With Current Value")]
+    private void InvokeAllUnityEventForRefreshWithCurrentValue()
+    {
+        m_onChanged.m_onGamePointsState.Invoke(m_gamePointsState);
+        m_onChanged.m_onGameTimeValue.Invoke(m_gameTimeValue);
+        m_onChanged.m_onGameArenaInformation.Invoke(m_gameArenaInformation);
+        m_onChanged.m_onGamePositions.Invoke(m_gamePositions);
+        m_onChanged.m_onPublicRsaClaim.Invoke(m_publicRsaClaim);
+        m_onChanged.m_onIndexIntegerClaim.Invoke(m_indexIntegerClaim);
+        m_onChanged.m_onSoccerBallState.Invoke(m_droneSoccerBall);
+        m_onChanged.m_onSoccerBallGoals.Invoke(m_droneSoccerBallGoals);
+    }
+
     public Events m_onChanged;
     [System.Serializable]
     public class Events
     {
-        public UnityEvent<DroneSoccerMatchState> m_onGamePointsState;
-        public UnityEvent<DroneSoccerTimeValue> m_onGameTimeValue;
-        public UnityEvent<DroneSoccerMatchStaticInformation> m_onGameArenaInformation;
-        public UnityEvent<DroneSoccerPositions> m_onGamePositions;
-        public UnityEvent<DroneSoccerPublicRsaKeyClaim> m_onPublicRsaClaim;
-        public UnityEvent<DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaim;
-        public UnityEvent<DroneSoccerBallState> m_onSoccerBallState;
-        public UnityEvent<DroneSoccerBallGoals> m_onSoccerBallGoals;
+        public UnityEvent<DroneSoccerMatchState>                m_onGamePointsState;
+        public UnityEvent<DroneSoccerTimeValue>                 m_onGameTimeValue;
+        public UnityEvent<DroneSoccerMatchStaticInformation>    m_onGameArenaInformation;
+        public UnityEvent<DroneSoccerPositions>                 m_onGamePositions;
+        public UnityEvent<DroneSoccerPublicRsaKeyClaim>         m_onPublicRsaClaim;
+        public UnityEvent<DroneSoccerIndexIntegerClaim>         m_onIndexIntegerClaim;
+        public UnityEvent<DroneSoccerBallState>                 m_onSoccerBallState;
+        public UnityEvent<DroneSoccerBallGoals>                 m_onSoccerBallGoals;
     }
 
 
     [ContextMenu("Full Fresh call no Rsa")]
     public void FullRefreshNotRsa() {
+
+        
         m_gamePointsState       = m_gamePointsState.GetCopy();
         m_gameTimeValue         = m_gameTimeValue.GetCopy();
         m_gameArenaInformation  = m_gameArenaInformation.GetCopy();

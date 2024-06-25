@@ -21,6 +21,13 @@
       "dependencies": {},
       "hash": "e3c22390b3846b4b72ef5ac6e9be29dc678f4157"
     },
+    "be.eloistree.dronemultistructandparser": {
+      "version": "https://github.com/EloiStree/2024_06_25_HelloDroneMultiStructAndParser.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "6539e420012594d9a7fd3328ac53003c87d9a958"
+    },
     "be.eloistree.droneracesample": {
       "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStepSample.git",
       "depth": 0,

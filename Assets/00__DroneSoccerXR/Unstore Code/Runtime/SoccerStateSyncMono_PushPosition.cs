@@ -8,8 +8,8 @@ using UnityEngine.Events;
 public class SoccerStateSyncMono_PushPosition : MonoBehaviour
 {
 
-    public DroneSoccerPositions m_positions;
-    public UnityEvent<DroneSoccerPositions> m_onPositionsChanged;
+    public S_DroneSoccerPositions m_positions;
+    public UnityEvent<S_DroneSoccerPositions> m_onPositionsChanged;
 
     public Transform m_centerOfArena;
     public Transform[] m_dronePositionRed = new Transform[6];
@@ -23,8 +23,8 @@ public class SoccerStateSyncMono_PushPosition : MonoBehaviour
     {
         while (true)
         {
-            m_positions.m_dateTimeUtcTick = DateTime.UtcNow.Ticks;
-            m_positions.m_framePushed = m_framePushed++; 
+            m_positions.m_dateTimeUtcTick =(ulong) DateTime.UtcNow.Ticks;
+            m_positions.m_framePushed =(ulong) m_framePushed++; 
             SetPosition(ref m_positions.m_redDrone0Stricker, m_dronePositionRed[0]);
             SetPosition(ref m_positions.m_redDrone1, m_dronePositionRed[1]);
             SetPosition(ref m_positions.m_redDrone2, m_dronePositionRed[2]);
@@ -43,7 +43,7 @@ public class SoccerStateSyncMono_PushPosition : MonoBehaviour
         
     }
 
-    private void SetPosition(ref DronePositionCompressed drone, Transform transform)
+    private void SetPosition(ref S_DronePositionCompressed drone, Transform transform)
     {
         MSoccer_RelocationUtility.GetWorldToLocal_DirectionalPoint(
             transform.position,

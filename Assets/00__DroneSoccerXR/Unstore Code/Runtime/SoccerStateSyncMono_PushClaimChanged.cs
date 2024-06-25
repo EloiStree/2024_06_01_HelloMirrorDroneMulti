@@ -5,10 +5,10 @@ using UnityEngine.Events;
 
 public class SoccerStateSyncMono_PushClaimChanged : MonoBehaviour
 {
-    public DroneSoccerPublicRsaKeyClaim m_publicRsaClaim;
-    public DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
-    public UnityEvent<DroneSoccerPublicRsaKeyClaim> m_onPublicRsaClaimChanged;
-    public UnityEvent<DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaimChanged;
+    public S_DroneSoccerPublicXmlRsaKey1024Claim m_publicRsaClaim;
+    public S_DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
+    public UnityEvent<S_DroneSoccerPublicXmlRsaKey1024Claim> m_onPublicRsaClaimChanged;
+    public UnityEvent<S_DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaimChanged;
 
     public MirrorMono_PublicRsaKeyOwner[] m_publicRsaKeyDroneRedOwner = new MirrorMono_PublicRsaKeyOwner[6];
     public MirrorMono_PublicRsaKeyOwner[] m_publicRsaKeyDroneBlueOwner = new MirrorMono_PublicRsaKeyOwner[6];

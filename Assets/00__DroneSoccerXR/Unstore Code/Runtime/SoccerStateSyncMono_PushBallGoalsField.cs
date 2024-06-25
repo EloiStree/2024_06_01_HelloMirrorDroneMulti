@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class SoccerStateSyncMono_PushBallGoalsField : MonoBehaviour
 {
 
-    public DroneSoccerBallGoals m_ballGoals;
-    public UnityEvent<DroneSoccerBallGoals> m_onBallGoals;
+    public S_DroneSoccerBallGoals m_ballGoals;
+    public UnityEvent<S_DroneSoccerBallGoals> m_onBallGoals;
     public MSoccerMono_SquareBallGoalsRedBlueSetup m_goalsSetup;
 
    

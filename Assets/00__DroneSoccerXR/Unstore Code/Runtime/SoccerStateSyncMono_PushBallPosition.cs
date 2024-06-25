@@ -7,8 +7,8 @@ using UnityEngine.Events;
 public class SoccerStateSyncMono_PushBallPosition : MonoBehaviour
 {
 
-    public DroneSoccerBallState m_ballPosition;
-    public UnityEvent<DroneSoccerBallState> m_onBallPositionChanged;
+    public S_DroneSoccerBallPosition m_ballPosition;
+    public UnityEvent<S_DroneSoccerBallPosition> m_onBallPositionChanged;
 
 
 
@@ -24,7 +24,7 @@ public class SoccerStateSyncMono_PushBallPosition : MonoBehaviour
         while (true)
         {
            
-           m_ballPosition.m_dateTimeUtcTick = DateTime.UtcNow.Ticks;
+           m_ballPosition.m_dateTimeUtcTick =(ulong) DateTime.UtcNow.Ticks;
            MSoccer_RelocationUtility.GetWorldToLocal_DirectionalPoint(
            transform.position,
            transform.rotation,

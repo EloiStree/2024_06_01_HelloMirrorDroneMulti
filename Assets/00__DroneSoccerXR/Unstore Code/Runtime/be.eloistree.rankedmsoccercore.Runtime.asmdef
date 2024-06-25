@@ -9,7 +9,8 @@
         "Mirror.Examples",
         "be.eloistree.rootsofknowledgedronecar",
         "be.eloistree.generatestorersakey",
-        "Mirror.Transports"
+        "Mirror.Transports",
+        "be.eloistree.dronemultistructandparser"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

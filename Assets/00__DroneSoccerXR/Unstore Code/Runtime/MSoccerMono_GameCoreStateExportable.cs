@@ -10,64 +10,67 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 {
 
     [SyncVar(hook = nameof(ChangedHappened))]
-
-    public DroneSoccerBallGoals m_droneSoccerBallGoals;
-
-
-    [SyncVar(hook = nameof(ChangedHappened))]
-    public DroneSoccerBallState m_droneSoccerBall;
-
-    [SyncVar(hook = nameof(ChangedHappened))]
-    public DroneSoccerMatchState m_gamePointsState;
-
-    [SyncVar(hook = nameof(ChangedHappened))]
-    public DroneSoccerTimeValue m_gameTimeValue;
-
-    [SyncVar(hook = nameof(ChangedHappened))]
-    public DroneSoccerMatchStaticInformation m_gameArenaInformation;
-
-    [SyncVar(hook = nameof(ChangedHappened))]
-    public DroneSoccerPositions m_gamePositions;
+    public S_DroneSoccerBallGoals m_droneSoccerBallGoals;
 
 
     [SyncVar(hook = nameof(ChangedHappened))]
-    public DroneSoccerPublicRsaKeyClaim m_publicRsaClaim;
+    public S_DroneSoccerBallPosition m_droneSoccerBall;
+
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public S_DroneSoccerMatchState m_gamePointsState;
+
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public S_DroneSoccerTimeValue m_gameTimeValue;
+
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public S_DroneSoccerMatchStaticInformation m_gameArenaInformation;
+
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public S_DroneSoccerPositions m_gamePositions;
+
+
+    [SyncVar(hook = nameof(ChangedHappened))]
+    public S_DroneSoccerPublicXmlRsaKey1024Claim m_publicRsaClaim;
 
     [SyncVar(hook =nameof(ChangedHappened))]
-    public DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
+    public S_DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
 
+<<<<<<< HEAD
+    private void  ChangedHappened(S_DroneSoccerIndexIntegerClaim p, S_DroneSoccerIndexIntegerClaim n)
+=======
 
 
     private void  ChangedHappened(DroneSoccerIndexIntegerClaim p, DroneSoccerIndexIntegerClaim n)
+>>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
     {
         m_onChanged.m_onIndexIntegerClaim.Invoke(n);
     }
-    private void ChangedHappened(DroneSoccerPublicRsaKeyClaim p, DroneSoccerPublicRsaKeyClaim n)
+    private void ChangedHappened(S_DroneSoccerPublicXmlRsaKey1024Claim p, S_DroneSoccerPublicXmlRsaKey1024Claim n)
     {
         m_onChanged.m_onPublicRsaClaim.Invoke(n);
     }
-    private void ChangedHappened(DroneSoccerPositions p, DroneSoccerPositions n)
+    private void ChangedHappened(S_DroneSoccerPositions p, S_DroneSoccerPositions n)
     {
         m_onChanged.m_onGamePositions.Invoke(n);
     }
-    private void ChangedHappened(DroneSoccerMatchStaticInformation p, DroneSoccerMatchStaticInformation n)
+    private void ChangedHappened(S_DroneSoccerMatchStaticInformation p, S_DroneSoccerMatchStaticInformation n)
     {
         m_onChanged.m_onGameArenaInformation.Invoke(n);
     }
-    private void ChangedHappened(DroneSoccerTimeValue p, DroneSoccerTimeValue n)
+    private void ChangedHappened(S_DroneSoccerTimeValue p, S_DroneSoccerTimeValue n)
     {
         m_onChanged.m_onGameTimeValue.Invoke(n);
     }
-    private void ChangedHappened(DroneSoccerMatchState p, DroneSoccerMatchState n)
+    private void ChangedHappened(S_DroneSoccerMatchState p, S_DroneSoccerMatchState n)
     {
         m_onChanged.m_onGamePointsState.Invoke(n);
     }
-    private void ChangedHappened(DroneSoccerBallState p, DroneSoccerBallState n)
+    private void ChangedHappened(S_DroneSoccerBallPosition p, S_DroneSoccerBallPosition n)
     {
         m_onChanged.m_onSoccerBallState.Invoke(n);
     }
 
-    private void ChangedHappened(DroneSoccerBallGoals p, DroneSoccerBallGoals n)
+    private void ChangedHappened(S_DroneSoccerBallGoals p, S_DroneSoccerBallGoals n)
     {
         m_onChanged.m_onSoccerBallGoals.Invoke(n);
     }
@@ -104,6 +107,16 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     [System.Serializable]
     public class Events
     {
+<<<<<<< HEAD
+        public UnityEvent<S_DroneSoccerMatchState> m_onGamePointsState;
+        public UnityEvent<S_DroneSoccerTimeValue> m_onGameTimeValue;
+        public UnityEvent<S_DroneSoccerMatchStaticInformation> m_onGameArenaInformation;
+        public UnityEvent<S_DroneSoccerPositions> m_onGamePositions;
+        public UnityEvent<S_DroneSoccerPublicXmlRsaKey1024Claim> m_onPublicRsaClaim;
+        public UnityEvent<S_DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaim;
+        public UnityEvent<S_DroneSoccerBallPosition> m_onSoccerBallState;
+        public UnityEvent<S_DroneSoccerBallGoals> m_onSoccerBallGoals;
+=======
         public UnityEvent<DroneSoccerMatchState>                m_onGamePointsState;
         public UnityEvent<DroneSoccerTimeValue>                 m_onGameTimeValue;
         public UnityEvent<DroneSoccerMatchStaticInformation>    m_onGameArenaInformation;
@@ -112,12 +125,27 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         public UnityEvent<DroneSoccerIndexIntegerClaim>         m_onIndexIntegerClaim;
         public UnityEvent<DroneSoccerBallState>                 m_onSoccerBallState;
         public UnityEvent<DroneSoccerBallGoals>                 m_onSoccerBallGoals;
+>>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
     }
+
+
+
 
 
     [ContextMenu("Full Fresh call no Rsa")]
     public void FullRefreshNotRsa() {
 
+<<<<<<< HEAD
+        CPS.CPS_DroneSoccerMatchState.GetCopy(m_gamePointsState, out m_gamePointsState);
+        CPS.CPS_DroneSoccerMatchStaticInformation.GetCopy(m_gameArenaInformation, out m_gameArenaInformation);
+        CPS.CPS_DroneSoccerPositions.GetCopy(m_gamePositions, out m_gamePositions);
+        CPS.CPS_DroneSoccerBallPosition.GetCopy(m_droneSoccerBall, out m_droneSoccerBall);
+        CPS.CPS_DroneSoccerBallGoals.GetCopy(m_droneSoccerBallGoals, out m_droneSoccerBallGoals);
+        CPS.CPS_DroneSoccerIndexIntegerClaim.GetCopy(m_indexIntegerClaim, out m_indexIntegerClaim);
+        CPS.CPS_DroneSoccerPublicXmlRsaKey1024Claim.GetCopy(m_publicRsaClaim, out m_publicRsaClaim);
+        CPS.CPS_DroneSoccerTimeValue.GetCopy(m_gameTimeValue, out m_gameTimeValue);
+       
+=======
         
         m_gamePointsState       = m_gamePointsState.GetCopy();
         m_gameTimeValue         = m_gameTimeValue.GetCopy();
@@ -126,6 +154,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         m_indexIntegerClaim     = m_indexIntegerClaim.GetCopy();
         m_droneSoccerBall       = m_droneSoccerBall.GetCopy();
         m_droneSoccerBallGoals  = m_droneSoccerBallGoals.GetCopy();
+>>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
 
     }
 
@@ -151,7 +180,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     {
 
         R.Randomized(ref m_publicRsaClaim);
-        m_publicRsaClaim= m_publicRsaClaim.GetCopy();
+        CPS.CPS_DroneSoccerPublicXmlRsaKey1024Claim.GetCopy(m_publicRsaClaim, out m_publicRsaClaim);
         FullRefreshNotRsa();
 
     }
@@ -160,17 +189,17 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 
     public class R
     {
-        internal static void Randomized(ref DroneSoccerTimeValue value)
+        internal static void Randomized(ref S_DroneSoccerTimeValue value)
         {
             value.m_secondsSinceSetStarted= UnityEngine.Random.Range(0, 300);
             value.m_secondsSinceMatchStarted= UnityEngine.Random.Range(0, 900);
-            value.m_timeOfServerDateTimeUtcNowTicks= DateTime.UtcNow.Ticks;
+            value.m_timeOfServerDateTimeUtcNowTicks=(ulong) DateTime.UtcNow.Ticks;
         }
 
-        internal static void Randomized(ref DroneSoccerMatchStaticInformation value)
+        internal static void Randomized(ref S_DroneSoccerMatchStaticInformation value)
         {
-            value.m_maxTimingOfSet= UnityEngine.Random.Range(0, 300);
-            value.m_maxTimingOfMatch= UnityEngine.Random.Range(0, 900);
+            value.m_maxTimingOfSetInSeconds= UnityEngine.Random.Range(0, 300);
+            value.m_maxTimingOfMatchInSeconds= UnityEngine.Random.Range(0, 900);
             value.m_numberOfSetsToWinMatch= UnityEngine.Random.Range(0, 2);
             value.m_numberOfPointsToForceWinSet= UnityEngine.Random.Range(0, 99);
             value.m_arenaWidthMeter= UnityEngine.Random.Range(0, 7);
@@ -179,27 +208,27 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
             value.m_goalDistanceOfCenterMeter= UnityEngine.Random.Range(0, 4);
             value.m_goalCenterHeightMeter= UnityEngine.Random.Range(0, 3);
             value.m_goalInnerRadiusMeter= UnityEngine.Random.Range(0, 0.6f);
-            value.m_goalSizeRadiusMeter= UnityEngine.Random.Range(0, 0.7f);
+            value.m_goalOuterRadiusMeter= UnityEngine.Random.Range(0, 0.7f);
             value.m_goalDepthMeter= UnityEngine.Random.Range(0, 0.2f);
             value.m_droneSphereRadiusMeter= UnityEngine.Random.Range(0, 0.4f);
         }
 
-        internal static void Randomized(ref DroneSoccerMatchState value)
+        internal static void Randomized(ref S_DroneSoccerMatchState value)
         {
-            value.m_bluePoints= UnityEngine.Random.Range(0, 100);
-            value.m_redPoints= UnityEngine.Random.Range(0, 100);
-            value.m_blueSets= UnityEngine.Random.Range(0, 100);
-            value.m_redSets= UnityEngine.Random.Range(0, 100);
-            value.m_utcTickInSecondsWhenMatchStarted= DateTime.UtcNow.Ticks;
-            value.m_utcTickInSecondsWhenMatchFinished= DateTime.UtcNow.Ticks;
+            value.m_bluePoints=(uint) UnityEngine.Random.Range(0, 100);
+            value.m_redPoints= (uint)UnityEngine.Random.Range(0, 100);
+            value.m_blueSets= (uint)UnityEngine.Random.Range(0, 100);
+            value.m_redSets= (uint)UnityEngine.Random.Range(0, 100);
+            value.m_utcTickInSecondsWhenMatchStarted=(ulong) DateTime.UtcNow.Ticks;
+            value.m_utcTickInSecondsWhenMatchFinished= (ulong)DateTime.UtcNow.Ticks;
         }
 
-        internal static void Randomized(ref DroneSoccerPositions value)
+        internal static void Randomized(ref S_DroneSoccerPositions value)
         {
             
         }
 
-        internal static void Randomized(ref DroneSoccerPublicRsaKeyClaim value)
+        internal static void Randomized(ref S_DroneSoccerPublicXmlRsaKey1024Claim value)
         {
             value.m_redDrone0Stricker= GetRSA();
             value.m_redDrone1= GetRSA();
@@ -219,7 +248,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
             return RSA.Create().ToXmlString(false);
         }
 
-        internal static void Randomized(ref DroneSoccerIndexIntegerClaim value)
+        internal static void Randomized(ref S_DroneSoccerIndexIntegerClaim value)
         {
             value.m_redDrone0Stricker= UnityEngine.Random.Range(0, 100);
             value.m_redDrone1= UnityEngine.Random.Range(0, 100);
@@ -239,326 +268,27 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
 
 
     [ServerCallback]
-    public void SetArenaInformationAsCopy( DroneSoccerMatchStaticInformation arenaInformation) {
-        m_gameArenaInformation = arenaInformation.GetCopy();
+    public void SetArenaInformationAsCopy( S_DroneSoccerMatchStaticInformation arenaInformation) {
+        m_gameArenaInformation = arenaInformation;
     }
     [ServerCallback]
-    public void SetTimeValueAsCopy( DroneSoccerTimeValue timeValue) {
-        m_gameTimeValue = timeValue.GetCopy();
+    public void SetTimeValueAsCopy( S_DroneSoccerTimeValue timeValue) {
+        m_gameTimeValue = timeValue;
     }
     [ServerCallback]
-    public void SetPointsStateAsCopy( DroneSoccerMatchState pointsState) {
-        m_gamePointsState = pointsState.GetCopy();
+    public void SetPointsStateAsCopy( S_DroneSoccerMatchState pointsState) {
+        m_gamePointsState = pointsState;
     }
     [ServerCallback]
-    public void SetPositionsAsCopy( DroneSoccerPositions positions) {
-        m_gamePositions = positions.GetCopy();
+    public void SetPositionsAsCopy( S_DroneSoccerPositions positions) {
+        m_gamePositions = positions;
     }
     [ServerCallback]
-    public void SetPublicRsaKeyClaimAsCopy( DroneSoccerPublicRsaKeyClaim publicRsaKeyClaim) {
-        m_publicRsaClaim = publicRsaKeyClaim.GetCopy(); ;
+    public void SetPublicRsaKeyClaimAsCopy( S_DroneSoccerPublicXmlRsaKey1024Claim publicRsaKeyClaim) {
+        m_publicRsaClaim = publicRsaKeyClaim;
     }
     [ServerCallback]
-    public void SetIndexIntegerClaimAsCopy( DroneSoccerIndexIntegerClaim indexIntegerClaim) {
-        m_indexIntegerClaim = indexIntegerClaim.GetCopy(); ;
-    }
-}
-
-
-
-[System.Serializable]
-public struct DroneSoccerBallState
-{
-    public long m_dateTimeUtcTick;
-    public Vector3 m_position;
-    public Quaternion m_rotation;
-
-    public DroneSoccerBallState GetCopy() {
-        return new DroneSoccerBallState() {
-            m_dateTimeUtcTick = m_dateTimeUtcTick,
-            m_position = m_position,
-            m_rotation = m_rotation
-        };
-    }
-}
-
-
-[System.Serializable]
-public struct DroneSoccerBallGoals {
-
-    public float m_goalDistanceOfCenterMeter;
-    public float m_goalCenterHeightMeter;
-    public float m_goalWidthRadiusMeter;
-    public float m_goalDepthMeter;
-    public float m_ballRadius;
-
-    public DroneSoccerBallGoals GetCopy() { 
-    
-        return new DroneSoccerBallGoals() {
-        m_goalDistanceOfCenterMeter = m_goalDistanceOfCenterMeter,
-        m_goalCenterHeightMeter = m_goalCenterHeightMeter,
-        m_goalWidthRadiusMeter = m_goalWidthRadiusMeter,
-        m_goalDepthMeter = m_goalDepthMeter,
-        m_ballRadius = m_ballRadius
-    };
-    
-    }
-}
-
-
-//Refresh with event
-[System.Serializable]
-public struct DroneSoccerMatchState
-{   
-    public int m_bluePoints;
-    public int m_redPoints;
-    public int m_blueSets;
-    public int m_redSets;
-    public long m_utcTickInSecondsWhenMatchStarted;
-    public long m_utcTickInSecondsWhenMatchFinished;
-
-    public DroneSoccerMatchState GetCopy() { 
-    return new DroneSoccerMatchState() {
-        m_bluePoints = m_bluePoints,
-        m_redPoints = m_redPoints,
-        m_blueSets = m_blueSets,
-        m_redSets = m_redSets,
-        m_utcTickInSecondsWhenMatchStarted = m_utcTickInSecondsWhenMatchStarted,
-        m_utcTickInSecondsWhenMatchFinished = m_utcTickInSecondsWhenMatchFinished
-    };
-    
-    
-    }
-}
-
-
-//Refresh every seconds
-[System.Serializable]
-public struct DroneSoccerTimeValue {
-    public float m_secondsSinceMatchStarted;
-    public float m_secondsSinceSetStarted;
-    public long m_timeOfServerDateTimeUtcNowTicks;
-
-    public DroneSoccerTimeValue GetCopy(){ 
-    return new DroneSoccerTimeValue() {
-        m_secondsSinceMatchStarted = m_secondsSinceMatchStarted,
-        m_secondsSinceSetStarted = m_secondsSinceSetStarted,
-        m_timeOfServerDateTimeUtcNowTicks = m_timeOfServerDateTimeUtcNowTicks
-    };
-    }
-}
-
-//Set Once at start of the match
-[System.Serializable]
-public struct DroneSoccerMatchStaticInformation {
-    [Header("Match Info")]
-    public float m_maxTimingOfSet;//300 seconds
-    public float m_maxTimingOfMatch;//15 minutes
-    public float m_numberOfSetsToWinMatch;//2 sets
-    [Tooltip("If a team reach this points, the set is won")]
-    public float m_numberOfPointsToForceWinSet;//99 points
-
-    [Header("Dimension")]
-    public float m_arenaWidthMeter;//around 7 meters
-    public float m_arenaHeightMeter;//around 6 meters
-    public float m_arenaDepthMeter;//around 14 meters
-    public float m_goalDistanceOfCenterMeter;//4 meters+
-    public float m_goalCenterHeightMeter;//3 meters
-    public float m_goalInnerRadiusMeter;// 60cm+
-    public float m_goalSizeRadiusMeter;///70cm+
-    public float m_goalDepthMeter;//around 5-20 cm
-    public float m_droneSphereRadiusMeter;//40cm 0.4 meter
-
-
-    public DroneSoccerMatchStaticInformation GetCopy() {
-        return new DroneSoccerMatchStaticInformation() {
-            m_maxTimingOfSet = m_maxTimingOfSet,
-            m_maxTimingOfMatch = m_maxTimingOfMatch,
-            m_numberOfSetsToWinMatch = m_numberOfSetsToWinMatch,
-            m_numberOfPointsToForceWinSet = m_numberOfPointsToForceWinSet,
-            m_arenaWidthMeter = m_arenaWidthMeter,
-            m_arenaHeightMeter = m_arenaHeightMeter,
-            m_arenaDepthMeter = m_arenaDepthMeter,
-            m_goalDistanceOfCenterMeter = m_goalDistanceOfCenterMeter,
-            m_goalCenterHeightMeter = m_goalCenterHeightMeter,
-            m_goalInnerRadiusMeter = m_goalInnerRadiusMeter,
-            m_goalSizeRadiusMeter = m_goalSizeRadiusMeter,
-            m_goalDepthMeter = m_goalDepthMeter,
-            m_droneSphereRadiusMeter = m_droneSphereRadiusMeter
-        };
-    }
-}
-//12 time per second refresh
-[System.Serializable]
-public struct DroneSoccerPositions
-{
-    public long m_dateTimeUtcTick;
-    public long m_framePushed;
-    public DronePositionCompressed m_redDrone0Stricker;
-    public DronePositionCompressed m_redDrone1;
-    public DronePositionCompressed m_redDrone2;
-    public DronePositionCompressed m_redDrone3;
-    public DronePositionCompressed m_redDrone4;
-    public DronePositionCompressed m_redDrone5;
-    public DronePositionCompressed m_blueDrone0Stricker;
-    public DronePositionCompressed m_blueDrone1;
-    public DronePositionCompressed m_blueDrone2;
-    public DronePositionCompressed m_blueDrone3;
-    public DronePositionCompressed m_blueDrone4;
-    public DronePositionCompressed m_blueDrone5;
-
-    public DroneSoccerPositions GetCopy()
-    {
-        return new DroneSoccerPositions()
-        {
-            m_dateTimeUtcTick = m_dateTimeUtcTick,
-            m_framePushed = m_framePushed,
-            m_redDrone0Stricker = m_redDrone0Stricker.GetCopy(),
-            m_redDrone1 = m_redDrone1.GetCopy(),
-            m_redDrone2 = m_redDrone2.GetCopy(),
-            m_redDrone3 = m_redDrone3.GetCopy(),
-            m_redDrone4 = m_redDrone4.GetCopy(),
-            m_redDrone5 = m_redDrone5.GetCopy(),
-            m_blueDrone0Stricker = m_blueDrone0Stricker.GetCopy(),
-            m_blueDrone1 = m_blueDrone1.GetCopy(),
-            m_blueDrone2 = m_blueDrone2.GetCopy(),
-            m_blueDrone3 = m_blueDrone3.GetCopy(),
-            m_blueDrone4 = m_blueDrone4.GetCopy(),
-            m_blueDrone5 = m_blueDrone5.GetCopy()
-        };
-    }
-}
-
-
-[System.Serializable]
-public struct DronePositionCompressed
-{
-    public short m_localPositionX;
-    public short m_localPositionY;
-    public short m_localPositionZ;
-    public byte m_eulerAngleX;
-    public byte m_eulerAngleY;
-    public byte m_eulerAngleZ;
-
-    public void SetPosition(Vector3 localPosition)
-    {
-        m_localPositionX = (short)(Mathf.Clamp(localPosition.x * 1000f, short.MinValue, short.MaxValue));
-        m_localPositionY = (short)(Mathf.Clamp(localPosition.y * 1000f, short.MinValue, short.MaxValue));
-        m_localPositionZ = (short)(Mathf.Clamp(localPosition.z * 1000f, short.MinValue, short.MaxValue));
-    }
-    public void SetRotation(Quaternion localRotation)
-    {
-        Vector3 euler = localRotation.eulerAngles;
-        Convert360AngleTo255(euler.x, out m_eulerAngleX);
-        Convert360AngleTo255(euler.y, out m_eulerAngleY);
-        Convert360AngleTo255(euler.z, out m_eulerAngleZ);
-    }
-
-    private void Convert360AngleTo255(float angle, out byte angle255)
-    {
-        angle255 = (byte)((angle % 360) / 360f * 255f);
-    }
-    private void Convert255AngleTo360(float angle255, out byte angle360)
-    {
-        angle360 = (byte)(angle255 / 255f * 360f);
-    }
-    public Vector3 GetPosition()
-    {
-        return new Vector3(m_localPositionX/1000f, m_localPositionY / 1000f, m_localPositionZ / 1000f);
-    }
-    public Quaternion GetRotation()
-    {
-        Convert255AngleTo360(m_eulerAngleX, out byte x);
-        Convert255AngleTo360(m_eulerAngleY, out byte y);
-        Convert255AngleTo360(m_eulerAngleZ, out byte z);
-        return Quaternion.Euler(x, y,z);
-    }
-
-    public DronePositionCompressed GetCopy()
-    {
-        return new DronePositionCompressed()
-        {
-            m_localPositionX = m_localPositionX,
-            m_localPositionY = m_localPositionY,
-            m_localPositionZ = m_localPositionZ,
-            m_eulerAngleX = m_eulerAngleX,
-            m_eulerAngleY = m_eulerAngleY,
-            m_eulerAngleZ = m_eulerAngleZ
-        };
-    }
-}
-
-
-
-[System.Serializable]
-public struct DroneSoccerPublicRsaKeyClaim
-{
-    public string m_redDrone0Stricker;
-    public string m_redDrone1;
-    public string m_redDrone2;
-    public string m_redDrone3;
-    public string m_redDrone4;
-    public string m_redDrone5;
-    public string m_blueDrone0Stricker;
-    public string m_blueDrone1;
-    public string m_blueDrone2;
-    public string m_blueDrone3;
-    public string m_blueDrone4;
-    public string m_blueDrone5;
-
-    public DroneSoccerPublicRsaKeyClaim GetCopy()
-    {
-
-        return new DroneSoccerPublicRsaKeyClaim()
-        {
-            m_redDrone0Stricker = m_redDrone0Stricker.ToString(),
-            m_redDrone1 = m_redDrone1.ToString(),
-            m_redDrone2 = m_redDrone2.ToString(),
-            m_redDrone3 = m_redDrone3.ToString(),
-            m_redDrone4 = m_redDrone4.ToString(),
-            m_redDrone5 = m_redDrone5.ToString(),
-            m_blueDrone0Stricker = m_blueDrone0Stricker.ToString(),
-            m_blueDrone1 = m_blueDrone1.ToString(),
-            m_blueDrone2 = m_blueDrone2.ToString(),
-            m_blueDrone3 = m_blueDrone3.ToString(),
-            m_blueDrone4 = m_blueDrone4.ToString(),
-            m_blueDrone5 = m_blueDrone5.ToString()
-        };
-    }
-}
-[System.Serializable]
-public struct DroneSoccerIndexIntegerClaim
-{
-    public int m_redDrone0Stricker;
-    public int m_redDrone1;
-    public int m_redDrone2;
-    public int m_redDrone3;
-    public int m_redDrone4;
-    public int m_redDrone5;
-    public int m_blueDrone0Stricker;
-    public int m_blueDrone1;
-    public int m_blueDrone2;
-    public int m_blueDrone3;
-    public int m_blueDrone4;
-    public int m_blueDrone5;
-
-    public DroneSoccerIndexIntegerClaim GetCopy()
-    {
-        return new DroneSoccerIndexIntegerClaim()
-        {
-            m_redDrone0Stricker =(int) m_redDrone0Stricker,
-            m_redDrone1 =(int) m_redDrone1,
-            m_redDrone2 =(int) m_redDrone2,
-            m_redDrone3 =(int) m_redDrone3,
-            m_redDrone4 =(int) m_redDrone4,
-            m_redDrone5 = (int)m_redDrone5,
-            m_blueDrone0Stricker = (int)m_blueDrone0Stricker,
-            m_blueDrone1 =(int) m_blueDrone1,
-            m_blueDrone2 =(int) m_blueDrone2,
-            m_blueDrone3 =(int) m_blueDrone3,
-            m_blueDrone4 =(int) m_blueDrone4,
-            m_blueDrone5 = (int)m_blueDrone5
-        };
-
+    public void SetIndexIntegerClaimAsCopy( S_DroneSoccerIndexIntegerClaim indexIntegerClaim) {
+        m_indexIntegerClaim = indexIntegerClaim ;
     }
 }

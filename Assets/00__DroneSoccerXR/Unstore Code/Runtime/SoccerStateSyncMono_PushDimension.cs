@@ -9,8 +9,8 @@ public class SoccerStateSyncMono_PushDimension : MonoBehaviour, MSoccerMono_Refr
 {
 
 
-    public DroneSoccerMatchStaticInformation m_arenaInformation;
-    public UnityEvent<DroneSoccerMatchStaticInformation> m_onArenaInformationChanged;
+    public S_DroneSoccerMatchStaticInformation m_arenaInformation;
+    public UnityEvent<S_DroneSoccerMatchStaticInformation> m_onArenaInformationChanged;
 
     public Transform m_arenaCenter;
     public Transform m_areneTopRightFrontCorner;
@@ -42,8 +42,8 @@ public class SoccerStateSyncMono_PushDimension : MonoBehaviour, MSoccerMono_Refr
 
         m_arenaInformation.m_numberOfPointsToForceWinSet = m_winSetByPoint.m_scoreToWinSet;
         m_arenaInformation.m_numberOfSetsToWinMatch = m_winSetByPoint.m_setToWinMatch;
-        m_arenaInformation.m_maxTimingOfSet = m_winSetByTime.m_timeToWinSetInSeconds;
-        m_arenaInformation.m_maxTimingOfMatch = m_maxTimeMatch.m_maxTimeForMatchInSeconds;
+        m_arenaInformation.m_maxTimingOfSetInSeconds = m_winSetByTime.m_timeToWinSetInSeconds;
+        m_arenaInformation.m_maxTimingOfMatchInSeconds = m_maxTimeMatch.m_maxTimeForMatchInSeconds;
         MSoccer_RelocationUtility.GetWorldToLocal_Point(
             m_areneTopRightFrontCorner.position,
             m_arenaCenter,
@@ -74,7 +74,7 @@ public class SoccerStateSyncMono_PushDimension : MonoBehaviour, MSoccerMono_Refr
         m_arenaInformation.m_goalCenterHeightMeter = goalLocalPosition.y;
         m_arenaInformation.m_goalDepthMeter = Math.Abs(goalInnerAnchor.z);
         m_arenaInformation.m_goalInnerRadiusMeter = Math.Abs(goalInnerAnchor.y);
-        m_arenaInformation.m_goalSizeRadiusMeter = Math.Abs(goalOutterAnchor.y);
+        m_arenaInformation.m_goalOuterRadiusMeter = Math.Abs(goalOutterAnchor.y);
 
 
         m_onArenaInformationChanged.Invoke(m_arenaInformation);

@@ -5,7 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SoccerStateSyncMono_PushPosition : MonoBehaviour
+
+public interface MSoccerMono_RefreshablePush {
+
+    public void RefreshAndPush();
+}
+
+public class SoccerStateSyncMono_PushPosition : MonoBehaviour, MSoccerMono_RefreshablePush
 {
 
     public S_DroneSoccerPositions m_positions;
@@ -18,11 +24,31 @@ public class SoccerStateSyncMono_PushPosition : MonoBehaviour
 
 
     public long m_framePushed=0;
-    
+
+    public void RefreshAndPush()
+    {
+        m_positions.m_dateTimeUtcTick = DateTime.UtcNow.Ticks;
+        m_positions.m_framePushed = m_framePushed++;
+        SetPosition(ref m_positions.m_redDrone0Stricker, m_dronePositionRed[0]);
+        SetPosition(ref m_positions.m_redDrone1, m_dronePositionRed[1]);
+        SetPosition(ref m_positions.m_redDrone2, m_dronePositionRed[2]);
+        SetPosition(ref m_positions.m_redDrone3, m_dronePositionRed[3]);
+        SetPosition(ref m_positions.m_redDrone4, m_dronePositionRed[4]);
+        SetPosition(ref m_positions.m_redDrone5, m_dronePositionRed[5]);
+        SetPosition(ref m_positions.m_blueDrone0Stricker, m_dronePositionBlue[0]);
+        SetPosition(ref m_positions.m_blueDrone1, m_dronePositionBlue[1]);
+        SetPosition(ref m_positions.m_blueDrone2, m_dronePositionBlue[2]);
+        SetPosition(ref m_positions.m_blueDrone3, m_dronePositionBlue[3]);
+        SetPosition(ref m_positions.m_blueDrone4, m_dronePositionBlue[4]);
+        SetPosition(ref m_positions.m_blueDrone5, m_dronePositionBlue[5]);
+        m_onPositionsChanged.Invoke(m_positions);
+    }
+
     public IEnumerator Start()
     {
         while (true)
         {
+<<<<<<< HEAD
             m_positions.m_dateTimeUtcTick =(ulong) DateTime.UtcNow.Ticks;
             m_positions.m_framePushed =(ulong) m_framePushed++; 
             SetPosition(ref m_positions.m_redDrone0Stricker, m_dronePositionRed[0]);
@@ -38,6 +64,9 @@ public class SoccerStateSyncMono_PushPosition : MonoBehaviour
             SetPosition(ref m_positions.m_blueDrone4, m_dronePositionBlue[4]);
             SetPosition(ref m_positions.m_blueDrone5, m_dronePositionBlue[5]);
             m_onPositionsChanged.Invoke(m_positions);
+=======
+            RefreshAndPush();
+>>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
             yield return new WaitForSeconds(1f / m_framePerSeconds);
         }
         

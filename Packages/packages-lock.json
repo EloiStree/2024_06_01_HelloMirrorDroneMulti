@@ -103,7 +103,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "9a7e1071bcf27c41e269b3d9b6e3ce5190c25ac8"
+      "hash": "70abe17dea329382ea0c1e7a1beef01cab17642e"
     },
     "be.eloistree.license": {
       "version": "https://github.com/EloiStree/GeneralLicense.git",

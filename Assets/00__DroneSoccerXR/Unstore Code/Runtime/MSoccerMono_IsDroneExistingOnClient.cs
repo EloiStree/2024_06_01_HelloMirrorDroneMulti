@@ -258,4 +258,37 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
             }
         }
     }
+
+    public static bool IsOwningOneDroneIntegerPlayer(int index)
+    {
+        foreach (var d in InstanceInScene.m_droneByIndex)
+            if (d.IsOwnedBy(index)) return true;
+        return false;
+    }
+
+    public static void GetOwnedDroneIntegerPlayer(int index, out List<FixedSoccerId> fixedSoccerIds) { 
+    
+        fixedSoccerIds = new List<FixedSoccerId>();
+        foreach (var d in InstanceInScene.m_droneByIndex) {
+            if (d.IsOwnedBy(index)) {
+                GetFixedSoccierIdFrom(d, out bool hasId, out FixedSoccerId id );
+                if(hasId)
+                    fixedSoccerIds.Add(id);
+            }
+        }
+
+    }
+
+    private static void GetFixedSoccierIdFrom(MirrorMono_IndexIntegerOwner d,out bool hasId,  out FixedSoccerId id)
+    {
+        MSoccerMono_FixedSoccerIdTag tag = d.GetComponent<MSoccerMono_FixedSoccerIdTag>();
+        if (tag != null)
+        {
+            id= tag.GetFixedSoccerId();
+            hasId= true;
+            return;
+        }
+        id = FixedSoccerId.D1_Red0Stricker;
+        hasId = false;
+    }
 }

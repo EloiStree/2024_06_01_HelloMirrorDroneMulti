@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SoccerStateSyncMono_PushClaimChanged : MonoBehaviour
+public class SoccerStateSyncMono_PushClaimChanged : MonoBehaviour, MSoccerMono_RefreshablePush
 {
     public S_DroneSoccerPublicXmlRsaKey1024Claim m_publicRsaClaim;
     public S_DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
@@ -18,14 +18,15 @@ public class SoccerStateSyncMono_PushClaimChanged : MonoBehaviour
 
     public void Awake()
     {
-        Refresh();
-        Invoke("Refresh", 5);
-    
+        RefreshAndPush();
+        Invoke("RefreshAndPush", 5);
+
     }
 
     [ContextMenu("Refresh")]
-    public void Refresh() { 
-    
+    public void RefreshAndPush()
+    {
+
 
         m_publicRsaClaim.m_blueDrone0Stricker = m_publicRsaKeyDroneBlueOwner[0].m_publicKeyOwner;
         m_publicRsaClaim.m_blueDrone1 = m_publicRsaKeyDroneBlueOwner[1].m_publicKeyOwner;
@@ -64,5 +65,5 @@ public class SoccerStateSyncMono_PushClaimChanged : MonoBehaviour
         m_onIndexIntegerClaimChanged.Invoke(m_indexIntegerClaim);
 
     }
-    
 }
+

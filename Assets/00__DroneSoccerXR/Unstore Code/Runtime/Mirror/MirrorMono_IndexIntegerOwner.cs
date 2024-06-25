@@ -72,9 +72,9 @@ public class MirrorMono_IndexIntegerOwner : NetworkBehaviour
     }
 
     [ServerCallback]
-    public void Claim(int publicKeyOwner)
+    public void Claim(int indexUser)
     {
-        m_indexOfUser = 0;
+        m_indexOfUser = indexUser;
     }
     [ServerCallback]
     [ContextMenu("Reclaim")]

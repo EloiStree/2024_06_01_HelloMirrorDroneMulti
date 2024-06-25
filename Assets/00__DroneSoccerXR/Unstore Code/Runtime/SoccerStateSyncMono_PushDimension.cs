@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SoccerStateSyncMono_PushDimension : MonoBehaviour
+public class SoccerStateSyncMono_PushDimension : MonoBehaviour, MSoccerMono_RefreshablePush
 {
 
 
@@ -31,13 +31,13 @@ public class SoccerStateSyncMono_PushDimension : MonoBehaviour
 
     public void Start()
     {
-        RefreshPush();
-        Invoke("RefreshPush", 5);
+        RefreshAndPush();
+        Invoke("RefreshAndPush", 5);
     }
 
 
     [ContextMenu("Refresh Push")]
-    public void RefreshPush()
+    public void RefreshAndPush()
     {
 
         m_arenaInformation.m_numberOfPointsToForceWinSet = m_winSetByPoint.m_scoreToWinSet;
@@ -81,3 +81,4 @@ public class SoccerStateSyncMono_PushDimension : MonoBehaviour
 
     }
 }
+

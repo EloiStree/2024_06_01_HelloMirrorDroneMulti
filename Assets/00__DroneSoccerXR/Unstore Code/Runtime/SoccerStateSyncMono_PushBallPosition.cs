@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SoccerStateSyncMono_PushBallPosition : MonoBehaviour
+public class SoccerStateSyncMono_PushBallPosition : MonoBehaviour , MSoccerMono_RefreshablePush
 {
 
     public S_DroneSoccerBallPosition m_ballPosition;
@@ -19,11 +19,29 @@ public class SoccerStateSyncMono_PushBallPosition : MonoBehaviour
 
     public float m_framePerSeconds = 12;
 
+    public void RefreshAndPush()
+    {
+        m_ballPosition.m_dateTimeUtcTick = DateTime.UtcNow.Ticks;
+        MSoccer_RelocationUtility.GetWorldToLocal_DirectionalPoint(
+        transform.position,
+        transform.rotation,
+        m_arenaCenter,
+        out Vector3 localPosition,
+        out Quaternion localRotation
+        );
+        m_ballPosition.m_position = (localPosition);
+        m_ballPosition.m_rotation = (localRotation);
+
+
+        m_onBallPositionChanged.Invoke(m_ballPosition);
+    }
+
     public IEnumerator Start()
     {
         while (true)
         {
            
+<<<<<<< HEAD
            m_ballPosition.m_dateTimeUtcTick =(ulong) DateTime.UtcNow.Ticks;
            MSoccer_RelocationUtility.GetWorldToLocal_DirectionalPoint(
            transform.position,
@@ -37,6 +55,9 @@ public class SoccerStateSyncMono_PushBallPosition : MonoBehaviour
 
 
             m_onBallPositionChanged.Invoke(m_ballPosition);
+=======
+            RefreshAndPush();
+>>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
             yield return new WaitForSeconds(1f / m_framePerSeconds);
         }
 

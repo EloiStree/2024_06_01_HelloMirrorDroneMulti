@@ -35,13 +35,8 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     [SyncVar(hook =nameof(ChangedHappened))]
     public S_DroneSoccerIndexIntegerClaim m_indexIntegerClaim;
 
-<<<<<<< HEAD
     private void  ChangedHappened(S_DroneSoccerIndexIntegerClaim p, S_DroneSoccerIndexIntegerClaim n)
-=======
 
-
-    private void  ChangedHappened(DroneSoccerIndexIntegerClaim p, DroneSoccerIndexIntegerClaim n)
->>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
     {
         m_onChanged.m_onIndexIntegerClaim.Invoke(n);
     }
@@ -107,7 +102,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     [System.Serializable]
     public class Events
     {
-<<<<<<< HEAD
+
         public UnityEvent<S_DroneSoccerMatchState> m_onGamePointsState;
         public UnityEvent<S_DroneSoccerTimeValue> m_onGameTimeValue;
         public UnityEvent<S_DroneSoccerMatchStaticInformation> m_onGameArenaInformation;
@@ -116,16 +111,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         public UnityEvent<S_DroneSoccerIndexIntegerClaim> m_onIndexIntegerClaim;
         public UnityEvent<S_DroneSoccerBallPosition> m_onSoccerBallState;
         public UnityEvent<S_DroneSoccerBallGoals> m_onSoccerBallGoals;
-=======
-        public UnityEvent<DroneSoccerMatchState>                m_onGamePointsState;
-        public UnityEvent<DroneSoccerTimeValue>                 m_onGameTimeValue;
-        public UnityEvent<DroneSoccerMatchStaticInformation>    m_onGameArenaInformation;
-        public UnityEvent<DroneSoccerPositions>                 m_onGamePositions;
-        public UnityEvent<DroneSoccerPublicRsaKeyClaim>         m_onPublicRsaClaim;
-        public UnityEvent<DroneSoccerIndexIntegerClaim>         m_onIndexIntegerClaim;
-        public UnityEvent<DroneSoccerBallState>                 m_onSoccerBallState;
-        public UnityEvent<DroneSoccerBallGoals>                 m_onSoccerBallGoals;
->>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
+
     }
 
 
@@ -135,7 +121,6 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
     [ContextMenu("Full Fresh call no Rsa")]
     public void FullRefreshNotRsa() {
 
-<<<<<<< HEAD
         CPS.CPS_DroneSoccerMatchState.GetCopy(m_gamePointsState, out m_gamePointsState);
         CPS.CPS_DroneSoccerMatchStaticInformation.GetCopy(m_gameArenaInformation, out m_gameArenaInformation);
         CPS.CPS_DroneSoccerPositions.GetCopy(m_gamePositions, out m_gamePositions);
@@ -145,16 +130,7 @@ public class MSoccerMono_GameCoreStateExportable : NetworkBehaviour
         CPS.CPS_DroneSoccerPublicXmlRsaKey1024Claim.GetCopy(m_publicRsaClaim, out m_publicRsaClaim);
         CPS.CPS_DroneSoccerTimeValue.GetCopy(m_gameTimeValue, out m_gameTimeValue);
        
-=======
-        
-        m_gamePointsState       = m_gamePointsState.GetCopy();
-        m_gameTimeValue         = m_gameTimeValue.GetCopy();
-        m_gameArenaInformation  = m_gameArenaInformation.GetCopy();
-        m_gamePositions         = m_gamePositions.GetCopy();
-        m_indexIntegerClaim     = m_indexIntegerClaim.GetCopy();
-        m_droneSoccerBall       = m_droneSoccerBall.GetCopy();
-        m_droneSoccerBallGoals  = m_droneSoccerBallGoals.GetCopy();
->>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
+
 
     }
 

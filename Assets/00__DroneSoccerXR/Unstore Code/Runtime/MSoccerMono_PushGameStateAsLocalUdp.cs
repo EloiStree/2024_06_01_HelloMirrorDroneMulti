@@ -59,14 +59,6 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
 
     }
 
-
-<<<<<<< HEAD
-
-=======
-   
-
-    int dronePositionByteLength = 1 + 16 + (9 * 12);
->>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
     byte[] bytesofPositionToSend;
     public void SetPositionsAsByte(S_DroneSoccerPositions positions)
     {
@@ -84,27 +76,9 @@ public class MSoccerMono_PushGameStateAsLocalUdp : MonoBehaviour
     //}
     public void SetPublicRsaKeyClaimAsByte(S_DroneSoccerPublicXmlRsaKey1024Claim publicRsaKeyClaim)
     {
-<<<<<<< HEAD
         m_publicRsaKeyClaim.Parse(m_byte_publicRsaKeyClaim, publicRsaKeyClaim, out byte[] bytes);
         m_taggedBytesToPush.Invoke(bytes);
-=======
-        StringBuilder sb = new StringBuilder();
-        sb.AppendLine("<DroneSoccerPublicKeyRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone0Stricker+"</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone1 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone2 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone3 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone4 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_blueDrone5 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone0Stricker + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone1 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone2 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone3 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>"+publicRsaKeyClaim.m_redDrone4 + "</ClaimRSA>");
-        sb.AppendLine("    <ClaimRSA>" + publicRsaKeyClaim.m_redDrone5 + "</ClaimRSA>");
-        sb.AppendLine("</DroneSoccerPublicKeyRSA>");
-        m_textToPush.Invoke(sb.ToString());
->>>>>>> 7a6ba150380d69a1acddf3158bbb2d2228d86f1b
+
     }
     public void SetIndexIntegerClaimAsByte(S_DroneSoccerIndexIntegerClaim indexIntegerClaim)
     {

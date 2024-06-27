@@ -1,6 +1,5 @@
-﻿using Codice.CM.Common.Tree.Partial;
+﻿
 using Mirror;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class MSoccerMono_IsOnServerSingleton: MonoBehaviour

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEngine;
 
 public class MSoccerMono_PlayersInRoomInputDroneIID : MonoBehaviour
@@ -51,11 +50,16 @@ public class MSoccerMono_PlayersInRoomInputDroneIID : MonoBehaviour
     public int m_lastIndex;
     public int m_lastValue;
     public int m_lastDrone20;
+
+    public int[] m_ignoreValue = new int[] { 987654321, 123456789 };
     public void PushIn(int index, int value) {
 
         m_lastIndex = index;
         m_lastValue = value;
         m_lastDrone20 = 0;
+
+        foreach (int ig in m_ignoreValue)
+            if (ig == value) return;
 
         bool owned =MSoccerMono_IsDroneExistingOnClient.IsOwningOneDroneIntegerPlayer(index);
         if (owned == false) return;

@@ -13,7 +13,7 @@ public class SoccerStateSyncMono_PushBallGoalsField : MonoBehaviour, MSoccerMono
     {
         m_ballGoals.m_goalDepthMeter = m_goalsSetup.m_goalDepthMeter;
         m_ballGoals.m_goalDistanceOfCenterMeter = m_goalsSetup.m_goalDistanceOfCenterMeter;
-        m_ballGoals.m_goalCenterHeightMeter = m_goalsSetup.m_goalCenterHeightMeter;
+        m_ballGoals.m_goalGroundHeightMeter = m_goalsSetup.m_goalGroundHeightMeter;
         m_ballGoals.m_goalWidthRadiusMeter = m_goalsSetup.m_goalWidthRadiusMeter;
 
 

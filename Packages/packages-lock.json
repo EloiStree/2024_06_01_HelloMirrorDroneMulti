@@ -26,7 +26,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "6539e420012594d9a7fd3328ac53003c87d9a958"
+      "hash": "de76f4b3e19632d312d16947ba2e5ff11d90d77c"
     },
     "be.eloistree.droneracesample": {
       "version": "https://github.com/EloiStree/2024_06_31_DroneRaceStepSample.git",
@@ -103,7 +103,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "70abe17dea329382ea0c1e7a1beef01cab17642e"
+      "hash": "aeac2fc89058133cef624add3342612f3cb0a8b1"
     },
     "be.eloistree.license": {
       "version": "https://github.com/EloiStree/GeneralLicense.git",

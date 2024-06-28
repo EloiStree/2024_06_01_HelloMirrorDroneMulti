@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MSoccerMono_PlayersInRoomInputDroneIID : MonoBehaviour
@@ -10,16 +11,43 @@ public class MSoccerMono_PlayersInRoomInputDroneIID : MonoBehaviour
     public MSoccerMono_IsDroneExistingOnClient m_drones;
 
     public LastValue[] m_dronesLastValue = new LastValue[12];
-
+    public PlayerInfo[] m_players = new PlayerInfo[12];
+    [System.Serializable]
+    public class PlayerInfo {
+        public int m_index;
+        public FixedSoccerId[] m_ownedDrone;
+        public MSoccerMono_AbstractGamepad [] m_gamepad;
+    }
 
     private void Awake()
     {
         ResetArray();
+        InvokeRepeating("RefreshPlayerBase", 0, 1);
     }
 
     private void Reset()
     {
         ResetArray();
+    }
+
+
+    public void RefreshPlayerBase()
+    {
+
+        int[] arrayIndex = MSoccerMono_IsDroneExistingOnClient.InstanceInScene.GetDroneIndexClaim0to11();
+        for (int i = 0; i < arrayIndex.Length; i++)
+        {
+            if (i < m_dronesLastValue.Length)
+            {
+                
+                m_dronesLastValue[i].m_index = arrayIndex[i];
+                m_players[i].m_index = arrayIndex[i];
+                m_players[i].m_ownedDrone = MSoccerMono_IsDroneExistingOnClient
+                    .InstanceInScene.GetDroneOwnedFromIndex(arrayIndex[i]);
+                m_players[i].m_gamepad = MSoccerMono_IsDroneExistingOnClient
+                    .InstanceInScene.GetGamepadFromFixedSoccerId(m_players[i].m_ownedDrone);
+            }
+        }
     }
 
     private void ResetArray()
@@ -52,43 +80,67 @@ public class MSoccerMono_PlayersInRoomInputDroneIID : MonoBehaviour
     public int m_lastDrone20;
 
     public int[] m_ignoreValue = new int[] { 987654321, 123456789 };
+
+   
     public void PushIn(int index, int value) {
 
+        if (m_players == null || m_players.Length == 0)
+            RefreshPlayerBase();
         m_lastIndex = index;
         m_lastValue = value;
         m_lastDrone20 = 0;
 
+        
+        
+
         foreach (int ig in m_ignoreValue)
             if (ig == value) return;
 
-        bool owned =MSoccerMono_IsDroneExistingOnClient.IsOwningOneDroneIntegerPlayer(index);
+        bool owned = m_players.Any(x => x.m_index == index);
         if (owned == false) return;
-        bool isDroneCmd = value > 99999999;
-        if (!isDroneCmd) return;
+
+        PlayerInfo player = m_players.First(x => x.m_index == index);
         int drone20 = value / 100000000;
-
-        MSoccerMono_IsDroneExistingOnClient.GetOwnedDroneIntegerPlayer(index, out List<FixedSoccerId> ids);
-        if (ids ==null || ids.Count == 0) return;
-
-
         m_lastDrone20 = drone20;
+        
+        //bool isDroneCmd = value > 99999999;
+        //if (!isDroneCmd) return;
+
+        
+
+        if (player.m_ownedDrone == null || player.m_ownedDrone.Length == 0) return;
 
         if (drone20 == 0) {
-            SetGamepadFromDroneId(index,value, ids[0]);
+            SetGamepadFromDroneId(index,value, player.m_ownedDrone[0]);
+        }
+        if (drone20 == -20 || drone20==20) { 
+            for (int i = 0; i < player.m_ownedDrone.Length; i++)
+            {
+                SetGamepadFromDroneId(index, value, player.m_ownedDrone[i]);
+            }
         }
         if (drone20 > 0 && drone20 < 13) { 
         
             FixedSoccerId id = (FixedSoccerId)drone20;
             SetGamepadFromDroneId(index, value, id);
-
         }
         if (drone20 < 0) {
 
             int i = (int)(-drone20) - 1;
-            if (i < ids.Count)
-                SetGamepadFromDroneId(index, value, ids[i]);
+            if (i < player.m_ownedDrone.Length)
+                SetGamepadFromDroneId(index, value, player.m_ownedDrone[i]);
         }
         
+    }
+
+    private LastValue GetLastValueRef(int index)
+    {
+        for(int i = 0; i < m_dronesLastValue.Length; i++)
+        {
+            if (m_dronesLastValue[i].m_index == index)
+                return m_dronesLastValue[i];
+        }
+        return null;
     }
 
     public void SetGamepadFromDroneId(int index, int cmd, FixedSoccerId drone)

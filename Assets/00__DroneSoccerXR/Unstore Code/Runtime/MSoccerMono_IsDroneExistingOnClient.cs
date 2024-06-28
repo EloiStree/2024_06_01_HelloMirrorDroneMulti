@@ -35,7 +35,7 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
         m_droneByRsaPublic = GameObject.FindObjectsOfType<MirrorMono_PublicRsaKeyOwner>(false);
         m_droneBySoccerId = GameObject.FindObjectsOfType<MSoccerMono_FixedSoccerIdTag>(false);
         m_trustParserInputIID = GameObject.FindObjectOfType<MSoccerMono_TrustParserInputInt>(false);
-        
+
         m_soccerDronesToAlias = new SoccerIdtoRsaAlias[m_droneBySoccerId.Length];
         for(int i = 0; i < m_droneBySoccerId.Length; i++)
         {
@@ -47,6 +47,12 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
             m_soccerDronesToAlias[i].m_gamepad = m_droneBySoccerId[i].GetComponent<MSoccerMono_AbstractGamepad>();
         }
         m_soccerDronesToAlias= m_soccerDronesToAlias.OrderBy(x => x.GetFixedSoccerId()).ToArray();
+        m_droneBySoccerId = m_droneBySoccerId.OrderBy(x => x.m_fixedSoccerId).ToArray();
+        m_droneGamepadInFixedIdOrder = new MSoccerMono_AbstractGamepad[m_droneBySoccerId.Length];
+        for (int i = 0; i < m_droneBySoccerId.Length; i++)
+        {
+            GetDroneSoccerIdGamepad(m_droneBySoccerId[i].m_fixedSoccerId, out m_droneGamepadInFixedIdOrder[i]);
+        }
     }
 
     public MirrorMono_CallableUniqueAlias[] m_droneByAlias;
@@ -54,6 +60,7 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
     public MirrorMono_PublicRsaKeyOwner[] m_droneByRsaPublic;
     public MSoccerMono_FixedSoccerIdTag[] m_droneBySoccerId;
     public MSoccerMono_TrustParserInputInt m_trustParserInputIID;
+    public MSoccerMono_AbstractGamepad[] m_droneGamepadInFixedIdOrder; 
 
 
     public SoccerIdtoRsaAlias[] m_soccerDronesToAlias; 
@@ -290,5 +297,60 @@ public class MSoccerMono_IsDroneExistingOnClient : MonoBehaviour {
         }
         id = FixedSoccerId.D1_Red0Stricker;
         hasId = false;
+    }
+
+    public  int[] GetDroneIndexClaim0to11()
+    {
+        return m_droneByIndex.Select(x =>x==null?0:x.m_indexOfUser).ToArray();
+    }
+    public FixedSoccerId[] GetDroneOwnedFromIndex(int indexOwner) { 
+        List<FixedSoccerId> ids = new List<FixedSoccerId>();
+        foreach (var d in m_droneByIndex)
+        {
+            if (d.m_indexOfUser == indexOwner)
+            {
+                GetFixedSoccierIdFrom(d, out bool hasId, out FixedSoccerId id);
+                if (hasId)
+                    ids.Add(id);
+            }
+        }
+        return ids.ToArray();
+    }
+
+    public MSoccerMono_AbstractGamepad GetGamepadFromFixedSoccerId( FixedSoccerId m_ownedDrone)
+    {
+        switch (m_ownedDrone)
+        {
+            case FixedSoccerId.D1_Red0Stricker: return m_droneGamepadInFixedIdOrder[0];
+            case FixedSoccerId.D2_Red1:return m_droneGamepadInFixedIdOrder[1];
+            case FixedSoccerId.D3_Red2:
+                return m_droneGamepadInFixedIdOrder[2];
+            case FixedSoccerId.D4_Red3:
+                return m_droneGamepadInFixedIdOrder[3];
+            case FixedSoccerId.D5_Red4:
+                return m_droneGamepadInFixedIdOrder[4];
+            case FixedSoccerId.D6_Red5:
+                return m_droneGamepadInFixedIdOrder[5];
+            case FixedSoccerId.D7_Blue0Stricker:
+                return m_droneGamepadInFixedIdOrder[6];
+            case FixedSoccerId.D8_Blue1:
+                return m_droneGamepadInFixedIdOrder[7];
+            case FixedSoccerId.D9_Blue2:
+                return m_droneGamepadInFixedIdOrder[8];
+            case FixedSoccerId.D10_Blue3:
+                return m_droneGamepadInFixedIdOrder[9];
+            case FixedSoccerId.D11_Blue4:
+                return m_droneGamepadInFixedIdOrder[10];
+            case FixedSoccerId.D12_Blue5:
+                return m_droneGamepadInFixedIdOrder[11];
+            default:
+                break;
+        }
+        return null;
+    }
+
+    public MSoccerMono_AbstractGamepad[] GetGamepadFromFixedSoccerId(FixedSoccerId[] m_ownedDrone)
+    {
+        return m_ownedDrone.Select(x => GetGamepadFromFixedSoccerId(x)).ToArray();
     }
 }

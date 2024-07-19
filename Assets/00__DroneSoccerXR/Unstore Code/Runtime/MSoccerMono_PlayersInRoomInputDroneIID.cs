@@ -110,21 +110,34 @@ public class MSoccerMono_PlayersInRoomInputDroneIID : MonoBehaviour
 
         if (player.m_ownedDrone == null || player.m_ownedDrone.Length == 0) return;
 
-        if (drone20 == 0) {
-            SetGamepadFromDroneId(index,value, player.m_ownedDrone[0]);
+        if (value == 0) {
+
+            foreach (var i in player.m_gamepad) { 
+                i.SetJoystickLeftValue(Vector3.zero);
+                i.SetJoystickRightValue(Vector3.zero);
+            }
+
+               
         }
-        if (drone20 == -20 || drone20==20) { 
+        else if (drone20 == 0)
+        {
+            SetGamepadFromDroneId(index, value, player.m_ownedDrone[0]);
+        }
+        else if (drone20 == -20 || drone20 == 20)
+        {
             for (int i = 0; i < player.m_ownedDrone.Length; i++)
             {
                 SetGamepadFromDroneId(index, value, player.m_ownedDrone[i]);
             }
         }
-        if (drone20 > 0 && drone20 < 13) { 
-        
+        else if (drone20 > 0 && drone20 < 13)
+        {
+
             FixedSoccerId id = (FixedSoccerId)drone20;
             SetGamepadFromDroneId(index, value, id);
         }
-        if (drone20 < 0) {
+        else if (drone20 < 0)
+        {
 
             int i = (int)(-drone20) - 1;
             if (i < player.m_ownedDrone.Length)

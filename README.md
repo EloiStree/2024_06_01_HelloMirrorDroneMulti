@@ -55,7 +55,7 @@ Chargeons une **clé privée** que moi seul connais, ainsi que la **clé publiqu
 
 ---
 
-Demandons au serveur de m’envoyer un **message à signer**.   
+Demandons au serveur de m’envoyer un **message à signer**.   Et de stocker la cle public pour plus tard
 <img width="1042" height="228" alt="image" src="https://github.com/user-attachments/assets/3419da34-b9ff-4904-bdcb-c6998d7d5019" />
 
 ---

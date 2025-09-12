@@ -81,5 +81,5 @@ De plus, tous les joueurs connaissent la **clé publique** de celui-ci.
 
 ---
 
-Pour ne pas avoir à rechercher notre propre joueur, on l’ajoute à une variable **statique**.   
+Pour ne pas avoir à rechercher notre propre joueur, on l’ajoute à une variable **statique** local a notre ordinateur.
 <img width="556" height="49" alt="image" src="https://github.com/user-attachments/assets/f41d37aa-e53a-45cc-ba78-a2167f7f96bf" />
